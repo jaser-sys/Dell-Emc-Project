@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 public class FileQuery extends SqliteDB{
+	public void addNewEntry(Object o) {
 	String sqlCommand = "INSERT INTO files (vmID, Name, creationDate, Location) "
 	 		+ "VALUES("+ ((File)o).getVmID() +",\'" + ((File)o).getName() + "\',\'" + ((File)o).getSize() + "\',\'" + ((File)o).getCreationDate() +"\',\'" + ((File)o).getLocation() + "\');" ;
 	
