@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public abstract class SqliteDB implements SqliteDBInterface {
+public abstract class SqliteDB  {
 	
 		public Connection connect() {
 	        String DB_url = "jdbc:sqlite:C:\\Users\\abeer\\Desktop\\Dell-Emc-Project\\mySqliteDB\\myDatabase.db";
@@ -22,6 +22,9 @@ public abstract class SqliteDB implements SqliteDBInterface {
 	        }
 	        return conn;
 	  }
+		abstract public void addNewEntry(Object o);
+		abstract public List<Object> getAllEntries();
+		abstract public void deleteEntryByID(int entryId);
 		
 
 		
