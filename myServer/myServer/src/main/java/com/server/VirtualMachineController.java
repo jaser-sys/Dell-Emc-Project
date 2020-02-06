@@ -11,28 +11,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value ="/virtualmachines")
-public class SqliteDBController {
+public class VirtualMachineController {
 	
-	SqliteDB dbinstance=new SqliteDB();
+	SqliteDB dbinstance=new VirtualMachineQuery();
 	
 	@RequestMapping(method = RequestMethod.POST, value =  "/add")
 	public void addData(@RequestParam int id,String host,String user,String pass){
-		dbinstance.addVirtualMachine(id,host,user,pass);
+		VirtualMachine vm=new VirtualMachine(id,host,user,pass);
+		dbinstance.addNewEntry(vm);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<VirtualMachine> getAllVirtualMachines(){
-		return dbinstance.getAllVirtualMachines();
+	public List<Object> getAllVirtualMachines(){
+		return dbinstance.getAllEntries();
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE)
 	public void deleteVirtualMachineByID(@RequestParam int id){
-		dbinstance.deleteVirtualMachineByID(id);
+		((VirtualMachineQuery)dbinstance).deleteEntryByID(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
 	public void updatePasswordByID(@RequestParam int id,String newPassword){
-		dbinstance.updatePasswordByID(id,newPassword);
+		((VirtualMachineQuery)dbinstance).updatePasswordByID(id,newPassword);
 	}
 
 }
