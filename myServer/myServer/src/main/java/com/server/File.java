@@ -5,14 +5,14 @@ import java.util.Date;
 public class File {
 	 	private int vmID;
 	    private String fileName;
-	    private Date creationData;
+	    private Date creationDate;
 	    private int fileSize;
 
 	    public File(int vmID,String fileName,Date date, int fileSize){
 	        this.vmID=vmID;
 	        this.fileName=fileName;
 	        this.fileSize=fileSize;
-	        this.creationData=date;
+	        this.creationDate=date;
 	    }
 	    
 	    public File(){
@@ -31,7 +31,7 @@ public class File {
 	    }
 	    
 	    public void setdate(Date date){
-	        this.creationData=date;
+	        this.creationDate=date;
 	    }
 	    
 	    public int getvmID(){
@@ -46,8 +46,8 @@ public class File {
 	        return fileSize;
 	    }
 	    
-	    public Date getCreationData(){
-	        return creationData;
+	    public Date getCreationDate(){
+	        return creationDate;
 	    }
 
 }
