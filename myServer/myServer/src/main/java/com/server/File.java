@@ -3,14 +3,14 @@ package com.server;
 import java.util.Date;
 
 public class File {
-	 	private int vmID;
+	 	private int vmIP;
 	    private String fileName;
 	    private Date creationDate;
 	    private int fileSize;
 	    private String fileLoc;
 
-	    public File(int vmID,String fileName,Date date, int fileSize, String fileLoc){
-	        this.vmID=vmID;
+	    public File(int vmIP,String fileName,Date date, int fileSize, String fileLoc){
+	        this.vmIP=vmIP;
 	        this.fileName=fileName;
 	        this.fileSize=fileSize;
 	        this.creationDate=date;
@@ -20,8 +20,8 @@ public class File {
 	    public File(){
 	    }
 	    
-	    public void setvmID(int vmID){
-	        this.vmID=vmID;
+	    public void setvmIP(int vmIP){
+	        this.vmIP=vmIP;
 	    }
 	    
 	    public void setfileName(String fileName){
@@ -40,8 +40,8 @@ public class File {
 	          this.fileLoc=fileLoc;	
 	    
 	    }
-	    public int getvmID(){
-	        return vmID ;
+	    public int getvmIP(){
+	        return vmIP;
 	    }
 	    
 	    public String getfileName(){
