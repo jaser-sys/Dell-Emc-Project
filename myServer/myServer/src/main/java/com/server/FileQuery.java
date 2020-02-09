@@ -7,9 +7,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 public class FileQuery extends SqliteDB{
+	
+	
+	
+	
 	public void addNewEntry(Object o) {
-	String sqlCommand = "INSERT INTO files (vmID, Name, creationDate,Size ,Location) "
-	 		+ "VALUES("+ ((File)o).getVmID() +",\'" + ((File)o).getfileName() + "\',\'" + ((File)o).getCreationDate() + "\',\'" + ((File)o).getfileSize() +"\',\'" + ((File)o).getLocation() + "\');" ;
+	String sqlCommand = "INSERT INTO files (vmIP, Name, creationDate,Size ,Location) "
+	 		+ "VALUES("+ ((File)o).getVmIP() +",\'" + ((File)o).getfileName() + "\',\'" + ((File)o).getCreationDate() + "\',\'" + ((File)o).getfileSize() +"\',\'" + ((File)o).getLocation() + "\');" ;
 	
 	 try (Connection conn = super.connect();
 			 PreparedStatement stmt  = conn.prepareStatement(sqlCommand) ){				 
@@ -29,7 +33,7 @@ public class FileQuery extends SqliteDB{
 	             ResultSet result    = stmt.executeQuery(sqlCommand)){
 	            while (result.next()) {
 	            	File f1=new File();
-	            	f1.setVmID(result.getInt("vmID"));
+	            	f1.setVmIP(result.getString("vmIP"));
 	            	f1.setfileName(result.getString("Name"));
 	            	f1.setcreationDate(result.getString("creationDate"));
 	            	f1.setfileSize(result.getInt("fileSize"))
