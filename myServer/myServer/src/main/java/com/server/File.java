@@ -3,13 +3,13 @@ package com.server;
 import java.util.Date;
 
 public class File {
-	 	private int vmIP;
+	 	private String vmIP;
 	    private String fileName;
 	    private Date creationDate;
 	    private int fileSize;
 	    private String fileLoc;
 
-	    public File(int vmIP,String fileName,Date date, int fileSize, String fileLoc){
+	    public File(String vmIP,String fileName,Date date, int fileSize, String fileLoc){
 	        this.vmIP=vmIP;
 	        this.fileName=fileName;
 	        this.fileSize=fileSize;
@@ -20,7 +20,7 @@ public class File {
 	    public File(){
 	    }
 	    
-	    public void setvmIP(int vmIP){
+	    public void setvmIP(String vmIP){
 	        this.vmIP=vmIP;
 	    }
 	    
@@ -40,7 +40,7 @@ public class File {
 	          this.fileLoc=fileLoc;	
 	    
 	    }
-	    public int getvmIP(){
+	    public String getvmIP(){
 	        return vmIP;
 	    }
 	    
