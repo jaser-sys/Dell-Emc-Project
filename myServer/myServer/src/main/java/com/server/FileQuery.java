@@ -13,7 +13,7 @@ public class FileQuery extends SqliteDB{
 	
 	public void addNewEntry(Object o) {
 	String sqlCommand = "INSERT INTO files (vmIP, Name, creationDate,Size ,Location) "
-	 		+ "VALUES("+ ((File)o).getVmIP() +",\'" + ((File)o).getfileName() + "\',\'" + ((File)o).getCreationDate() + "\',\'" + ((File)o).getfileSize() +"\',\'" + ((File)o).getLocation() + "\');" ;
+	 		+ "VALUES("+ ((File)o).getvmIP() +",\'" + ((File)o).getfileName() + "\',\'" + ((File)o).getCreationDate() + "\',\'" + ((File)o).getfileSize() +"\',\'" + ((File)o).getfileLoc() + "\');" ;
 	
 	 try (Connection conn = super.connect();
 			 PreparedStatement stmt  = conn.prepareStatement(sqlCommand) ){				 
@@ -33,10 +33,10 @@ public class FileQuery extends SqliteDB{
 	             ResultSet result    = stmt.executeQuery(sqlCommand)){
 	            while (result.next()) {
 	            	File f1=new File();
-	            	f1.setVmIP(result.getString("vmIP"));
+	            	f1.setvmIP(result.getString("vmIP"));
 	            	f1.setfileName(result.getString("Name"));
 	            	f1.setcreationDate(result.getString("creationDate"));
-	            	f1.setfileSize(result.getInt("fileSize"))
+	            	f1.setfileSize(result.getInt("fileSize"));
 	            	f1.setfileLoc(result.getString("fileLoc"));
 	            	myFiles.add((Object)f1);
 	            }
