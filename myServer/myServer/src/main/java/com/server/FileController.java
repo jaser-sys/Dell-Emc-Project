@@ -16,7 +16,15 @@ public class FileController{
 	
 	FileQuery dbinstance=new FileQuery();
 	
+	@RequestMapping(method = RequestMethod.GET,value =  "/AllEntries")
+	public List<Object> getAllFiles(){
+		return dbinstance.getAllEntries();
+	}
 	
+	@RequestMapping(method = RequestMethod.GET,value =  "/filterByName")
+	public List<Object>  getEntriesNameFilter(String name){
+		return dbinstance.getEntriesNameFilter(name);
+	}
 	
 	
 }
