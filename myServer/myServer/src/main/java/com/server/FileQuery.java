@@ -69,6 +69,26 @@ public class FileQuery extends SqliteDB{
 	   }
 		return myFiles;
 	}
+	public List<Object> getEntriesSizeFilter(int size){
+		List<Object> myFiles= new ArrayList<Object>();
+		try (Connection conn = connect();
+		PreparedStatement stat = conn.prepareStatement("SELECT * FROM files WHERE Size >= ?")){
+		stat.setInt(1, size);
+		ResultSet res = stat.executeQuery();
+		 while (res.next()) {
+	     	File f1=new File();
+	     	f1.setvmIP(res.getString("vmIP"));
+	     	f1.setfileName(res.getString("Name"));
+	     	f1.setcreationDate(res.getString("creationDate"));
+	     	f1.setfileSize(res.getInt("Size"));
+	     	f1.setfileLoc(res.getString("Location"));
+	     	myFiles.add((Object)f1);
+	     }
+	   } catch (SQLException e) {
+	       System.out.println(e.getMessage());
+	   }
+		return myFiles;
+	}
   
      
 }
