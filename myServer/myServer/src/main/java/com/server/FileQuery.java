@@ -9,8 +9,6 @@ import java.util.List;
 public class FileQuery extends SqliteDB{
 	
 	
-	
-	
 	public void addNewEntry(Object o) {
 	String sqlCommand = "INSERT INTO files (vmIP, Name, creationDate,Size ,Location) "
 	 		+ "VALUES("+ ((File)o).getvmIP() +",\'" + ((File)o).getfileName() + "\',\'" + ((File)o).getCreationDate() + "\',\'" + ((File)o).getfileSize() +"\',\'" + ((File)o).getfileLoc() + "\');" ;
@@ -44,6 +42,12 @@ public class FileQuery extends SqliteDB{
 	            System.out.println(e.getMessage());
 	        }
 		return myFiles;
+	}
+
+	@Override
+	public void deleteEntryByID(int entryId) {
+		
+		
 	}
 	
   
