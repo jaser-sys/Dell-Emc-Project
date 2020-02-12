@@ -49,7 +49,26 @@ public class FileQuery extends SqliteDB{
 		
 		
 	}
-	
+	public List<Object> getEntriesNameFilter(String name){
+		List<Object> myFiles= new ArrayList<Object>();
+		try (Connection conn = connect();
+		PreparedStatement stat = conn.prepareStatement("SELECT * FROM files WHERE Name LIKE ?")){
+		stat.setString(1, name+'%');
+		ResultSet res = stat.executeQuery();
+		 while (res.next()) {
+	     	File f1=new File();
+	     	f1.setvmIP(res.getString("vmIP"));
+	     	f1.setfileName(res.getString("Name"));
+	     	f1.setcreationDate(res.getString("creationDate"));
+	     	f1.setfileSize(res.getInt("Size"));
+	     	f1.setfileLoc(res.getString("Location"));
+	     	myFiles.add((Object)f1);
+	     }
+	   } catch (SQLException e) {
+	       System.out.println(e.getMessage());
+	   }
+		return myFiles;
+	}
   
      
 }
