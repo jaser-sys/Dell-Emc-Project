@@ -1,7 +1,7 @@
 package com.server;
-
-import java.util.Date;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;  
+import java.util.Date;  
 public class File {
 	 	private String vmIP;
 	    private String fileName;
@@ -32,8 +32,15 @@ public class File {
 	        this.fileSize=fileSize;
 	    }
 	    
-	    public void setcreationDate(Date date){
-	        this.creationDate=date;
+	    public void setcreationDate(String date){
+	    	Date d1=new Date();
+	    	try {
+				d1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			} 
+	    	
+	        this.creationDate=d1;
 	    }
 	    
 	    public void setfileLoc(String fileLoc) {
