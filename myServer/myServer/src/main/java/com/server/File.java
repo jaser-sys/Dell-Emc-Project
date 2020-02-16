@@ -35,7 +35,7 @@ public class File {
 	    public void setcreationDate(String date){
 	    	Date d1=new Date();
 	    	try {
-				d1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
+				d1=new SimpleDateFormat("yyyy-MM-dd").parse(date);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			} 
