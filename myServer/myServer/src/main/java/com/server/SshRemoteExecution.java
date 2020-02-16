@@ -28,6 +28,7 @@ public class SshRemoteExecution {
 	
 	public ArrayList<File> remoteExecution() {
 		ArrayList<File> listOfFiles=new ArrayList<File>();
+		FileQuery files=new FileQuery();
 		String LocationOfFile=".";
         ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();
         ArrayList<String> singleList = new ArrayList<String>();
@@ -100,6 +101,7 @@ public class SshRemoteExecution {
         } catch (IOException | JSchException ioEx) {
             System.err.println(ioEx.toString());
         }//catch
+        files.addListEntries(listOfFiles);
 		return listOfFiles;
 	}
 	
