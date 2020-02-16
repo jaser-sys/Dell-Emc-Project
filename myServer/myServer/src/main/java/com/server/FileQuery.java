@@ -22,6 +22,17 @@ public class FileQuery extends SqliteDB{
         }
      }
 	
+	public void addListEntries(ArrayList<Object> filesList) {
+		
+		if(filesList.size() == 0) {
+			System.out.println("No files to bed added");
+		}else {
+		  for(Object file : filesList) {
+			  addNewEntry(file);
+		  }
+		}
+	}
+	
 	public List<Object> getAllEntries() {
 		String sqlCommand = "SELECT * FROM files;" ;
 		List<Object> myFiles= new ArrayList<Object>();
