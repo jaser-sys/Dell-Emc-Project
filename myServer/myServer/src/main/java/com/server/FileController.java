@@ -26,5 +26,9 @@ public class FileController{
 		return dbinstance.getEntriesNameFilter(name);
 	}
 	
+	@RequestMapping(method = RequestMethod.GET,value =  "/filterBySize")
+	public List<Object>  getEntriesSizeFilter(int size){
+		return dbinstance.getEntriesSizeFilter(size);
+	}
 	
 }
