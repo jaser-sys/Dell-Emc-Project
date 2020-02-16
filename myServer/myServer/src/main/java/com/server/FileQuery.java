@@ -22,7 +22,7 @@ public class FileQuery extends SqliteDB{
         }
      }
 	
-	public void addListEntries(ArrayList<Object> filesList) {
+	public void addListEntries(ArrayList<File> filesList) {
 		
 		if(filesList.size() == 0) {
 			System.out.println("No files to bed added");
