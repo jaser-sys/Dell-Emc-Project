@@ -1,4 +1,4 @@
-package com.server;
+package model;
 
 
 public class VirtualMachine {

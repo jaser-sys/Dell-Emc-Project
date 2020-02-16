@@ -1,4 +1,4 @@
-package com.server;
+package services;
 
 import com.jcraft.jsch.*;
 import java.io.ByteArrayInputStream;
@@ -9,7 +9,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-        
+import model.File;
+import dao.FileQuery;
+
 
 public class SshRemoteExecution {
 	private String host = "ec2-18-191-224-120.us-east-2.compute.amazonaws.com";

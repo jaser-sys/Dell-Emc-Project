@@ -1,4 +1,4 @@
-package com.server;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import dao.SqliteDB;
+import model.VirtualMachine;
 
 public class VirtualMachineQuery extends SqliteDB {
 	
