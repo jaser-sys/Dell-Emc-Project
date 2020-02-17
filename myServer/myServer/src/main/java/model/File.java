@@ -2,17 +2,19 @@ package model;
 
 
 import java.text.ParseException;
+
 import java.text.SimpleDateFormat;  
-import java.util.Date;  
+import java.util.Date;
+import java.util.UUID;  
 public class File {
-	 	private String vmIP;
+	 	private UUID vmID;
 	    private String fileName;
 	    private Date creationDate;
 	    private int fileSize;
 	    private String fileLoc;
 
-	    public File(String vmIP,String fileName,Date date, int fileSize, String fileLoc){
-	        this.vmIP=vmIP;
+	    public File(UUID vmID,String fileName,Date date, int fileSize, String fileLoc){
+	        this.vmID=vmID;
 	        this.fileName=fileName;
 	        this.fileSize=fileSize;
 	        this.creationDate=date;
@@ -22,8 +24,8 @@ public class File {
 	    public File(){
 	    }
 	    
-	    public void setvmIP(String vmIP){
-	        this.vmIP=vmIP;
+	    public void setvmID(UUID vmID){
+	        this.vmID=vmID;
 	    }
 	    
 	    public void setfileName(String fileName){
@@ -49,8 +51,8 @@ public class File {
 	          this.fileLoc=fileLoc;	
 	    
 	    }
-	    public String getvmIP(){
-	        return vmIP;
+	    public UUID getvmID(){
+	        return vmID;
 	    }
 	    
 	    public String getfileName(){
