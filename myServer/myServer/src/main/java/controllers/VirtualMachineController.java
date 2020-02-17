@@ -29,7 +29,7 @@ public class VirtualMachineController {
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE)
-	public void deleteVirtualMachineByID(@RequestParam int id){
+	public void deleteVirtualMachineByID(@RequestParam UUID id){
 		((VirtualMachineQuery)dbinstance).deleteEntryByID(id);
 	}
 	
