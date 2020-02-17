@@ -18,7 +18,7 @@ public class FileController{
 	
 	@RequestMapping(method = RequestMethod.GET,value =  "/AllEntries")
 	public List<Object> getFiles(){
-		return dbinstance.getAllEntries();
+		return dbinstance.getEntries();
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,value =  "/filterByName")

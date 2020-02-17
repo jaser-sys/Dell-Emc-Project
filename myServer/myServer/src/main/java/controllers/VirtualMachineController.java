@@ -17,14 +17,14 @@ public class VirtualMachineController {
 	SqliteDB dbinstance=new VirtualMachineQuery();//to do: change to service
 	
 	@RequestMapping(method = RequestMethod.POST, value =  "/add")
-	public void addVirtualMachine(@RequestParam int id,String host,String user,String pass){
-		VirtualMachine vm=new VirtualMachine(id,host,user,pass);
+	public void addVirtualMachine(@RequestParam String host,String user,String pass){
+		VirtualMachine vm=new VirtualMachine(host,user,pass);
 		dbinstance.addNewEntry(vm);
 	}
 	//to do: get virtual machine by id
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Object> getVirtualMachines(){
-		return dbinstance.getAllEntries();
+		return dbinstance.getEntries();
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE)
