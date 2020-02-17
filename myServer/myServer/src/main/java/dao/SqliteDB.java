@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 public abstract class SqliteDB  {
@@ -24,7 +25,7 @@ public abstract class SqliteDB  {
 	  }
 		abstract public void addNewEntry(Object o);
 		abstract public List<Object> getEntries();
-		abstract public void deleteEntryByID(int entryId);
+		abstract public void deleteEntryByID(UUID entryId);
 		
 
 		
