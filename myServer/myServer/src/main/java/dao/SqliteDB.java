@@ -23,7 +23,7 @@ public abstract class SqliteDB  {
 	        return conn;
 	  }
 		abstract public void addNewEntry(Object o);
-		abstract public List<Object> getAllEntries();
+		abstract public List<Object> getEntries();
 		abstract public void deleteEntryByID(int entryId);
 		
 

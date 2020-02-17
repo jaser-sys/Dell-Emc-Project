@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 import dao.SqliteDB;
 import model.File;
 
@@ -14,8 +16,8 @@ public class FileQuery extends SqliteDB{
 	
 	
 	public void addNewEntry(Object o) {
-	String sqlCommand = "INSERT INTO files (vmIP, Name, creationDate,Size ,Location) "
-	 		+ "VALUES("+ ((File)o).getvmIP() +",\'" + ((File)o).getfileName() + "\',\'" + ((File)o).getCreationDate() + "\',\'" + ((File)o).getfileSize() +"\',\'" + ((File)o).getfileLoc() + "\');" ;
+	String sqlCommand = "INSERT INTO files (vmID, Name, creationDate,Size ,Location) "
+	 		+ "VALUES("+ ((File)o).getvmID() +",\'" + ((File)o).getfileName() + "\',\'" + ((File)o).getCreationDate() + "\',\'" + ((File)o).getfileSize() +"\',\'" + ((File)o).getfileLoc() + "\');" ;
 	
 	 try (Connection conn = super.connect();
 			 PreparedStatement stmt  = conn.prepareStatement(sqlCommand) ){				 
@@ -29,7 +31,7 @@ public class FileQuery extends SqliteDB{
 	public void addListEntries(ArrayList<File> filesList) {
 		
 		if(filesList.size() == 0) {
-			System.out.println("No files to bed added");
+			System.out.println("No files to be added");
 		}else {
 		  for(Object file : filesList) {
 			  addNewEntry(file);
@@ -37,7 +39,7 @@ public class FileQuery extends SqliteDB{
 		}
 	}
 	
-	public List<Object> getAllEntries() {
+	public List<Object> getEntries() {
 		String sqlCommand = "SELECT * FROM files;" ;
 		List<Object> myFiles= new ArrayList<Object>();
 		
@@ -46,7 +48,7 @@ public class FileQuery extends SqliteDB{
 	             ResultSet result    = stmt.executeQuery(sqlCommand)){
 	            while (result.next()) {
 	            	File f1=new File();
-	            	f1.setvmIP(result.getString("vmIP"));
+	            	f1.setvmID(UUID.fromString(result.getString("vmID")));
 	            	f1.setfileName(result.getString("Name"));
 	            	f1.setcreationDate(result.getString("creationDate"));
 	            	f1.setfileSize(result.getInt("fileSize"));
@@ -72,7 +74,7 @@ public class FileQuery extends SqliteDB{
 		ResultSet res = stat.executeQuery();
 		 while (res.next()) {
 	     	File f1=new File();
-	     	f1.setvmIP(res.getString("vmIP"));
+	     	f1.setvmID(UUID.fromString(res.getString("vmIP")));
 	     	f1.setfileName(res.getString("Name"));
 	     	f1.setcreationDate(res.getString("creationDate"));
 	     	f1.setfileSize(res.getInt("Size"));
@@ -92,7 +94,7 @@ public class FileQuery extends SqliteDB{
 		ResultSet res = stat.executeQuery();
 		 while (res.next()) {
 	     	File f1=new File();
-	     	f1.setvmIP(res.getString("vmIP"));
+	     	f1.setvmID(UUID.fromString(res.getString("vmIP")));
 	     	f1.setfileName(res.getString("Name"));
 	     	f1.setcreationDate(res.getString("creationDate"));
 	     	f1.setfileSize(res.getInt("Size"));

@@ -25,6 +25,11 @@ public class VirtualMachine {
 	public UUID getID() {
 		return this.ID;
 	}
+	
+	
+	public void setID(UUID id) {
+		this.ID = id;
+	}
 
 
 	public String getIP() {

@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 import dao.SqliteDB;
 import model.VirtualMachine;
 
@@ -14,7 +16,7 @@ public class VirtualMachineQuery extends SqliteDB {
 	
 	public void addNewEntry(Object o) {
 		String sqlCommand = "INSERT INTO virtualMachines (vmID, vmHostName, vmUsername, vmPassword) "
-		 		+ "VALUES("+ ((VirtualMachine)o).getVmID() +",\'" + ((VirtualMachine)o).getVmHostName() + "\',\'" + ((VirtualMachine)o).getVmUserName() + "\',\'" + ((VirtualMachine)o).getVmPassword() + "\');" ;
+		 		+ "VALUES("+ ((VirtualMachine)o).getID() +",\'" + ((VirtualMachine)o).getIP() + "\',\'" + ((VirtualMachine)o).getUserName() + "\',\'" + ((VirtualMachine)o).getPassword() + "\');" ;
 		
 		 try (Connection conn = super.connect();
 				 PreparedStatement stmt  = conn.prepareStatement(sqlCommand) ){				 
@@ -25,7 +27,7 @@ public class VirtualMachineQuery extends SqliteDB {
 	        }
 	}
 	
-	public List<Object> getAllEntries() {
+	public List<Object> getEntries() {
 		String sqlCommand = "SELECT * FROM virtualMachines;" ;
 		List<Object> myVirtualMachines= new ArrayList<Object>();
 		
@@ -34,10 +36,10 @@ public class VirtualMachineQuery extends SqliteDB {
 	             ResultSet result    = stmt.executeQuery(sqlCommand)){
 	            while (result.next()) {
 	            	VirtualMachine v1=new VirtualMachine();
-	            	v1.setVmID(result.getInt("vmID"));
-	            	v1.setVmHostName(result.getString("vmHostName"));
-	            	v1.setVmUserName(result.getString("vmUsername"));
-	            	v1.setVmPassword(result.getString("vmPassword"));
+	            	v1.setID(UUID.fromString(result.getString("vmID")));
+	            	v1.setIP(result.getString("vmHostName"));
+	            	v1.setUserName(result.getString("vmUsername"));
+	            	v1.setPassword(result.getString("vmPassword"));
 	            	myVirtualMachines.add((Object)v1);
 	            }
 	        } catch (SQLException e) {
