@@ -17,17 +17,17 @@ public class FileController{
 	FileQuery dbinstance=new FileQuery();
 	
 	@RequestMapping(method = RequestMethod.GET,value =  "/AllEntries")
-	public List<Object> getAllFiles(){
+	public List<Object> getFiles(){
 		return dbinstance.getAllEntries();
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,value =  "/filterByName")
-	public List<Object>  getEntriesNameFilter(String name){
+	public List<Object>  getFilesByName(String name){
 		return dbinstance.getEntriesNameFilter(name);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,value =  "/filterBySize")
-	public List<Object>  getEntriesSizeFilter(int size){
+	public List<Object>  getFilesBySize(int size){
 		return dbinstance.getEntriesSizeFilter(size);
 	}
 	
