@@ -17,7 +17,7 @@ public class FileQuery extends SqliteDB{
 	
 	public void addNewEntry(Object o) {
 	String sqlCommand = "INSERT INTO files (vmID, name, creationDate, size , location) "
-	 		+ "VALUES("+ ((File)o).getvmID() +",\'" + ((File)o).getfileName() + "\',\'" + ((File)o).getCreationDate() + "\',\'" + ((File)o).getfileSize() +"\',\'" + ((File)o).getfileLoc() + "\');" ;
+	 		+ "VALUES(\'"+ ((File)o).getvmID() +"\',\'" + ((File)o).getfileName() + "\',\'" + ((File)o).getCreationDate() + "\',\'" + ((File)o).getfileSize() +"\',\'" + ((File)o).getfileLoc() + "\');" ;
 	
 	 try (Connection conn = super.connect();
 			 PreparedStatement stmt  = conn.prepareStatement(sqlCommand) ){				 
@@ -62,7 +62,7 @@ public class FileQuery extends SqliteDB{
 	}
 
 	@Override
-	public void deleteEntryByID(int entryId) {
+	public void deleteEntryByID(UUID entryId) {
 		
 		
 	}
