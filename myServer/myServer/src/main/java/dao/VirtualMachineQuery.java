@@ -48,8 +48,8 @@ public class VirtualMachineQuery extends SqliteDB {
 		return myVirtualMachines;
 	}
 	
-	public void deleteEntryByID(int entryId) {
-		String sql = "DELETE FROM virtualMachines WHERE ID = " + entryId +";";  
+	public void deleteEntryByID(UUID id) {
+		String sql = "DELETE FROM virtualMachines WHERE ID = \'" + id +"\';";  
 		
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
