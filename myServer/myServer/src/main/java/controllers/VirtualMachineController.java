@@ -14,16 +14,16 @@ import dao.VirtualMachineQuery;
 @RequestMapping(value ="/virtualmachines")
 public class VirtualMachineController {
 	
-	SqliteDB dbinstance=new VirtualMachineQuery();
+	SqliteDB dbinstance=new VirtualMachineQuery();//to do: change to service
 	
 	@RequestMapping(method = RequestMethod.POST, value =  "/add")
-	public void addData(@RequestParam int id,String host,String user,String pass){
+	public void addVirtualMachine(@RequestParam int id,String host,String user,String pass){
 		VirtualMachine vm=new VirtualMachine(id,host,user,pass);
 		dbinstance.addNewEntry(vm);
 	}
-	
+	//to do: get virtual machine by id
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Object> getAllVirtualMachines(){
+	public List<Object> getVirtualMachines(){
 		return dbinstance.getAllEntries();
 	}
 	
