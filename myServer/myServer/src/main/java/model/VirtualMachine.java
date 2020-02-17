@@ -1,64 +1,61 @@
 package model;
 
+import java.util.UUID;
 
 public class VirtualMachine {
-	private int vmID;
-	private String vmHostName;
-	private String vmUserName;
-	private String vmPassword;
-	
+	private UUID ID;
+	private String IP;
+	private String userName;
+	private String password;
 	
 
 	public VirtualMachine() {
 		
 	}
 	
-	public VirtualMachine(int vmID,String vmHostName,String vmUserName, String vmPassword)
+	public VirtualMachine(String ip,String username, String password)
 	{
-		this.vmID=vmID;
-		this.vmHostName=vmHostName;
-		this.vmUserName=vmUserName;
-		this.vmPassword=vmPassword;
+		this.ID = UUID.randomUUID();
+		this.IP = ip;
+		this.userName = username;
+		this.password = password;
 	}
 	
-	public int getVmID() {
-		return vmID;
+	
+	public UUID getID() {
+		return this.ID;
 	}
 
 
-	public void setVmID(int vmID) {
-		this.vmID = vmID;
+	public String getIP() {
+		return this.IP;
 	}
 
 
-	public String getVmHostName() {
-		return vmHostName;
+	public void setIP(String ip) {
+		this.IP = ip;
 	}
 
 
-	public void setVmHostName(String vmHostName) {
-		this.vmHostName = vmHostName;
+	public String getUserName() {
+		return this.userName;
 	}
 
 
-	public String getVmUserName() {
-		return vmUserName;
+	public void setUserName(String username) {
+		this.userName = username;
 	}
 
 
-	public void setVmUserName(String vmUserName) {
-		this.vmUserName = vmUserName;
+	public String getPassword() {
+		return this.password;
 	}
 
 
-	public String getVmPassword() {
-		return vmPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-
-	public void setVmPassword(String vmPassword) {
-		this.vmPassword = vmPassword;
-	}
-
+	
 }
 
