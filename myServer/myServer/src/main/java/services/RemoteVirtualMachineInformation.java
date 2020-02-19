@@ -2,10 +2,10 @@ package services;
 
 import com.jcraft.jsch.*;
 
-public class SshRemoteUserInformation implements UserInfo {
+public class RemoteVirtualMachineInformation implements UserInfo {
     private final String pwd;//password
     
-    public SshRemoteUserInformation (String userName, String password) {
+    public RemoteVirtualMachineInformation (String userName, String password) {
         pwd = password;
     }
     
