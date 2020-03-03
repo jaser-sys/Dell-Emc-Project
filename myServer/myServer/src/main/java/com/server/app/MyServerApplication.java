@@ -8,7 +8,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-@ComponentScan(basePackages = { "controllers"} )
+@ComponentScan(basePackages = { "com.server.app.controller"} )
 public class MyServerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MyServerApplication.class, args);
