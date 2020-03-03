@@ -1,4 +1,4 @@
-package controllers;
+package com.server.app.controller;
 
 import java.util.List;
 import java.util.UUID;
