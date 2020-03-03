@@ -10,65 +10,58 @@ public class File {
 	 	private UUID vmID;
 	    private String fileName;
 	    private Date creationDate;
-	    private int fileSize;
-	    private String fileLoc;
+	    private long sizeInBytes;
+	    private String location;
 
-	    public File(UUID vmID,String fileName,Date date, int fileSize, String fileLoc){
+	    public File(UUID vmID,String fileName,Date date, long sizeInBytes, String location){
 	        this.vmID=vmID;
 	        this.fileName=fileName;
-	        this.fileSize=fileSize;
+	        this.sizeInBytes=sizeInBytes;
 	        this.creationDate=date;
-	        this.fileLoc=fileLoc;
+	        this.location=location;
 	    }
-	    
+	   
 	    public File(){
 	    }
-	    
-	    public void setvmID(UUID vmID){
-	        this.vmID=vmID;
-	    }
-	    
-	    public void setfileName(String fileName){
-	        this.fileName=fileName;
-	    }
-	    
-	    public void setfileSize(int fileSize){
-	        this.fileSize=fileSize;
-	    }
-	    
-	    public void setcreationDate(String date){
-	    	Date d1=new Date();
-	    	try {
-				d1=new SimpleDateFormat("yyyy-MM-dd").parse(date);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			} 
-	    	
-	        this.creationDate=d1;
-	    }
-	    
-	    public void setfileLoc(String fileLoc) {
-	          this.fileLoc=fileLoc;	
-	    
-	    }
-	    public UUID getvmID(){
-	        return vmID;
-	    }
-	    
-	    public String getfileName(){
-	        return fileName;
-	    }
-	    
-	    public int getfileSize(){
-	        return fileSize;
-	    }
-	    
-	    public Date getCreationDate(){
-	        return creationDate;
-	    }
-	    public String getfileLoc() {
-	          return fileLoc;
-	    
-	    }
 
+		public UUID getVmID() {
+			return vmID;
+		}
+
+		public void setVmID(UUID vmID) {
+			this.vmID = vmID;
+		}
+
+		public String getFileName() {
+			return fileName;
+		}
+
+		public void setFileName(String fileName) {
+			this.fileName = fileName;
+		}
+
+		public Date getCreationDate() {
+			return creationDate;
+		}
+
+		public void setCreationDate(Date creationDate) {
+			this.creationDate = creationDate;
+		}
+
+		public long getSizeInBytes() {
+			return sizeInBytes;
+		}
+
+		public void setSizeInBytes(long sizeInBytes) {
+			this.sizeInBytes = sizeInBytes;
+		}
+
+		public String getLocation() {
+			return location;
+		}
+
+		public void setLocation(String location) {
+			this.location = location;
+		}
+	    
 }
