@@ -1,4 +1,4 @@
-package services;
+package com.server.app.service;
 
 import com.jcraft.jsch.*;
 import com.server.app.model.File;
