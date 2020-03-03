@@ -1,4 +1,4 @@
-package dao;
+package com.server.app.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import dao.SqliteDB;
 import model.VirtualMachine;
 
 public class VirtualMachineQuery extends SqliteDB {
