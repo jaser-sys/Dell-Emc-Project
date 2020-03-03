@@ -1,8 +1,11 @@
 package com.server.app.model;
- 
+
+
+import java.text.ParseException;
+
+import java.text.SimpleDateFormat;  
 import java.util.Date;
 import java.util.UUID;  
-
 public class File {
 	 	private UUID vmID;
 	    private String fileName;
