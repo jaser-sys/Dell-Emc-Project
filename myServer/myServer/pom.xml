@@ -8,13 +8,13 @@
 		<version>2.2.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.server</groupId>
+	<groupId>com.server.app</groupId>
 	<artifactId>myServer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>myServer</name>
 	<description>Rest Server</description>
-
 	<properties>
+		<start-class>com.server.app.MyServerApplication</start-class>
 		<java.version>1.8</java.version>
 	</properties>
 
