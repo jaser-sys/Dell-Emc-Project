@@ -1,6 +1,9 @@
 package services;
 
 import com.jcraft.jsch.*;
+import com.server.app.model.File;
+import com.server.app.model.VirtualMachine;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,8 +12,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import model.File;
-import model.VirtualMachine;
 
 
 

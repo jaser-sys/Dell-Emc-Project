@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import model.File;
+import com.server.app.model.File;
 
 
 public class FileQuery extends SqliteDB{

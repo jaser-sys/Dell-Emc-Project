@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import model.VirtualMachine;
+import com.server.app.model.VirtualMachine;
 
 public class VirtualMachineQuery extends SqliteDB {
 	

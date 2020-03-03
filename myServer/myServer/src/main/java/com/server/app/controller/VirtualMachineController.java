@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.server.app.dao.SqliteDB;
 import com.server.app.dao.VirtualMachineQuery;
-
-import model.VirtualMachine;
+import com.server.app.model.VirtualMachine;
 
 @RestController
 @RequestMapping(value ="/virtualmachines")

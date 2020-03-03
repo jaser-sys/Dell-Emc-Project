@@ -1,4 +1,4 @@
-package model;
+package com.server.app.model;
 
 import java.util.UUID;
 
