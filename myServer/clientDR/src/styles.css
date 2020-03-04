@@ -1,1 +1,360 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0
+}
+
+body {
+    background: linear-gradient(-135deg, #50c4c8, #a7d041);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.form-container {
+    width: 250px;
+    height: auto;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 #000;
+}
+
+.wrap-login100 {
+    -webkit-tap-highlight-color: #a72727;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 16.5;
+    color: #212529;
+    font-family: Poppins-Regular, sans-serif;
+    margin: auto;
+    margin-top: 62px;
+    margin-bottom: 56px;
+    box-sizing: border-box;
+    width: 849px;
+    height: 814px;
+    background: #ffffff;
+    border-radius: 37px;
+    overflow: overlay;
+    display: flex;
+    justify-content: space-between;
+    padding: 274px;
+}
+
+.wrap-login200 {
+    -webkit-tap-highlight-color: #a72727;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 16.5;
+    color: #212529;
+    font-family: Poppins-Regular, sans-serif;
+    margin: auto;
+    margin-top: 62px;
+    margin-bottom: 56px;
+    box-sizing: border-box;
+    width: 985px;
+    height: 814px;
+    background: #ffffff;
+    border-radius: 37px;
+    overflow: overlay;
+    display: flex;
+    justify-content: space-between;
+    padding: 274px;
+}
+
+.input100 {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    touch-action: manipulation;
+    margin: 0;
+    overflow: visible;
+    outline: none;
+    border: none;
+    font-family: Poppins-Medium;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666666;
+    display: block;
+    width: 100%;
+    background: #e6e6e6;
+    height: 50px;
+    border-radius: 25px;
+    padding: 0 30px 0 68px;
+}
+
+.wrap-input100 {
+    -webkit-tap-highlight-color: transparent;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    font-family: Poppins-Regular, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: 10px;
+}
+
+.fa {
+    -webkit-tap-highlight-color: transparent;
+    pointer-events: none;
+    color: #666;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+[ FONT ]*/
+
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../../assets/fonts/poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('../../assets/fonts/poppins/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url('../../assets/fonts/poppins/Poppins-Medium.ttf');
+}
+
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url('../../assets/fonts/montserrat/Montserrat-Bold.ttf');
+}
+
+.focus-input100 {
+    -webkit-tap-highlight-color: transparent;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    font-family: Poppins-Regular, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    border-radius: 25px;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 0px 0px;
+    color: rgba(87,184,70, 0.8);
+}
+
+.symbol-input100 {
+    -webkit-tap-highlight-color: transparent;
+    font-weight: 400;
+    line-height: 1.5;
+    font-family: Poppins-Regular, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border-radius: 25px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 35px;
+    pointer-events: none;
+    color: #9b3232;
+    transition: all 0.4s;
+}
+
+
+.login100-form-title {
+    -webkit-tap-highlight-color: transparent;
+    font-weight: 400;
+    margin: 0;
+    padding: 54px;
+    box-sizing: border-box;
+    font-family: Poppins-Bold;
+    font-size: 36px;
+    color: #333;
+    line-height: 1.2;
+    text-align: center;
+    width: 100%;
+    display: block;
+    padding-bottom: 30px;
+}
+
+.container-login100-form-btn {
+    -webkit-tap-highlight-color: transparent;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    font-family: Poppins-Regular, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.login100-form-btn {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    touch-action: manipulation;
+    margin: 0;
+    overflow: visible;
+    -webkit-appearance: button;
+    outline: none !important;
+    border: none;
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #fff;
+    text-transform: uppercase;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background: #000000a1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+    transition-duration: 0.4s;
+}
+
+    .login100-form-btn:hover {
+        background-color: #4CAF50; /* Green */
+        color: white;
+    }
+
+.login100-pic {
+    -webkit-tap-highlight-color: transparent;
+    margin-top: -311px;
+    padding-top: 47px;
+    box-sizing: border-box;
+    width: 32px;
+    box-sizing: border-box;
+    will-change: transform;
+    transform: perspective(300px) rotateX(0deg) rotateY(0deg);
+}
+
+.table-wrapper {
+    -webkit-tap-highlight-color: #a72727;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 16.5;
+    color: #212529;
+    font-family: Poppins-Regular, sans-serif;
+    box-sizing: border-box;
+    width: 790px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    position: relative;
+    left: -223px;
+    top: -228px;
+}
+
+.table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+}
+
+    .table-title h2 {
+        margin: -42px -11px 0px;
+        font-size: 48px;
+    }
+
+    .table-title .add-new {
+        float: right;
+        height: 30px;
+        font-weight: bold;
+        font-size: 12px;
+        text-shadow: none;
+        min-width: 100px;
+        border-radius: 50px;
+        line-height: 13px;
+    }
+
+        .table-title .add-new i {
+            margin-right: 4px;
+        }
+
+table.table {
+    table-layout: fixed;
+}
+
+    table.table tr th, table.table tr td {
+        border-color: #e9e9e9;
+    }
+
+    table.table th i {
+        font-size: 13px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+    table.table th:last-child {
+        width: 100px;
+    }
+
+    table.table td a {
+        cursor: pointer;
+        display: inline-block;
+        margin: 0 5px;
+        min-width: 24px;
+    }
+
+        table.table td a.add {
+            color: #27C46B;
+        }
+
+        table.table td a.edit {
+            color: #FFC107;
+        }
+
+        table.table td a.delete {
+            color: #E34724;
+        }
+
+    table.table td i {
+        font-size: 19px;
+    }
+
+    table.table td a.add i {
+        font-size: 24px;
+        margin-right: -1px;
+        position: relative;
+        top: 3px;
+    }
+
+    table.table .form-control {
+        height: 32px;
+        line-height: 32px;
+        box-shadow: none;
+        border-radius: 2px;
+    }
+
+        table.table .form-control.error {
+            border-color: #f50000;
+        }
+
+    table.table td .add {
+        display: none;
+    }
