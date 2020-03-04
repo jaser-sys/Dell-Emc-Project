@@ -12,7 +12,7 @@ public class DBConfig {
 	public DataSource dataSource() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName("org.sqlite.JDBC");
-        dataSourceBuilder.url("jdbc:sqlite:C:\\Users\\abeer\\Desktop\\Dell-Emc-Project\\mySqliteDB");
+        dataSourceBuilder.url("jdbc:sqlite:C:\\Users\\abeer\\Desktop\\Dell-Emc-Project\\myServer\\myServer");
         return dataSourceBuilder.build();   
 }
 }

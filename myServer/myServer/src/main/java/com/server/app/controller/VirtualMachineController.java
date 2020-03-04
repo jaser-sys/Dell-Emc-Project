@@ -3,40 +3,51 @@ package com.server.app.controller;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.server.app.beans.VirtualMachineDTO;
 import com.server.app.dao.SqliteDB;
-import com.server.app.dao.VirtualMachineQuery;
+import com.server.app.dao.VirtualMachineDao;
 import com.server.app.model.VirtualMachine;
+import com.server.app.service.VirtualMachineService;
+
+import springfox.documentation.swagger2.mappers.ModelMapper;
 
 @RestController
-@RequestMapping(value ="/virtualmachines")
+@CrossOrigin(origins = "http://localhost:4200")
+
 public class VirtualMachineController {
 	
-	SqliteDB dbinstance=new VirtualMachineQuery();//to do: change to service
+	@Autowired
+	VirtualMachineService dbService;
+	@Autowired
+    private ModelMapper modelMapper;
+	
 	
 	@RequestMapping(method = RequestMethod.POST, value =  "/add")
-	public void addVirtualMachine(@RequestParam String host,String user,String pass){
-		VirtualMachine vm=new VirtualMachine(host,user,pass);
-		dbinstance.addNewEntry(vm);
+	public void addVirtualMachine(@RequestParam VirtualMachine vm){
+		dbService.addVirtualMachine(vm);
 	}
 	//to do: get virtual machine by id
-	@RequestMapping(method = RequestMethod.GET)
-	public List<Object> getVirtualMachines(){
-		return dbinstance.getEntries();
+	@RequestMapping(method = RequestMethod.GET, value="/get")
+	public List<VirtualMachine> getVirtualMachines(){
+		List<VirtualMachine> vms=dbService.getVitualMachines();
+		return vms;
 	}
 	
-	@RequestMapping(method = RequestMethod.DELETE)
-	public void deleteVirtualMachineByID(@RequestParam UUID id){
-		((VirtualMachineQuery)dbinstance).deleteEntryByID(id);
+	@RequestMapping(method = RequestMethod.DELETE, value= "/delete")
+	public void deleteVirtualMachineByID(@RequestParam String ip){
+		dbService.deleteVirtualMachineByIp(ip);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(method = RequestMethod.PUT, value="/updatePassword")
 	public void updatePasswordByID(@RequestParam UUID id,String newPassword){
-		((VirtualMachineQuery)dbinstance).updatePasswordByID(id,newPassword);
+		//dbService.updatePasswordByID(id,newPassword);
 	}
 
 }
