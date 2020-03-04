@@ -12,7 +12,7 @@
             <form (ngSubmit)="onSubmit()">
                 <div class="wrap-input100">
                 <div class="wrap-input100 validate-input" data-validate="wrong IP">
-                    <input class="input100" type="text" name='ip' placeholder="xxx.xxx.xxx.xx" autocomplete="off" required [(ngModel)]= "virtualMachine.ip" >
+                    <input class="input100" type="text" name='ip' placeholder="xxx.xxx.xxx.xx" autocomplete="off" required [(ngModel)]= "vm.ip" >
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fa fa-server" aria-hidden="true"></i>
@@ -20,7 +20,7 @@
                 </div></div>
                 <div class="wrap-input100">
                     <div class="wrap-input100 validate-input" data-validate="wrong path">
-                    <input class="input100" type="text" name="path" placeholder="Path"required [(ngModel)]="virtualMachine.path" >
+                    <input class="input100" type="text" name="path" placeholder="Path"required [(ngModel)]="vm.path" >
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                      <i class="fa fa-folder" aria-hidden="true" ></i>

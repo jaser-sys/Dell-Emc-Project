@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { virtualMachine } from './virtualMachine';
-}
+
 @Injectable({
   providedIn: 'root'
 })
