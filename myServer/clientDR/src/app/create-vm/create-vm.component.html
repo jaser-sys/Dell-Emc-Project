@@ -1,7 +1,7 @@
 
     <div class="wrap-login100">
         <div class="login100-pic js-tilt" data-tilt="" style="will-change: transform; transform: perspective(300px) rotateX(0deg) rotateY(0deg);">
-            <img src="images/img-01.png" alt="IMG">
+            <img src="../../assets/images/img-01.png" alt="IMG">
         </div>
         <div>
             <span class="login100-form-title">
@@ -10,21 +10,22 @@
 
 
             <form (ngSubmit)="onSubmit()">
-
+                <div class="wrap-input100">
                 <div class="wrap-input100 validate-input" data-validate="wrong IP">
                     <input class="input100" type="text" name='ip' placeholder="xxx.xxx.xxx.xx" autocomplete="off" required [(ngModel)]= "virtualMachine.ip" >
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fa fa-server" aria-hidden="true"></i>
                     </span>
-                </div>
+                </div></div>
                 <div class="wrap-input100">
+                    <div class="wrap-input100 validate-input" data-validate="wrong path">
                     <input class="input100" type="text" name="path" placeholder="Path"required [(ngModel)]="virtualMachine.path" >
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                      <i class="fa fa-folder" aria-hidden="true" ></i>
                     </span>
-                </div>
+                </div></div>
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn" type="submit">
                         Register
