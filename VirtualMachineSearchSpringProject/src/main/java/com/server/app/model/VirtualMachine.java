@@ -6,9 +6,8 @@ public class VirtualMachine {
 	private UUID ID;
 	private UUID userId;
 	private String IP;
-	private String userName;
+	private String username;
 	private String password;
-	
 
 	public VirtualMachine() {
 		
@@ -18,7 +17,7 @@ public class VirtualMachine {
 		this.ID = UUID.randomUUID();
 		this.userId = userId;
 		this.IP = ip;
-		this.userName = username;
+		this.username = username;
 		this.password = password;
 	}
 	
@@ -39,11 +38,11 @@ public class VirtualMachine {
 	}
 
 	public String getUserName() {
-		return this.userName;
+		return this.username;
 	}
 
 	public void setUserName(String username) {
-		this.userName = username;
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -62,5 +61,11 @@ public class VirtualMachine {
 		this.userId = userId;
 	}
 
+	@Override
+	public String toString() {
+		return "VirtualMachine [ID=" + ID + ", userId=" + userId + ", IP=" + IP + ", userName=" + username
+				+ ", password=" + password + "]";
+	}
+	
 }
 

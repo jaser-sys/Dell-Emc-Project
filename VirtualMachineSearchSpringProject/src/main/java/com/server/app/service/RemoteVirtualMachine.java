@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.UUID;
 
 
 
@@ -106,7 +107,7 @@ public class RemoteVirtualMachine {
 	
 	private  ArrayList<File> parseLists(ArrayList<ArrayList<String>> listOfLists){
 		String LocationOfFile=".";
-		VirtualMachine vm=new VirtualMachine(host, user, password);
+		VirtualMachine vm=new VirtualMachine(UUID.randomUUID(),host, user, password);
 		ArrayList<File> listOfFiles=new ArrayList<File>();
         for(ArrayList<String> innerLs : listOfLists) {
 	        if (innerLs.size()==1) {
@@ -129,12 +130,6 @@ public class RemoteVirtualMachine {
 	}
 	
 	
-	public static void main(String args []) {
-		RemoteVirtualMachine o= new RemoteVirtualMachine();
-		ArrayList<File> files=o.getFiles();
-		for(File f:files) {
-			System.out.println(f.getvmID()+ " "+f.getfileName()+" "+f.getCreationDate()+" "+f.getfileSize()+" "+f.getfileLoc());
-		}
-	}
+	
 	
 }

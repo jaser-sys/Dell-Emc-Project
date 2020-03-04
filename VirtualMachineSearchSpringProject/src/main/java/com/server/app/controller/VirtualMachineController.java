@@ -1,5 +1,6 @@
 package com.server.app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,10 +31,10 @@ public class VirtualMachineController {
 	
 	
 	@RequestMapping(method = RequestMethod.POST, value =  "/add")
-	public void addVirtualMachine(@RequestParam VirtualMachine vm){
-		dbService.addVirtualMachine(vm);
+	public void addVirtualMachine(@RequestParam UUID id, String ip, String username, String password){
+		dbService.addVirtualMachine(id, id, ip, username, password);
 	}
-	//to do: get virtual machine by id
+	
 	@RequestMapping(method = RequestMethod.GET, value="/get")
 	public List<VirtualMachine> getVirtualMachines(){
 		List<VirtualMachine> vms=dbService.getVitualMachines();
@@ -49,5 +50,5 @@ public class VirtualMachineController {
 	public void updatePasswordByID(@RequestParam UUID id,String newPassword){
 		//dbService.updatePasswordByID(id,newPassword);
 	}
-
+	
 }

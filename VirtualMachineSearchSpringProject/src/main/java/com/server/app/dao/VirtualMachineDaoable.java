@@ -2,6 +2,7 @@ package com.server.app.dao;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -13,9 +14,9 @@ import com.server.app.model.VirtualMachine;
 @CrossOrigin(origins = "http://localhost:4200")
 public interface VirtualMachineDaoable extends CrudRepository<VirtualMachine, Long> {
     public Connection connect();
-    public VirtualMachine getVirtualMachineByIp(String ip);
+    public VirtualMachine getVirtualMachineByIP(String ip);
 	public List<VirtualMachine> getVirtualMachineByUsername(String username);
-	public List<VirtualMachine> getVitualMachines();
-	public void addVirtualMachine(VirtualMachine vm);
-	public void deleteVirtualMachineByIp(String ip);
+	public void addVirtualMachine(UUID id, UUID userId, String ip, String username, String password);
+	public void deleteVirtualMachineByIP(String ip);
+	public void deleteVirtualMachineByUsername(String username);
 }

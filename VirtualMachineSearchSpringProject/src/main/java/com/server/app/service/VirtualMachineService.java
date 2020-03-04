@@ -1,6 +1,8 @@
 package com.server.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +16,7 @@ public class VirtualMachineService implements  VirtualMachineServiceable{
 	private VirtualMachineDao vmDao;
 	@Override
 	public VirtualMachine getVirtualMachineByIp(String ip) {
-		return vmDao.getVirtualMachineByIp(ip);
+		return vmDao.getVirtualMachineByIP(ip);
 	}
 
 	@Override
@@ -28,14 +30,14 @@ public class VirtualMachineService implements  VirtualMachineServiceable{
 	}
 
 	@Override
-	public void addVirtualMachine(VirtualMachine vm) {
-		vmDao.addVirtualMachine(vm);
+	public void addVirtualMachine(UUID id, UUID userId, String ip, String username, String password) {
+		vmDao.addVirtualMachine(id, userId, ip, username, password);
 		
 	}
 
 	@Override
 	public void deleteVirtualMachineByIp(String ip) {
-		vmDao.deleteVirtualMachineByIp(ip);
+		vmDao.deleteVirtualMachineByIP(ip);
 		
 	}
 

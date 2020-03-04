@@ -37,7 +37,6 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 		return conn;
 	}
 
-	@Override
 	public List<VirtualMachine> getVitualMachines() {
 		String sqlCommand = "SELECT * FROM virtualMachine;" ;
 		List<VirtualMachine> myVirtualMachines= new ArrayList<VirtualMachine>();
@@ -46,13 +45,13 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 	             Statement stmt  = conn.createStatement();
 	             ResultSet result    = stmt.executeQuery(sqlCommand)){
 	            while (result.next()) {
-	            	VirtualMachine v1=new VirtualMachine();
-	            	v1.setID(UUID.fromString(result.getString("ID")));
-	            	v1.setUserId(UUID.fromString(result.getString("userId")));
-	            	v1.setIP(result.getString("IP"));
-	            	v1.setUserName(result.getString("userName"));
-	            	v1.setPassword(result.getString("password_"));
-	            	myVirtualMachines.add(v1);
+	            	VirtualMachine vm=new VirtualMachine();
+	            	vm.setID(UUID.fromString(result.getString("ID")));
+	            	vm.setUserId(UUID.fromString(result.getString("userId")));
+	            	vm.setIP(result.getString("IP"));
+	            	vm.setUserName(result.getString("username_"));
+	            	vm.setPassword(result.getString("password_"));
+	            	myVirtualMachines.add(vm);
 	            }
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
@@ -61,9 +60,9 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 	}
 
 	@Override
-	public void addVirtualMachine(VirtualMachine vm) {
-		String sqlCommand = "INSERT INTO virtualMachines (ID, userId, IP, userName, password_) "
-		 		+ "VALUES(\'"+ vm.getID() +"\',\'"+vm.getUserId()+"\',\'" + vm.getIP() + "\',\'" + vm.getUserName() + "\',\'" + vm.getPassword() + "\');" ;
+	public void addVirtualMachine(UUID id, UUID userId, String ip, String username, String password) {
+		String sqlCommand = "INSERT INTO virtualMachines (ID, userId, IP, username_, password_) "
+		 		+ "VALUES(\'"+ id +"\',\'"+ userId+"\',\'" + ip + "\',\'" + username + "\',\'" + password + "\');" ;
 		 try (Connection conn = this.connect();
 				PreparedStatement stmt  = conn.prepareStatement(sqlCommand) ){				 
 			 	stmt.executeUpdate();
@@ -74,8 +73,8 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 	}
 	
 	@Override
-	public void deleteVirtualMachineByIp(String ip) {
-		String sql = "DELETE FROM virtualMachines WHERE IP = \'" + ip +"\';";  
+	public void deleteVirtualMachineByIP(String ip) {
+		String sql = "DELETE FROM virtualMachine WHERE IP = \'" + ip +"\';";  
 		
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -83,6 +82,29 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }	
+	}
+	
+	@Override
+	public List<VirtualMachine> getVirtualMachineByUsername(String username) {
+		String sqlCommand = "SELECT * FROM virtualMachine WHERE username_=\'"+username+"\';" ;
+		List<VirtualMachine> myVirtualMachines= new ArrayList<VirtualMachine>();
+		
+		try (Connection conn = this.connect();
+	             Statement stmt  = conn.createStatement();
+	             ResultSet result    = stmt.executeQuery(sqlCommand)){
+	            while (result.next()) {
+	            	VirtualMachine vm=new VirtualMachine();
+	            	vm.setID(UUID.fromString(result.getString("ID")));
+	            	vm.setUserId(UUID.fromString(result.getString("userId")));
+	            	vm.setIP(result.getString("IP"));
+	            	vm.setUserName(result.getString("username_"));
+	            	vm.setPassword(result.getString("password_"));
+	            	myVirtualMachines.add(vm);
+	            }
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+		return myVirtualMachines;
 	}
 	
 	public void updatePasswordByID(UUID vmID,String newPassword) {
@@ -162,15 +184,17 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 		
 	}
 
+
 	@Override
-	public VirtualMachine getVirtualMachineByIp(String ip) {
+	public void deleteVirtualMachineByUsername(String username) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public VirtualMachine getVirtualMachineByIP(String ip) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public List<VirtualMachine> getVirtualMachineByUsername(String username) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
