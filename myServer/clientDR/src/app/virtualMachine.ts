@@ -1,1 +1,4 @@
-{\rtf1}
+export class virtualMachine {
+    ip: string;
+    path: string;
+}
