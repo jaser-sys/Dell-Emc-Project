@@ -16,12 +16,12 @@ public class FileService implements FileServiceable{
 	@Autowired
 	private FileDao fileDao;
 	@Override
-	public List<File> getFilesByFileName(String fileName) {
+	public List<File> getFilesByFileName(String fileName) throws Exception {
 		return fileDao.getFilesByFileName(fileName);
 	}
 
 	@Override
-	public List<File> getFilesBySize(int size) {
+	public List<File> getFilesBySize(int size) throws Exception {
 		return fileDao.getFilesBySizeInBytes(size);
 	}
 

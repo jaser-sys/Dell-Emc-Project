@@ -30,8 +30,9 @@ public class VirtualMachineService implements  VirtualMachineServiceable{
 	}
 
 	@Override
-	public void addVirtualMachine(UUID id, UUID userId, String ip, String username, String password) {
-		vmDao.addVirtualMachine(id, userId, ip, username, password);
+	public void addVirtualMachine(UUID userId, String ip, String username, String password) {
+		VirtualMachine vm=new VirtualMachine(userId, ip, username, password);
+		vmDao.addVirtualMachine(vm);
 		
 	}
 
@@ -39,6 +40,14 @@ public class VirtualMachineService implements  VirtualMachineServiceable{
 	public void deleteVirtualMachineByIp(String ip) {
 		vmDao.deleteVirtualMachineByIP(ip);
 		
+	}
+
+	@Override
+	public String scanVirtualMachineByIp(String ip) {
+		//get vm from database by ip
+		
+		//ssh
+		return null;
 	}
 
 }

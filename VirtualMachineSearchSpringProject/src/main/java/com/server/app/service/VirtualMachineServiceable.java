@@ -9,6 +9,7 @@ public interface  VirtualMachineServiceable {
     public VirtualMachine getVirtualMachineByIp(String ip);
 	public List<VirtualMachine> getVirtualMachineByUsername(String username);
 	public List<VirtualMachine> getVitualMachines();
-	public void addVirtualMachine(UUID id, UUID userId, String ip, String username, String password);
+	public void addVirtualMachine(UUID userId, String ip, String username, String password);
 	public void deleteVirtualMachineByIp(String ip);
+	public String scanVirtualMachineByIp(String ip);
 }
