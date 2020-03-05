@@ -2,10 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
-    "\\src\\app\\create-user",
-    "\\src\\app\\user-login"
+    "\\src\\app"
   ],
-  "SelectedNode": "\\src\\app\\create-user\\create-user.component.html",
+  "SelectedNode": "\\src\\app\\user.service.ts",
   "PreviewInSolutionExplorer": false
 }
