@@ -31,8 +31,14 @@ public class VirtualMachineController {
 	
 	
 	@RequestMapping(method = RequestMethod.POST, value =  "/add")
-	public void addVirtualMachine(@RequestParam UUID id, String ip, String username, String password){
-		dbService.addVirtualMachine(id, id, ip, username, password);
+	public void addVirtualMachine(@RequestParam String userId_, String ip, String username, String password){
+		UUID userId=UUID.fromString(userId_);
+		dbService.addVirtualMachine(userId, ip, username, password);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value =  "/scan")
+	public String scanVirtualMachine(@RequestParam  String ip){
+		return dbService.scanVirtualMachineByIp(ip);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value="/get")
