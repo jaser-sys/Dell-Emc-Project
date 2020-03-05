@@ -1,6 +1,7 @@
 package com.server.app.dao;
 
 import java.sql.Connection;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -16,9 +17,9 @@ import com.server.app.model.File;
 @CrossOrigin(origins = "http://localhost:4200")
 public interface FileDaoable extends CrudRepository<File, Long> {
     public Connection connect();
-	public List<File> getFilesByFileName(String fileName);
-	public List<File> getFilesBySizeInBytes(int size);
-	public void addFile(UUID vmID,  String fileName, Date creationDate, long sizeInBytes, String location);
+	public List<File> getFilesByFileName(String fileName) throws Exception;
+	public List<File> getFilesBySizeInBytes(int size) throws ParseException;
+	public void addFile(File f);
 	public void deleteFileByVmID(UUID vmID);
 	
 }
