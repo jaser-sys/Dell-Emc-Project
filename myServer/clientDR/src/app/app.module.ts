@@ -8,6 +8,8 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateVmComponent } from './create-vm/create-vm.component';
 import { SearchFileComponent } from './search-file/search-file.component';
+import { ListFileComponent } from './list-file/list-file.component';
+import { ListVmComponent } from './list-vm/list-vm.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { SearchFileComponent } from './search-file/search-file.component';
     UserLoginComponent,
     CreateUserComponent,
     CreateVmComponent,
-    SearchFileComponent
+    SearchFileComponent,
+    ListFileComponent,
+    ListVmComponent
   ],
   imports: [
     BrowserModule,
