@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateVmComponent } from './create-vm/create-vm.component';
+import { SearchFileComponent } from './search-file/search-file.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserLoginComponent,
     CreateUserComponent,
-    CreateVmComponent
+    CreateVmComponent,
+    SearchFileComponent
   ],
   imports: [
     BrowserModule,
