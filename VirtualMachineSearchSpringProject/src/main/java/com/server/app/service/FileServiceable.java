@@ -10,6 +10,7 @@ public interface FileServiceable {
 	public List<File> getFilesByFileName(String fileName) throws Exception;
 	public List<File> getFilesBySize(int size) throws Exception;
 	public List<File> getFiles();
-	public void addFile(UUID vmID,  String fileName, Date creationDate, long sizeInBytes, String location);
+	public void addFile(File f);
+	public void addFiles(List<File> list);
 	public void deleteFileByVmID(UUID vmID);   
 }

@@ -60,5 +60,11 @@ public class File {
 		public void setLocation(String location) {
 			this.location = location;
 		}
+
+		@Override
+		public String toString() {
+			return "File [vmID=" + vmID + ", fileName=" + fileName + ", creationDate=" + creationDate + ", sizeInBytes="
+					+ sizeInBytes + ", location=" + location + "]";
+		}
 	    
 }

@@ -30,21 +30,26 @@ public class FileService implements FileServiceable{
 		try {
 			return fileDao.getAll();
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
 
 	@Override
-	public void addFile(UUID vmID, String fileName, Date creationDate, long sizeInBytes, String location) {
-		// TODO Auto-generated method stub
-		
+	public void addFile(File f) {
+		fileDao.addFile(f);		
 	}
 
 	@Override
 	public void deleteFileByVmID(UUID vmID) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addFiles(List<File> list) {
+		System.out.println("\n\n\n\n\n\ninside service\n\n\n\n");
+		fileDao.addFiles(list);
 		
 	}
 

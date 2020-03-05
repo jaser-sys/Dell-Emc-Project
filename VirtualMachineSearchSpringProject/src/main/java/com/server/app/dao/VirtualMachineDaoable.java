@@ -14,7 +14,7 @@ import com.server.app.model.VirtualMachine;
 @CrossOrigin(origins = "http://localhost:4200")
 public interface VirtualMachineDaoable extends CrudRepository<VirtualMachine, Long> {
     public Connection connect();
-    public VirtualMachine getVirtualMachineByIP(String ip);
+    public List<VirtualMachine> getVirtualMachineByIP(String ip);
 	public List<VirtualMachine> getVirtualMachineByUsername(String username);
 	public void addVirtualMachine(VirtualMachine vm);
 	public void deleteVirtualMachineByIP(String ip);

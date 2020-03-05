@@ -8,14 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.server.app.dao.VirtualMachineDao;
+import com.server.app.model.File;
 import com.server.app.model.VirtualMachine;
 
 @Service
 public class VirtualMachineService implements  VirtualMachineServiceable{
 	@Autowired
 	private VirtualMachineDao vmDao;
+	@Autowired
+	FileService fService=new FileService();
 	@Override
-	public VirtualMachine getVirtualMachineByIp(String ip) {
+	public List<VirtualMachine> getVirtualMachineByIp(String ip) {
 		return vmDao.getVirtualMachineByIP(ip);
 	}
 
@@ -39,15 +42,25 @@ public class VirtualMachineService implements  VirtualMachineServiceable{
 	@Override
 	public void deleteVirtualMachineByIp(String ip) {
 		vmDao.deleteVirtualMachineByIP(ip);
-		
 	}
 
 	@Override
 	public String scanVirtualMachineByIp(String ip) {
-		//get vm from database by ip
-		
-		//ssh
-		return null;
+		List<VirtualMachine> vmList=this.getVirtualMachineByIp(ip);
+		List<File> fileList=new ArrayList<File>();
+		for( VirtualMachine vm: vmList) {
+			System.out.println(vm.toString());
+			RemoteVirtualMachine rvm=new RemoteVirtualMachine();
+			fileList=rvm.getFiles();
+			if(fileList==null)
+				return "Bad";
+			fService.addFiles(fileList);
+			for(File f: fileList) {
+				System.out.println(f.toString());
+				
+			}
+		}
+		return "Good";
 	}
 
 }

@@ -43,10 +43,11 @@ public class FileDao implements FileDaoable{
 
 	@Override
 	public void addFile(File f) {
+		System.out.println("\n\n\n\n\n\nadd file\n\n\n\n");
 		Date date = f.getCreationDate();  
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
 		String sDate = dateFormat.format(date); 
-		String sqlCommand = "INSERT INTO files (vmID, name, creationDate, size , location) "
+		String sqlCommand = "INSERT INTO file (vmID, name, creationDate, size , location) "
  		+ "VALUES(\'"+ f.getVmID() +"\',\'" + f.getFileName() + "\',\'" + sDate + "\',\'" + f.getSizeInBytes() +"\',\'" + f.getLocation() + "\');" ;
 		 try (Connection conn = this.connect();
 			PreparedStatement stmt  = conn.prepareStatement(sqlCommand) ){				 
@@ -63,7 +64,8 @@ public class FileDao implements FileDaoable{
 	}
 
 	
-	public void addFiles(ArrayList<File> filesList) {
+	public void addFiles(List<File> filesList) {
+		System.out.println("\n\n\n\n\n\nadd files\n\n\n\n");
 		if(filesList.size() == 0) {
 			System.out.println("No files to be added");
 		}else {

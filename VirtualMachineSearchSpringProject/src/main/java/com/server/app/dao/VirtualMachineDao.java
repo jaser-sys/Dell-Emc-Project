@@ -85,6 +85,29 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 	}
 	
 	@Override
+	public List<VirtualMachine> getVirtualMachineByIP(String ip) {
+		String sqlCommand = "SELECT * FROM virtualMachine WHERE IP=\'"+ip+"\';" ;
+		List<VirtualMachine> myVirtualMachines= new ArrayList<VirtualMachine>();
+		
+		try (Connection conn = this.connect();
+	             Statement stmt  = conn.createStatement();
+	             ResultSet result    = stmt.executeQuery(sqlCommand)){
+	            while (result.next()) {
+	            	VirtualMachine vm=new VirtualMachine();
+	            	vm.setID(UUID.fromString(result.getString("ID")));
+	            	vm.setUserId(UUID.fromString(result.getString("userId")));
+	            	vm.setIP(result.getString("IP"));
+	            	vm.setUserName(result.getString("username_"));
+	            	vm.setPassword(result.getString("password_"));
+	            	myVirtualMachines.add(vm);
+	            }
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+		return myVirtualMachines;
+	}
+	
+	@Override
 	public List<VirtualMachine> getVirtualMachineByUsername(String username) {
 		String sqlCommand = "SELECT * FROM virtualMachine WHERE username_=\'"+username+"\';" ;
 		List<VirtualMachine> myVirtualMachines= new ArrayList<VirtualMachine>();
@@ -162,8 +185,7 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
@@ -175,26 +197,16 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 	@Override
 	public void deleteAll(Iterable<? extends VirtualMachine> entities) {
 		// TODO Auto-generated method stub
-		
 	}
-
 	@Override
 	public void deleteAll() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
-
-
 	@Override
 	public void deleteVirtualMachineByUsername(String username) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
-	@Override
-	public VirtualMachine getVirtualMachineByIP(String ip) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }
