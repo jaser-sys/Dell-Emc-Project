@@ -26,12 +26,26 @@ public class FileController{
 		return fService.getFiles();
 	}
 	
-	@RequestMapping(method = RequestMethod.GET,value =  "/filterByName")
+	@RequestMapping(method = RequestMethod.GET,value =  "/ByName")
 	public List<File>  getFilesByName(String name){
-		return fService.getFilesByFileName(name);
+		try {
+			return fService.getFilesByFileName(name);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET,value =  "/filterBySize")
+	@RequestMapping(method = RequestMethod.GET,value =  "/BySize")
 	public List<File>  getFilesBySize(int size){
-		return fService.getFilesBySize(size);	}
+		try {
+			return fService.getFilesBySize(size);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return null;
+	}
+	
 }

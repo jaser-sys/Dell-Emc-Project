@@ -60,9 +60,9 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 	}
 
 	@Override
-	public void addVirtualMachine(UUID id, UUID userId, String ip, String username, String password) {
-		String sqlCommand = "INSERT INTO virtualMachines (ID, userId, IP, username_, password_) "
-		 		+ "VALUES(\'"+ id +"\',\'"+ userId+"\',\'" + ip + "\',\'" + username + "\',\'" + password + "\');" ;
+	public void addVirtualMachine(VirtualMachine vm) {
+		String sqlCommand = "INSERT INTO virtualMachine (ID, userId, IP, username_, password_) "
+		 		+ "VALUES(\'"+ vm.getID() +"\',\'"+ vm.getUserId()+"\',\'" + vm.getIP() + "\',\'" + vm.getUserName() + "\',\'" + vm.getPassword() + "\');" ;
 		 try (Connection conn = this.connect();
 				PreparedStatement stmt  = conn.prepareStatement(sqlCommand) ){				 
 			 	stmt.executeUpdate();
