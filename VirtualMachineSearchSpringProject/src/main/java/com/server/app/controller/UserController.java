@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.server.app.service.UserServiceable;
 import com.server.app.model.User;
+import com.server.app.model.UserLogin;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
@@ -42,20 +43,20 @@ public class UserController {
 	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public boolean Login(String username, String password) {
-		boolean res=userSer.userLogin(username, password);
+	public boolean Login(UserLogin login) {
+		boolean res=userSer.userLogin(login);
 		return res;
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public User Register(User user) {
+	public User Register(UserLogin user) {
 		User added=userSer.addUser(user);
 		return added;
 	}
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public User getUser(String username, String password) {
-		User isUser=userSer.returnUser(username, password);
-		return isUser;
+	public User getUser(UserLogin isUser) {
+		User isUser_=userSer.returnUser(isUser);
+		return isUser_;
 	}
 	
 }

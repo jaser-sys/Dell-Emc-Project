@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.stereotype.Repository;
 
 import com.server.app.model.User;
+import com.server.app.model.UserLogin;
 
 
 
@@ -42,12 +43,12 @@ public class UserDao implements UserDaoable{
 	}	
 
 	@Override
-    public boolean userLogin(String username, String password) {
+    public boolean userLogin(UserLogin login) {
 		boolean isAUser=false;
 		try (Connection conn = connect();
 				PreparedStatement stat = conn.prepareStatement("SELECT * FROM user WHERE username_ LIKE ? and password_ LIKE ? ")){
-				stat.setString(1, username+'%');
-				stat.setString(2, password + '%');
+				stat.setString(1, login.getUsername()+'%');
+				stat.setString(2, login.getPassword() + '%');
 				ResultSet res = stat.executeQuery();
 				if(res !=null) {
 					isAUser=true;
@@ -60,9 +61,10 @@ public class UserDao implements UserDaoable{
     }
 	
 	@Override
-	public User addUser(User user) {
+	public User addUser(UserLogin user) {
+		User user_=new User(user.getUsername(), user.getPassword());
 		String sqlCommand = "INSERT INTO user (id, username_, password_)"
-		 		+ "VALUES(\'"+ user.getId_()+"\',\'"+ user.getUsername_()+"\',\'" +  user.getPassword_() + "\');" ;
+		 		+ "VALUES(\'"+ user_.getId_()+"\',\'"+ user_.getUsername_()+"\',\'" +  user_.getPassword_() + "\');" ;
 		 try (Connection conn = this.connect();
 				PreparedStatement stmt  = conn.prepareStatement(sqlCommand) ){				 
 			 	stmt.executeUpdate();
@@ -70,16 +72,16 @@ public class UserDao implements UserDaoable{
 		 catch (SQLException e) {
 	            System.out.println(e.getMessage());
 	        }
-	return user;
+	return user_;
 	}
 	
 	@Override
-    public User returnUser(String username, String password) {
+    public User returnUser(UserLogin user) {
 		User user_=new User();
 		try (Connection conn = connect();
 				PreparedStatement stat = conn.prepareStatement("SELECT * FROM user WHERE username_ LIKE ? and password_ LIKE ? ")){
-				stat.setString(1, username+'%');
-				stat.setString(2, password + '%');
+				stat.setString(1, user.getUsername()+'%');
+				stat.setString(2, user.getPassword() + '%');
 				ResultSet res = stat.executeQuery();
 				while(res.next()) {
 					

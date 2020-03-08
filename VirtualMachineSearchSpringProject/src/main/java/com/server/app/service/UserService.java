@@ -1,6 +1,7 @@
 package com.server.app.service;
 
 import com.server.app.model.User;
+import com.server.app.model.UserLogin;
 import com.server.app.dao.UserDaoable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,21 +16,21 @@ public class UserService implements UserServiceable{
 	
 	
 	@Override
-	public boolean userLogin(String username, String password) {
-		boolean res=userDao.userLogin(username, username);
+	public boolean userLogin(UserLogin login) {
+		boolean res=userDao.userLogin(login);
 		return res;
 	}
 
 	@Override
-	public User addUser(User user) {
+	public User addUser(UserLogin user) {
 		User user_=userDao.addUser(user);
 		return user_;
 	}
 
 	@Override
-	public User returnUser(String username, String password) {
+	public User returnUser(UserLogin user) {
 	
-		User user_=userDao.returnUser(username,password);
+		User user_=userDao.returnUser(user);
 		return user_;
 	}
 
