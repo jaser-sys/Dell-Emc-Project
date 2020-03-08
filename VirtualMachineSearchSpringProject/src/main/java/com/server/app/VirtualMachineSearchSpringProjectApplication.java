@@ -16,13 +16,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableAutoConfiguration
 @SpringBootApplication(exclude = {HibernateJpaAutoConfiguration.class})
 
-public class VertualMachineSearchSpringProjectApplication {
+public class VirtualMachineSearchSpringProjectApplication {
 	@Bean
 	public ModelMapper modelMapper() {
 	    return new ModelMapper();
 	}
 	public static void main(String[] args) {
-		SpringApplication.run(VertualMachineSearchSpringProjectApplication.class, args);
+		SpringApplication.run(VirtualMachineSearchSpringProjectApplication.class, args);
 	}
 
 }
