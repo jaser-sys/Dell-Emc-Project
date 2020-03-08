@@ -8,11 +8,10 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +43,7 @@ public class FileDao implements FileDaoable{
 	@Override
 	public void addFile(File f) {
 		System.out.println("\n\n\n\n\n\nadd file\n\n\n\n");
-		Date date = f.getCreationDate();  
+		Date date = (Date) f.getCreationDate();  
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
 		String sDate = dateFormat.format(date); 
 		String sqlCommand = "INSERT INTO file (vmID, name, creationDate, size , location) "
@@ -85,7 +84,7 @@ public class FileDao implements FileDaoable{
 	            while (result.next()) {
 	            	File f1=new File();
 	            	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-	            	Date date = format.parse (result.getString("creationDate"));
+	            	Date date = Date.valueOf(result.getString("creationDate"));
 	            	f1.setVmID(UUID.fromString(result.getString("vmID")));
 	            	f1.setFileName(result.getString("name"));
 	            	f1.setCreationDate(date);
@@ -110,7 +109,7 @@ public class FileDao implements FileDaoable{
 		 while (res.next()) {
 	     	File f1=new File();
         	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        	Date date = format.parse (res.getString("creationDate"));
+        	Date date =Date.valueOf(res.getString("creationDate"));
 	     	f1.setVmID(UUID.fromString(res.getString("vmID")));
 	     	f1.setFileName(res.getString("name"));
 	     	f1.setCreationDate(date);
@@ -135,7 +134,7 @@ public class FileDao implements FileDaoable{
 		 while (res.next()) {
 			 File f1=new File();
          	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-         	Date date = format.parse (res.getString("creationDate"));
+         	Date date = Date.valueOf(res.getString("creationDate"));
          	f1.setVmID(UUID.fromString(res.getString("vmID")));
          	f1.setFileName(res.getString("name"));
          	f1.setCreationDate(date);
@@ -160,7 +159,7 @@ public class FileDao implements FileDaoable{
 		 while (res.next()) {
 			 File f1=new File();
          	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-         	Date date = format.parse (res.getString("creationDate"));
+         	Date date = Date.valueOf(res.getString("creationDate"));
          	f1.setVmID(UUID.fromString(res.getString("vmID")));
          	f1.setFileName(res.getString("name"));
          	f1.setCreationDate(date);
@@ -185,7 +184,7 @@ public class FileDao implements FileDaoable{
 		 while (res.next()) {
 			 File f1=new File();
          	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-         	Date date = format.parse (res.getString("creationDate"));
+         	Date date =Date.valueOf(res.getString("creationDate"));
          	f1.setVmID(UUID.fromString(res.getString("vmID")));
          	f1.setFileName(res.getString("name"));
          	f1.setCreationDate(date);
