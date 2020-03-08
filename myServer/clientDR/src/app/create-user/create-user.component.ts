@@ -17,8 +17,8 @@ export class CreateUserComponent implements OnInit {
 
     ngOnInit(): void {
     }
-      save() {
-          this.userService.userLogin(this.user)
+    save() {
+        this.userService.createUser(this.user)
               .subscribe(event => {
                   if (event instanceof HttpResponse) {
                       console.log('user added!')

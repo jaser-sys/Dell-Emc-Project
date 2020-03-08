@@ -53,7 +53,7 @@ public class UserController {
 		User added=userSer.addUser(user);
 		return added;
 	}
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	@RequestMapping(value = "/isuser", method = RequestMethod.POST)
 	public User getUser(UserLogin isUser) {
 		User isUser_=userSer.returnUser(isUser);
 		return isUser_;

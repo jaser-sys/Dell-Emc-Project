@@ -149,6 +149,33 @@ public class FileDao implements FileDaoable{
 		return myFiles;
 	}
 
+	
+	@Override
+	public List<File> retFilesByDateMax(String m_Date) throws Exception{
+		List<File> myFiles= new ArrayList<File>();
+		try (Connection conn = connect();
+		PreparedStatement stat = conn.prepareStatement("SELECT * FROM file WHERE creationDate <= ?")){
+		stat.setString(1, m_Date);
+		ResultSet res = stat.executeQuery();
+		 while (res.next()) {
+			 File f1=new File();
+         	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+         	Date date = format.parse (res.getString("creationDate"));
+         	f1.setVmID(UUID.fromString(res.getString("vmID")));
+         	f1.setFileName(res.getString("name"));
+         	f1.setCreationDate(date);
+         	f1.setSizeInBytes(res.getInt("size"));
+         	f1.setLocation(res.getString("location"));
+         	myFiles.add(f1);
+	     }
+	   } catch (SQLException e) {
+	       System.out.println(e.getMessage());
+	   }
+		return myFiles;
+		
+	}
+	
+	
 	@Override
 	public <S extends File> S save(S entity) {
 		// TODO Auto-generated method stub

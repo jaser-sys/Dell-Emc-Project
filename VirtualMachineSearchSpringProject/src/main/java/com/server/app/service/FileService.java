@@ -25,6 +25,9 @@ public class FileService implements FileServiceable{
 		return fileDao.getFilesBySizeInBytes(size);
 	}
 
+	public List<File> retFilesByDateMax(String m_Date) throws Exception{
+		return fileDao.retFilesByDateMax(m_Date);
+	}
 	@Override
 	public List<File> getFiles() {
 		try {

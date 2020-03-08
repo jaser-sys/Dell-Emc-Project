@@ -38,7 +38,7 @@ public class FileController{
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,value =  "/BySize")
-	public List<File>  getFilesBySize(int size){
+	public List<File> getFilesBySize(int size){
 		try {
 			return fService.getFilesBySize(size);
 		} catch (Exception e) {
@@ -48,4 +48,14 @@ public class FileController{
 		return null;
 	}
 	
+	@RequestMapping(method = RequestMethod.GET,value =  "/ByDate")
+	public List<File> getFilesByDate(String m_Date){
+		try {
+			return fService.retFilesByDateMax(m_Date);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return null;
+	}
 }
