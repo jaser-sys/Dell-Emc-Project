@@ -58,4 +58,15 @@ public class FileController{
 		}	
 		return null;
 	}
+	
+	@RequestMapping(method = RequestMethod.GET,value =  "/dateBtw")
+	public List<File> getFilesByDateBtw(String f_Date, String t_Date){
+		try {
+			return fService.getFilesByDateBtw(f_Date,t_Date);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return null;
+	}
 }

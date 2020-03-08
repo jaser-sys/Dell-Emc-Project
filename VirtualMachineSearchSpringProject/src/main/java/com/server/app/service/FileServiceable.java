@@ -10,6 +10,7 @@ public interface FileServiceable {
 	public List<File> getFilesByFileName(String fileName) throws Exception;
 	public List<File> getFilesBySize(int size) throws Exception;
 	public List<File> retFilesByDateMax(String m_Date) throws Exception;
+	public List<File> getFilesByDateBtw(String f_Date, String t_Date) throws Exception;
 	public List<File> getFiles();
 	public void addFile(File f);
 	public void addFiles(List<File> list);

@@ -28,6 +28,12 @@ public class FileService implements FileServiceable{
 	public List<File> retFilesByDateMax(String m_Date) throws Exception{
 		return fileDao.retFilesByDateMax(m_Date);
 	}
+	
+	@Override
+	public List<File> getFilesByDateBtw(String f_Date, String t_Date) throws Exception{
+		return fileDao.getFilesByDateBtw(f_Date, t_Date);
+	}
+	
 	@Override
 	public List<File> getFiles() {
 		try {

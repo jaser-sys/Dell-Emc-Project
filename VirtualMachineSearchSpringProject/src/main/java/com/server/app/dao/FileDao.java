@@ -154,7 +154,7 @@ public class FileDao implements FileDaoable{
 	public List<File> retFilesByDateMax(String m_Date) throws Exception{
 		List<File> myFiles= new ArrayList<File>();
 		try (Connection conn = connect();
-		PreparedStatement stat = conn.prepareStatement("SELECT * FROM file WHERE creationDate <= ?")){
+		PreparedStatement stat = conn.prepareStatement("SELECT * FROM file WHERE DATE(creationDate) <= ?")){
 		stat.setString(1, m_Date);
 		ResultSet res = stat.executeQuery();
 		 while (res.next()) {
@@ -173,6 +173,30 @@ public class FileDao implements FileDaoable{
 	   }
 		return myFiles;
 		
+	}
+	
+	public List<File> getFilesByDateBtw(String f_Date, String t_Date) throws Exception{
+		List<File> myFiles= new ArrayList<File>();
+		try (Connection conn = connect();
+		PreparedStatement stat = conn.prepareStatement("SELECT * FROM file WHERE DATE(creationDate) BETWEEN ? AND ?")){
+		stat.setString(1, f_Date);
+		stat.setString(2, t_Date);
+		ResultSet res = stat.executeQuery();
+		 while (res.next()) {
+			 File f1=new File();
+         	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+         	Date date = format.parse (res.getString("creationDate"));
+         	f1.setVmID(UUID.fromString(res.getString("vmID")));
+         	f1.setFileName(res.getString("name"));
+         	f1.setCreationDate(date);
+         	f1.setSizeInBytes(res.getInt("size"));
+         	f1.setLocation(res.getString("location"));
+         	myFiles.add(f1);
+	     }
+	   } catch (SQLException e) {
+	       System.out.println(e.getMessage());
+	   }
+		return myFiles;
 	}
 	
 	

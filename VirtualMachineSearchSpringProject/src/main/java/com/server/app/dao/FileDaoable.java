@@ -20,6 +20,7 @@ public interface FileDaoable extends CrudRepository<File, Long> {
 	public List<File> getFilesByFileName(String fileName) throws Exception;
 	public List<File> getFilesBySizeInBytes(int size) throws ParseException;
 	public List<File> retFilesByDateMax(String m_Date) throws Exception;
+	public List<File> getFilesByDateBtw(String f_Date, String t_Date) throws Exception;
 	public void addFile(File f);
 	public void deleteFileByVmID(UUID vmID);
 	
