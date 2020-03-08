@@ -1,4 +1,14 @@
 
+function checkInput() {
+    var a = document.getElementById("filename").value;
+    //alert(a);
+    var y=document.getElementById("myDate").value;
+    //alert(y);
+    var x = document.getElementById("dropdown").value;
+    document.getElementById("first").innerHTML = x;
+    //alert(x);
+}
+
 
 function hide_all(){
     document.getElementById('filename').type = 'hidden';

@@ -4,6 +4,7 @@ declare const hide_all:any;
 declare const click_name:any;
 declare const click_size:any;
 declare const click_date:any;
+declare const checkInput:any;
 
 @Component({
   selector: 'app-search-file',
@@ -29,6 +30,9 @@ export class SearchFileComponent implements OnInit {
   }
   onClickDate(){
     click_date();
+  }
+  onClickSubmit(){
+  checkInput();
   }
 
 }
