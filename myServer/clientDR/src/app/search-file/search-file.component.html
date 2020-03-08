@@ -1,24 +1,22 @@
-<body onload="hide_all()">
      
-    <div class="wrap-search">
-        
-        <div>
-            <form name="form1" action="#">
-                <h1 >
-               Search File By
-               </h1>
-              <div class="wrap-input100" style="font-weight: lighter;font-family:serif;">
-                
+<body >
+<div class="wrap-login100">
+    <div>
+        <span class="login100-form-title">
+            Search By File
+        </span>
+        <form name="form1">
+
+              <div class="login100-form-title">  
                 <input type="radio" id="name"
-                       name="contact" value="name" onclick="click_name()">
+                       name="contact" value="name" (click)="onClickName()">
                 <label for="name">Name</label>
                 <input type="radio" id="size"
-                       name="contact" value="size" onclick="click_size()">
+                       name="contact" value="size" (click)="onClickSize()">
                 <label for="size">Size</label>
                 <input type="radio" id="date"
-                       name="contact" value="date" onclick="click_date()">
-                <label for="date">Date</label>
-              </div>
+                       name="contact" value="date" (click)="onClickDate()">
+                <label for="date">Date</label></div>
             </form>
             <form name="form1" action="#">
                 <div class="wrap-input100">
@@ -29,7 +27,7 @@
                     </span>
                 </div>
               <div >
-           <select class="search-from-dro" id="dropdown" type="hidden" placeholder="Select Size">
+           <select class="login100-form-btn " id="dropdown" style="display:none" placeholder="Select Size">
                <a>Select</a>
                <option value="size" id="first">Select Size</option>
               <option value="size">0--5 MB</option>
@@ -53,12 +51,12 @@
               </select>
 
               </div>
-              <div class="container-search-form-btn">
-                  <input class="search-from-dro" type="hidden" id="myDate" value="2020-02-16" >
+              <div class="container-login100-form-btn">
+                  <input class="login100-form-btn " type="hidden" id="myDate" value="2020-02-16" >
 
                   </div>
-                <div class="container-search-form-btn">
-                    <button class="search-form-btn" id="submitID" >
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn " id="submitID">
                        Submit
                     </button>
                 </div>
@@ -66,6 +64,4 @@
 
         </div>
     </div>
-
-
 </body>

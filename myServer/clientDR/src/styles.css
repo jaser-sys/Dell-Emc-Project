@@ -22,9 +22,9 @@ body {
 
 .wrap-login100 {
     -webkit-tap-highlight-color: #a72727;
-    font-size: 1rem;
+    size: 20;
     font-weight: 400;
-    line-height: 16.5;
+    line-height: 1.5;
     color: #212529;
     font-family: Poppins-Regular, sans-serif;
     margin: auto;
@@ -59,7 +59,7 @@ body {
     overflow: overlay;
     display: flex;
     justify-content: space-between;
-    padding: 274px;
+    padding: 290px;
 }
 
 .input100 {
@@ -182,14 +182,14 @@ body {
     -webkit-tap-highlight-color: transparent;
     font-weight: 400;
     margin: 0;
-    padding: 54px;
+    padding: 5px;
     box-sizing: border-box;
-    font-family: Poppins-Bold;
+    font-family: Poppins;
     font-size: 36px;
     color: #333;
     line-height: 1.2;
     text-align: center;
-    width: 100%;
+    width: 20;
     display: block;
     padding-bottom: 30px;
 }

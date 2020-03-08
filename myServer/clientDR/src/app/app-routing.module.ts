@@ -14,6 +14,7 @@ const routes: Routes = [
     { path: 'addVM', component: CreateVmComponent },
     { path: 'vms', component: ListVmComponent },
     { path: 'files', component: ListFileComponent },
+    { path: 'filter', component: SearchFileComponent},
 ];
 
 @NgModule({
