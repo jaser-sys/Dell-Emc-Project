@@ -47,8 +47,8 @@ public class UserDao implements UserDaoable{
 		boolean isAUser=false;
 		try (Connection conn = connect();
 				PreparedStatement stat = conn.prepareStatement("SELECT * FROM user WHERE username_ LIKE ? and password_ LIKE ? ")){
-				stat.setString(1, login.getUsername()+'%');
-				stat.setString(2, login.getPassword() + '%');
+				stat.setString(1, login.getUsername());
+				stat.setString(2, login.getPassword());
 				ResultSet res = stat.executeQuery();
 				if(res !=null) {
 					isAUser=true;
@@ -63,15 +63,15 @@ public class UserDao implements UserDaoable{
 	@Override
 	public User addUser(UserLogin user) {
 		User user_=new User(user.getUsername(), user.getPassword());
-		String sqlCommand = "INSERT INTO user (id, username_, password_)"
-		 		+ "VALUES(\'"+ user_.getId_()+"\',\'"+ user_.getUsername_()+"\',\'" +  user_.getPassword_() + "\');" ;
-		 try (Connection conn = this.connect();
-				PreparedStatement stmt  = conn.prepareStatement(sqlCommand) ){				 
-			 	stmt.executeUpdate();
-	        }
-		 catch (SQLException e) {
-	            System.out.println(e.getMessage());
-	        }
+		try (Connection conn = connect();
+				PreparedStatement stat = conn.prepareStatement("INSERT INTO user(id,username_,password_) VALUES(?,?,?) ")){
+			    stat.setObject(1, user_.getId_());
+			    stat.setString(2,user.getUsername());
+				stat.setString(3,user.getPassword());
+				stat.executeUpdate(); 
+		       } catch (SQLException e) {
+		       System.out.println(e.getMessage());
+		     }
 	return user_;
 	}
 	
@@ -80,8 +80,8 @@ public class UserDao implements UserDaoable{
 		User user_=new User();
 		try (Connection conn = connect();
 				PreparedStatement stat = conn.prepareStatement("SELECT * FROM user WHERE username_ LIKE ? and password_ LIKE ? ")){
-				stat.setString(1, user.getUsername()+'%');
-				stat.setString(2, user.getPassword() + '%');
+				stat.setString(1, user.getUsername());
+				stat.setString(2, user.getPassword());
 				ResultSet res = stat.executeQuery();
 				while(res.next()) {
 					
