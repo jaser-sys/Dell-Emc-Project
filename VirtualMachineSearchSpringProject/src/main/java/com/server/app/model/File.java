@@ -1,7 +1,7 @@
 package com.server.app.model;
  
-import java.util.Date;
-import java.util.UUID;  
+
+import java.sql.Date;  
 
 public class File {
 	 	private String vmIP;
