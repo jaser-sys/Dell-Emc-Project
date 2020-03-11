@@ -4,14 +4,14 @@ import java.util.Date;
 import java.util.UUID;  
 
 public class File {
-	 	private UUID vmID;
+	 	private String vmIP;
 	    private String fileName;
 	    private Date creationDate;
 	    private long sizeInBytes;
 	    private String location;
 
-	    public File(UUID vmID,String fileName,Date date, long sizeInBytes, String location){
-	        this.vmID=vmID;
+	    public File(String vmIP,String fileName,Date date, long sizeInBytes, String location){
+	        this.vmIP=vmIP;
 	        this.fileName=fileName;
 	        this.sizeInBytes=sizeInBytes;
 	        this.creationDate=date;
@@ -21,12 +21,12 @@ public class File {
 	    public File(){
 	    }
 
-		public UUID getVmID() {
-			return vmID;
+		public String getVmIP() {
+			return vmIP;
 		}
 
-		public void setVmID(UUID vmID) {
-			this.vmID = vmID;
+		public void setVmID(String vmIP) {
+			this.vmIP = vmIP;
 		}
 
 		public String getFileName() {
@@ -63,7 +63,7 @@ public class File {
 
 		@Override
 		public String toString() {
-			return "File [vmID=" + vmID + ", fileName=" + fileName + ", creationDate=" + creationDate + ", sizeInBytes="
+			return "File [vmIP=" + vmIP + ", fileName=" + fileName + ", creationDate=" + creationDate + ", sizeInBytes="
 					+ sizeInBytes + ", location=" + location + "]";
 		}
 	    
