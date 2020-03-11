@@ -16,28 +16,28 @@ public class FileService implements FileServiceable{
 	@Autowired
 	private FileDao fileDao;
 	@Override
-	public List<File> getFilesByFileName(String fileName) throws Exception {
-		return fileDao.getFilesByFileName(fileName);
+	public List<File> getFilesByFileName(String IP,String fileName) throws Exception {
+		return fileDao.getFilesByFileName(IP,fileName);
 	}
 
 	@Override
-	public List<File> getFilesBySize(int size) throws Exception {
-		return fileDao.getFilesBySizeInBytes(size);
+	public List<File> getFilesBySize(String IP,int size) throws Exception {
+		return fileDao.getFilesBySizeInBytes(IP,size);
 	}
 
-	public List<File> retFilesByDateMax(String m_Date) throws Exception{
-		return fileDao.retFilesByDateMax(m_Date);
+	public List<File> retFilesByDateMax(String IP,String m_Date) throws Exception{
+		return fileDao.retFilesByDateMax(IP,m_Date);
 	}
 	
 	@Override
-	public List<File> getFilesByDateBtw(String f_Date, String t_Date) throws Exception{
-		return fileDao.retFilesByDateBtw(f_Date, t_Date);
+	public List<File> getFilesByDateBtw(String IP,String f_Date, String t_Date) throws Exception{
+		return fileDao.retFilesByDateBtw(IP,f_Date, t_Date);
 	}
 	
 	@Override
-	public List<File> getFiles() {
+	public List<File> getFiles(String IP) {
 		try {
-			return fileDao.getAll();
+			return fileDao.getAll(IP);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -45,8 +45,8 @@ public class FileService implements FileServiceable{
 	}
 
 	@Override
-	public void addFile(File f) {
-		fileDao.addFile(f);		
+	public void addFile(String IP,File f) {
+		fileDao.addFile(IP,f);		
 	}
 
 	@Override
@@ -56,9 +56,9 @@ public class FileService implements FileServiceable{
 	}
 
 	@Override
-	public void addFiles(List<File> list) {
+	public void addFiles(String IP,List<File> list) {
 		System.out.println("\n\n\n\n\n\ninside service\n\n\n\n");
-		fileDao.addFiles(list);
+		fileDao.addFiles(IP,list);
 		
 	}
 

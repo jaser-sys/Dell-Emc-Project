@@ -22,14 +22,14 @@ public class FileController{
 	FileService fService=new FileService();
 	
 	@RequestMapping(method = RequestMethod.GET,value =  "/AllEntries")
-	public List<File> getFiles(){
-		return fService.getFiles();
+	public List<File> getFiles(String IP){
+		return fService.getFiles(IP);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,value =  "/ByName")
-	public List<File>  getFilesByName(String name){
+	public List<File>  getFilesByName(String IP, String name){
 		try {
-			return fService.getFilesByFileName(name);
+			return fService.getFilesByFileName(IP, name);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -38,9 +38,9 @@ public class FileController{
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,value =  "/BySize")
-	public List<File> getFilesBySize(int size){
+	public List<File> getFilesBySize(String IP, int size){
 		try {
-			return fService.getFilesBySize(size);
+			return fService.getFilesBySize(IP, size);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,9 +49,9 @@ public class FileController{
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,value =  "/ByDate")
-	public List<File> getFilesByDate(String m_Date){
+	public List<File> getFilesByDate(String IP, String m_Date){
 		try {
-			return fService.retFilesByDateMax(m_Date);
+			return fService.retFilesByDateMax(IP, m_Date);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,9 +60,9 @@ public class FileController{
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,value =  "/dateBtw")
-	public List<File> getFilesByDateBtw(String f_Date, String t_Date){
+	public List<File> getFilesByDateBtw(String IP, String f_Date, String t_Date){
 		try {
-			return fService.getFilesByDateBtw(f_Date,t_Date);
+			return fService.getFilesByDateBtw(IP, f_Date,t_Date);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

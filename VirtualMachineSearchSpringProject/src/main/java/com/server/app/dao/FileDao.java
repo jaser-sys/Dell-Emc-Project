@@ -41,7 +41,7 @@ public class FileDao implements FileDaoable{
 
 
 	@Override
-	public void addFile(File f) {
+	public void addFile(String IP, File f) {
 		System.out.println("\n\n\n\n\n\nadd file\n\n\n\n");
 		Date date = (Date) f.getCreationDate();  
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
@@ -63,34 +63,33 @@ public class FileDao implements FileDaoable{
 	}
 
 	
-	public void addFiles(List<File> filesList) {
+	public void addFiles(String IP, List<File> filesList) {
 		System.out.println("\n\n\n\n\n\nadd files\n\n\n\n");
 		if(filesList.size() == 0) {
 			System.out.println("No files to be added");
 		}else {
 		  for(File file : filesList) {
-			  addFile(file);
+			  addFile(IP,file);
 		  }
 		}
 	}
 	
-	public List<File> getAll() throws ParseException {
-		String sqlCommand = "SELECT * FROM file;" ;
+	public List<File> getAll(String IP) throws ParseException {
 		List<File> myFiles= new ArrayList<File>();
-		
-		try (Connection conn = this.connect();
-	             Statement stmt  = conn.createStatement();
-	             ResultSet result    = stmt.executeQuery(sqlCommand)){
-	            while (result.next()) {
-	            	File f1=new File();
-	            	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-	            	Date date = Date.valueOf(result.getString("creationDate"));
-	            	f1.setVmIP(result.getString("vmIP"));
-	            	f1.setFileName(result.getString("name"));
-	            	f1.setCreationDate(date);
-	            	f1.setSizeInBytes(result.getInt("size"));
-	            	f1.setLocation(result.getString("location"));
-	            	myFiles.add(f1);
+		try (Connection conn = connect();
+		PreparedStatement stat = conn.prepareStatement("SELECT * FROM file WHERE vmIP like ?")){
+		stat.setString(1, IP);
+		ResultSet res = stat.executeQuery();
+	      while (res.next()) {
+	          File f1=new File();
+	           SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+	           Date date = Date.valueOf(res.getString("creationDate"));
+	           f1.setVmIP(res.getString("vmIP"));
+	           f1.setFileName(res.getString("name"));
+	           f1.setCreationDate(date);
+	           f1.setSizeInBytes(res.getInt("size"));
+	           f1.setLocation(res.getString("location"));
+	           myFiles.add(f1);
 	            }
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
@@ -100,11 +99,12 @@ public class FileDao implements FileDaoable{
 
 
 	@Override
-	public List<File> getFilesByFileName(String fileName) throws Exception {
+	public List<File> getFilesByFileName(String IP, String fileName) throws Exception {
 		List<File> myFiles= new ArrayList<File>();
 		try (Connection conn = connect();
-		PreparedStatement stat = conn.prepareStatement("SELECT * FROM file WHERE name LIKE ?")){
-		stat.setString(1, fileName+'%');
+		PreparedStatement stat = conn.prepareStatement("SELECT * FROM file WHERE vmIP like ? AND name LIKE ?")){
+		stat.setString(1, IP);
+		stat.setString(2, fileName+'%');
 		ResultSet res = stat.executeQuery();
 		 while (res.next()) {
 	     	File f1=new File();
@@ -125,11 +125,12 @@ public class FileDao implements FileDaoable{
 
 	
 	@Override
-	public List<File> getFilesBySizeInBytes(int size) throws ParseException{
+	public List<File> getFilesBySizeInBytes(String IP, int size) throws ParseException{
 		List<File> myFiles= new ArrayList<File>();
 		try (Connection conn = connect();
-		PreparedStatement stat = conn.prepareStatement("SELECT * FROM file WHERE size >= ?")){
-		stat.setInt(1, size);
+		PreparedStatement stat = conn.prepareStatement("SELECT * FROM file WHERE vmIP like ? AND size >= ?")){
+		stat.setString(1, IP);
+		stat.setInt(2, size);
 		ResultSet res = stat.executeQuery();
 		 while (res.next()) {
 			 File f1=new File();
@@ -150,11 +151,12 @@ public class FileDao implements FileDaoable{
 
 	
 	@Override
-	public List<File> retFilesByDateMax(String m_Date) throws Exception{
+	public List<File> retFilesByDateMax(String IP, String m_Date) throws Exception{
 		List<File> myFiles= new ArrayList<File>();
 		try (Connection conn = connect();
-		PreparedStatement stat = conn.prepareStatement("SELECT * FROM file WHERE DATE(creationDate) <= ?")){
-		stat.setString(1, m_Date);
+		PreparedStatement stat = conn.prepareStatement("SELECT * FROM file WHERE vmIP like ? AND DATE(creationDate) <= ?")){
+		stat.setString(1, IP);
+		stat.setString(2, m_Date);
 		ResultSet res = stat.executeQuery();
 		 while (res.next()) {
 			 File f1=new File();
@@ -174,12 +176,13 @@ public class FileDao implements FileDaoable{
 		
 	}
 	
-	public List<File> retFilesByDateBtw(String f_Date, String t_Date) throws Exception{
+	public List<File> retFilesByDateBtw(String IP, String f_Date, String t_Date) throws Exception{
 		List<File> myFiles= new ArrayList<File>();
 		try (Connection conn = connect();
-		PreparedStatement stat = conn.prepareStatement("SELECT * FROM file WHERE DATE(creationDate) BETWEEN ? AND ?")){
-		stat.setString(1, f_Date);
-		stat.setString(2, t_Date);
+		PreparedStatement stat = conn.prepareStatement("SELECT * FROM file WHERE vmIP like ? AND DATE(creationDate) BETWEEN ? AND ?")){
+		stat.setString(1, IP);
+		stat.setString(2, f_Date);
+		stat.setString(3, t_Date);
 		ResultSet res = stat.executeQuery();
 		 while (res.next()) {
 			 File f1=new File();
