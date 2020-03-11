@@ -31,7 +31,7 @@ public class FileService implements FileServiceable{
 	
 	@Override
 	public List<File> getFilesByDateBtw(String f_Date, String t_Date) throws Exception{
-		return fileDao.getFilesByDateBtw(f_Date, t_Date);
+		return fileDao.retFilesByDateBtw(f_Date, t_Date);
 	}
 	
 	@Override
