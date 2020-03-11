@@ -21,7 +21,7 @@ import springfox.documentation.swagger2.mappers.ModelMapper;
 public class VirtualMachineController {
 	
 	@Autowired
-	VirtualMachineService dbService;
+	VirtualMachineService vmService;
 	@Autowired
     private ModelMapper modelMapper;
 	
@@ -29,23 +29,19 @@ public class VirtualMachineController {
 	@RequestMapping(method = RequestMethod.POST, value =  "/add")
 	public void addVirtualMachine(@RequestParam String userId_, String ip, String username, String password){
 		UUID userId=UUID.fromString(userId_);
-		dbService.addVirtualMachine(userId, ip, username, password);
+		vmService.addVirtualMachine(userId, ip, username, password);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value =  "/scan")
-	public String scanVirtualMachine(@RequestParam  String ip){
-		return dbService.scanVirtualMachineByIp(ip);
-	}
 	
 	@RequestMapping(method = RequestMethod.GET, value="/get")
 	public List<VirtualMachine> getVirtualMachines(String username){
-		List<VirtualMachine> vms=dbService.getVitualMachines(username);
+		List<VirtualMachine> vms=vmService.getVitualMachines(username);
 		return vms;
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, value= "/delete")
 	public void deleteVirtualMachineByID(@RequestParam String ip){
-		dbService.deleteVirtualMachineByIp(ip);
+		vmService.deleteVirtualMachineByIp(ip);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value="/updatePassword")
