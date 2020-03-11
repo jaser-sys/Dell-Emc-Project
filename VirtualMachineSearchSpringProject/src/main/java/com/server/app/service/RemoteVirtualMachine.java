@@ -119,7 +119,7 @@ public class RemoteVirtualMachine {
 	        		try {
 	        			SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 	        			Date date=format.parse(innerLs.get(5).trim());
-	        			File f1=new File(vm.getID(),innerLs.get(8),date,Integer.parseInt(innerLs.get(4).trim()),LocationOfFile);
+	        			File f1=new File(vm.getIP(),innerLs.get(8),date,Integer.parseInt(innerLs.get(4).trim()),LocationOfFile);
 	        			listOfFiles.add(f1);
 	        		}catch(Exception e) {
 	        			continue;
