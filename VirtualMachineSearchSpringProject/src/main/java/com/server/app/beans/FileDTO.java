@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class FileDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private UUID vmID;
+	private String vmIP;
     private String fileName;
     private Date creationDate;
     private long sizeInBytes;
@@ -16,21 +16,21 @@ public class FileDTO implements Serializable{
 		super();
 	}
 	
-	public FileDTO(UUID vmID, String fileName, Date creationDate, long sizeInBytes, String location) {
+	public FileDTO(String vmIP, String fileName, Date creationDate, long sizeInBytes, String location) {
 		super();
-		this.vmID = vmID;
+		this.vmIP = vmIP;
 		this.fileName = fileName;
 		this.creationDate = creationDate;
 		this.sizeInBytes = sizeInBytes;
 		this.location = location;
 	}
 
-	public UUID getVmID() {
-		return vmID;
+	public String getVmIP() {
+		return vmIP;
 	}
 
-	public void setVmID(UUID vmID) {
-		this.vmID = vmID;
+	public void setVmIP(String vmIP) {
+		this.vmIP = vmIP;
 	}
 
 	public String getFileName() {
