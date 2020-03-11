@@ -8,17 +8,17 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
-import java.util.UUID;
+
 
 
 
 public class RemoteVirtualMachine {
 	//fields
-	private String host = "ec2-18-191-224-120.us-east-2.compute.amazonaws.com";
+	private String ip = "ec2-18-191-224-120.us-east-2.compute.amazonaws.com";
 	private String user = "root";
 	private String password = "Jaser123!@";
 	private Channel channel;
@@ -26,16 +26,20 @@ public class RemoteVirtualMachine {
     private Session session;
 
 	//cons
-	public RemoteVirtualMachine(String host,String user,String password) {
-		this.host=host;
+	public RemoteVirtualMachine(String ip,String user,String password) {
+		this.ip=ip;
 		this.user=user;
 		this.password=password;
 	}
 	
 	public RemoteVirtualMachine() {
-		
 	}
-
+	
+	public RemoteVirtualMachine(VirtualMachine vm) {
+		this.ip=vm.getIP();
+		this.user=vm.getUserName();
+		this.password=vm.getPassword();
+	}
 	
 	public ArrayList<File> getFiles(){
 		InputStream inputStream = initializeConnection();
@@ -50,7 +54,7 @@ public class RemoteVirtualMachine {
 		InputStream inputStream=null;
 		try {
 			jsch=new JSch();
-			session = jsch.getSession(user,host, 22);
+			session = jsch.getSession(user,ip, 22);
 			session.setUserInfo(new RemoteVirtualMachineInformation(user, password));
 	        session.connect();
 	       	channel = session.openChannel("shell");
@@ -107,7 +111,6 @@ public class RemoteVirtualMachine {
 	
 	private  ArrayList<File> parseLists(ArrayList<ArrayList<String>> listOfLists){
 		String LocationOfFile=".";
-		VirtualMachine vm=new VirtualMachine(UUID.randomUUID(),host, user, password);
 		ArrayList<File> listOfFiles=new ArrayList<File>();
         for(ArrayList<String> innerLs : listOfLists) {
 	        if (innerLs.size()==1) {
@@ -117,10 +120,10 @@ public class RemoteVirtualMachine {
 	        	}
 	        }else if(innerLs.size()==9) {
 	        		try {
-	        			SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
-	        			Date date=format.parse(innerLs.get(5).trim());
-	        			File f1=new File(vm.getIP(),innerLs.get(8),date,Integer.parseInt(innerLs.get(4).trim()),LocationOfFile);
+	        			Date date=Date.valueOf(innerLs.get(5).trim());
+	        			File f1=new File(this.ip,innerLs.get(8),date,Integer.parseInt(innerLs.get(4).trim()),LocationOfFile);
 	        			listOfFiles.add(f1);
+	        			System.out.println(f1.toString());
 	        		}catch(Exception e) {
 	        			continue;
 	        		}
