@@ -35,6 +35,7 @@ import com.server.app.model.User;
 import com.server.app.model.UserLogin;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/user")
 public class UserController {
 
 	
@@ -42,19 +43,19 @@ public class UserController {
 	UserServiceable userSer;
 	
 	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public boolean Login(UserLogin login) {
+	@PostMapping(value = "/login")
+	public boolean Login(@RequestBody UserLogin login) {
 		boolean res=userSer.userLogin(login);
 		return res;
 	}
 	
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public User Register(UserLogin user) {
+	@PostMapping(value = "/register")
+	public User Register(@RequestBody UserLogin user) {
 		User added=userSer.addUser(user);
 		return added;
 	}
-	@RequestMapping(value = "/isuser", method = RequestMethod.POST)
-	public User getUser(UserLogin isUser) {
+	@PostMapping(value = "/isuser")
+	public User getUser(@RequestBody UserLogin isUser) {
 		User isUser_=userSer.returnUser(isUser);
 		return isUser_;
 	}
