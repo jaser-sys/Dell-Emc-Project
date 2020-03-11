@@ -51,14 +51,13 @@ public class VirtualMachineService implements  VirtualMachineServiceable{
 
 	@Override
 	public String scanVirtualMachineByIp(VirtualMachine vm) {
-		//VirtualMachine vm=this.getVirtualMachineByIp(ip);
 		List<File> fileList=new ArrayList<File>();
 		System.out.println(vm.toString());
 		RemoteVirtualMachine rvm=new RemoteVirtualMachine();
 		fileList=rvm.getFiles();
 		if(fileList==null)
 			return "Bad";
-		fService.addFiles(fileList);
+		fService.addFiles(vm.getIP(),fileList);
 		return "Good";
 	}
 
