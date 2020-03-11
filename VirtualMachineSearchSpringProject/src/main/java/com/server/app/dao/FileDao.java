@@ -174,7 +174,7 @@ public class FileDao implements FileDaoable{
 		
 	}
 	
-	public List<File> getFilesByDateBtw(String f_Date, String t_Date) throws Exception{
+	public List<File> retFilesByDateBtw(String f_Date, String t_Date) throws Exception{
 		List<File> myFiles= new ArrayList<File>();
 		try (Connection conn = connect();
 		PreparedStatement stat = conn.prepareStatement("SELECT * FROM file WHERE DATE(creationDate) BETWEEN ? AND ?")){
