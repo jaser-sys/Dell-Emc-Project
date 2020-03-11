@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.server</groupId>
-	<artifactId>VertualMachineSearchSpringProject</artifactId>
+	<artifactId>VirtualMachineSearchSpringProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>VertualMachineSearchSpringProject</name>
+	<name>VirtualMachineSearchSpringProject</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
