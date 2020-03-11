@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.server.app.dao.UserDao;
 import com.server.app.dao.VirtualMachineDao;
 import com.server.app.model.File;
 import com.server.app.model.VirtualMachine;
@@ -15,6 +16,8 @@ import com.server.app.model.VirtualMachine;
 public class VirtualMachineService implements  VirtualMachineServiceable{
 	@Autowired
 	private VirtualMachineDao vmDao;
+	@Autowired
+	private UserDao usrDao;
 	@Autowired
 	FileService fService=new FileService();
 	@Override
@@ -28,8 +31,9 @@ public class VirtualMachineService implements  VirtualMachineServiceable{
 	}
 
 	@Override
-	public List<VirtualMachine> getVitualMachines() {
-		return vmDao.getVitualMachines();
+	public List<VirtualMachine> getVitualMachines(String username) {
+		UUID userId=usrDao.getUserId(username);
+		return vmDao.getVitualMachines(userId);
 	}
 
 	@Override
