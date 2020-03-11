@@ -97,15 +97,22 @@ public class UserDao implements UserDaoable{
     	
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public UUID getUserId(String username) {
+		User user_=new User();
+		try (Connection conn = connect();
+				PreparedStatement stat = conn.prepareStatement("SELECT * FROM user WHERE username_ LIKE ?")){
+				stat.setString(1, username);
+				ResultSet res = stat.executeQuery();
+				while(res.next()) {
+					user_.setId_(UUID.fromString(res.getString("id")));
+					user_.setUsername_(res.getString("username_"));
+					user_.setPassword_(res.getString("password_"));
+				}
+		       } catch (SQLException e) {
+		       System.out.println(e.getMessage());
+		     }
+		return user_.getId_();
+    }
     
     
     
