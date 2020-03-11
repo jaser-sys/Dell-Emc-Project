@@ -2,9 +2,7 @@ package com.server.app.dao;
 
 import java.sql.Connection;
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -22,6 +20,6 @@ public interface FileDaoable extends CrudRepository<File, Long> {
 	public List<File> retFilesByDateMax(String IP, String m_Date) throws Exception;
 	public List<File> retFilesByDateBtw(String IP, String f_Date, String t_Date) throws Exception;
 	public void addFile(String IP, File f);
-	public void deleteFileByVmID(UUID vmID);
+	public void deleteFileByVmIP(String vmIP);
 	
 }
