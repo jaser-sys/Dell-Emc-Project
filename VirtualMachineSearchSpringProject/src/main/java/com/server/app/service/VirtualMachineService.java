@@ -21,7 +21,7 @@ public class VirtualMachineService implements  VirtualMachineServiceable{
 	@Autowired
 	FileService fService=new FileService();
 	@Override
-	public List<VirtualMachine> getVirtualMachineByIp(String ip) {
+	public VirtualMachine getVirtualMachineByIp(String ip) {
 		return vmDao.getVirtualMachineByIP(ip);
 	}
 
@@ -40,6 +40,7 @@ public class VirtualMachineService implements  VirtualMachineServiceable{
 	public void addVirtualMachine(UUID userId, String ip, String username, String password) {
 		VirtualMachine vm=new VirtualMachine(userId, ip, username, password);
 		vmDao.addVirtualMachine(vm);
+		this.scanVirtualMachineByIp(vm);
 		
 	}
 
@@ -49,21 +50,15 @@ public class VirtualMachineService implements  VirtualMachineServiceable{
 	}
 
 	@Override
-	public String scanVirtualMachineByIp(String ip) {
-		List<VirtualMachine> vmList=this.getVirtualMachineByIp(ip);
+	public String scanVirtualMachineByIp(VirtualMachine vm) {
+		//VirtualMachine vm=this.getVirtualMachineByIp(ip);
 		List<File> fileList=new ArrayList<File>();
-		for( VirtualMachine vm: vmList) {
-			System.out.println(vm.toString());
-			RemoteVirtualMachine rvm=new RemoteVirtualMachine();
-			fileList=rvm.getFiles();
-			if(fileList==null)
-				return "Bad";
-			fService.addFiles(fileList);
-			for(File f: fileList) {
-				System.out.println(f.toString());
-				
-			}
-		}
+		System.out.println(vm.toString());
+		RemoteVirtualMachine rvm=new RemoteVirtualMachine();
+		fileList=rvm.getFiles();
+		if(fileList==null)
+			return "Bad";
+		fService.addFiles(fileList);
 		return "Good";
 	}
 
