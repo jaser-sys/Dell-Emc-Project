@@ -37,8 +37,8 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 		return conn;
 	}
 
-	public List<VirtualMachine> getVitualMachines() {
-		String sqlCommand = "SELECT * FROM virtualMachine;" ;
+	public List<VirtualMachine> getVitualMachines(UUID userId) {
+		String sqlCommand = "SELECT * FROM virtualMachine WHERE userID=\'"+userId+"\';" ;
 		List<VirtualMachine> myVirtualMachines= new ArrayList<VirtualMachine>();
 		
 		try (Connection conn = this.connect();
