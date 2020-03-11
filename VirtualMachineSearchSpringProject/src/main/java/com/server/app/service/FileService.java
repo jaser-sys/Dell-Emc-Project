@@ -1,9 +1,7 @@
 package com.server.app.service;
 
-import java.text.ParseException;
-import java.util.Date;
+
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,49 +14,46 @@ public class FileService implements FileServiceable{
 	@Autowired
 	private FileDao fileDao;
 	@Override
-	public List<File> getFilesByFileName(String fileName) throws Exception {
-		return fileDao.getFilesByFileName(fileName);
+	public List<File> getFilesByFileName(String IP,String fileName) throws Exception {
+		return fileDao.getFilesByFileName(IP,fileName);
 	}
 
 	@Override
-	public List<File> getFilesBySize(int size) throws Exception {
-		return fileDao.getFilesBySizeInBytes(size);
+	public List<File> getFilesBySize(String IP,int size) throws Exception {
+		return fileDao.getFilesBySizeInBytes(IP,size);
 	}
 
-	public List<File> retFilesByDateMax(String m_Date) throws Exception{
-		return fileDao.retFilesByDateMax(m_Date);
+	public List<File> retFilesByDateMax(String IP,String m_Date) throws Exception{
+		return fileDao.retFilesByDateMax(IP,m_Date);
 	}
 	
 	@Override
-	public List<File> getFilesByDateBtw(String f_Date, String t_Date) throws Exception{
-		return fileDao.retFilesByDateBtw(f_Date, t_Date);
+	public List<File> getFilesByDateBtw(String IP,String f_Date, String t_Date) throws Exception{
+		return fileDao.retFilesByDateBtw(IP,f_Date, t_Date);
 	}
 	
 	@Override
-	public List<File> getFiles() {
-		try {
-			return fileDao.getAll();
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public List<File> getFiles(String IP) throws Exception {
+		System.out.println("************"+IP);
+			return fileDao.getAll(IP);
+
 	}
 
 	@Override
-	public void addFile(File f) {
-		fileDao.addFile(f);		
+	public void addFile(String IP,File f) {
+		fileDao.addFile(IP,f);		
 	}
 
 	@Override
-	public void deleteFileByVmID(UUID vmID) {
-		// TODO Auto-generated method stub
+	public void deleteFileByVmIP(String vmIP) {
+		
 		
 	}
 
 	@Override
-	public void addFiles(List<File> list) {
-		fileDao.addFiles(list);
-		
+	public void addFiles(String IP,List<File> list) {
+		fileDao.addFiles(IP,list);
+
 	}
 
 }
