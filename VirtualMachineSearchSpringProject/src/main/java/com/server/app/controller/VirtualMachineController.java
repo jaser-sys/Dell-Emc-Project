@@ -1,6 +1,5 @@
 package com.server.app.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,9 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.server.app.beans.VirtualMachineDTO;
-import com.server.app.dao.SqliteDB;
-import com.server.app.dao.VirtualMachineDao;
 import com.server.app.model.VirtualMachine;
 import com.server.app.service.VirtualMachineService;
 
