@@ -42,8 +42,8 @@ public class VirtualMachineController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value="/get")
-	public List<VirtualMachine> getVirtualMachines(){
-		List<VirtualMachine> vms=dbService.getVitualMachines();
+	public List<VirtualMachine> getVirtualMachines(String username){
+		List<VirtualMachine> vms=dbService.getVitualMachines(username);
 		return vms;
 	}
 	
