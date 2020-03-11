@@ -25,7 +25,7 @@ public class File {
 			return vmIP;
 		}
 
-		public void setVmID(String vmIP) {
+		public void setVmIP(String vmIP) {
 			this.vmIP = vmIP;
 		}
 
