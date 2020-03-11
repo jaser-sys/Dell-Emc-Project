@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,12 +41,8 @@ public class FileDao implements FileDaoable{
 
 	@Override
 	public void addFile(File f) {
-		System.out.println("\n\n\n\n\n\nadd file\n\n\n\n");
-		Date date = (Date) f.getCreationDate();  
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
-		String sDate = dateFormat.format(date); 
 		String sqlCommand = "INSERT INTO file (vmIP, name, creationDate, size , location) "
- 		+ "VALUES(\'"+ f.getVmIP() +"\',\'" + f.getFileName() + "\',\'" + sDate + "\',\'" + f.getSizeInBytes() +"\',\'" + f.getLocation() + "\');" ;
+ 		+ "VALUES(\'"+ f.getVmIP() +"\',\'" + f.getFileName() + "\',\'" + f.getCreationDate() + "\',\'" + f.getSizeInBytes() +"\',\'" + f.getLocation() + "\');" ;
 		 try (Connection conn = this.connect();
 			PreparedStatement stmt  = conn.prepareStatement(sqlCommand) ){				 
 			stmt.executeUpdate();
@@ -64,7 +59,6 @@ public class FileDao implements FileDaoable{
 
 	
 	public void addFiles(List<File> filesList) {
-		System.out.println("\n\n\n\n\n\nadd files\n\n\n\n");
 		if(filesList.size() == 0) {
 			System.out.println("No files to be added");
 		}else {
@@ -83,7 +77,6 @@ public class FileDao implements FileDaoable{
 	             ResultSet result    = stmt.executeQuery(sqlCommand)){
 	            while (result.next()) {
 	            	File f1=new File();
-	            	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	            	Date date = Date.valueOf(result.getString("creationDate"));
 	            	f1.setVmIP(result.getString("vmIP"));
 	            	f1.setFileName(result.getString("name"));
@@ -108,7 +101,6 @@ public class FileDao implements FileDaoable{
 		ResultSet res = stat.executeQuery();
 		 while (res.next()) {
 	     	File f1=new File();
-        	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         	Date date =Date.valueOf(res.getString("creationDate"));
 	     	f1.setVmIP(res.getString("vmIP"));
 	     	f1.setFileName(res.getString("name"));
@@ -158,7 +150,6 @@ public class FileDao implements FileDaoable{
 		ResultSet res = stat.executeQuery();
 		 while (res.next()) {
 			 File f1=new File();
-         	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
          	Date date = Date.valueOf(res.getString("creationDate"));
          	f1.setVmIP(res.getString("vmIP"));
          	f1.setFileName(res.getString("name"));
