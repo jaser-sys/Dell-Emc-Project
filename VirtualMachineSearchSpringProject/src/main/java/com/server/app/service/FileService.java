@@ -57,7 +57,6 @@ public class FileService implements FileServiceable{
 
 	@Override
 	public void addFiles(List<File> list) {
-		System.out.println("\n\n\n\n\n\ninside service\n\n\n\n");
 		fileDao.addFiles(list);
 		
 	}
