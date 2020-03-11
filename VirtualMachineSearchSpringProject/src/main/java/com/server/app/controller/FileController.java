@@ -3,14 +3,11 @@ package com.server.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.server.app.dao.FileDao;
 import com.server.app.model.File;
 import com.server.app.service.FileService;
 
@@ -22,7 +19,7 @@ public class FileController{
 	FileService fService=new FileService();
 	
 	@RequestMapping(method = RequestMethod.GET,value =  "/AllEntries")
-	public List<File> getFiles(String IP){
+	public List<File> getFiles(String IP) throws Exception{
 		return fService.getFiles(IP);
 	}
 	
@@ -31,7 +28,6 @@ public class FileController{
 		try {
 			return fService.getFilesByFileName(IP, name);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -42,7 +38,6 @@ public class FileController{
 		try {
 			return fService.getFilesBySize(IP, size);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		return null;
@@ -53,7 +48,6 @@ public class FileController{
 		try {
 			return fService.retFilesByDateMax(IP, m_Date);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		return null;
@@ -64,7 +58,6 @@ public class FileController{
 		try {
 			return fService.getFilesByDateBtw(IP, f_Date,t_Date);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		return null;
