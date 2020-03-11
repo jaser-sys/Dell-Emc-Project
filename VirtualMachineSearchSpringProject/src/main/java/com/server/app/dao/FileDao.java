@@ -46,8 +46,8 @@ public class FileDao implements FileDaoable{
 		Date date = (Date) f.getCreationDate();  
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
 		String sDate = dateFormat.format(date); 
-		String sqlCommand = "INSERT INTO file (vmID, name, creationDate, size , location) "
- 		+ "VALUES(\'"+ f.getVmID() +"\',\'" + f.getFileName() + "\',\'" + sDate + "\',\'" + f.getSizeInBytes() +"\',\'" + f.getLocation() + "\');" ;
+		String sqlCommand = "INSERT INTO file (vmIP, name, creationDate, size , location) "
+ 		+ "VALUES(\'"+ f.getVmIP() +"\',\'" + f.getFileName() + "\',\'" + sDate + "\',\'" + f.getSizeInBytes() +"\',\'" + f.getLocation() + "\');" ;
 		 try (Connection conn = this.connect();
 			PreparedStatement stmt  = conn.prepareStatement(sqlCommand) ){				 
 			stmt.executeUpdate();
@@ -85,7 +85,7 @@ public class FileDao implements FileDaoable{
 	            	File f1=new File();
 	            	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	            	Date date = Date.valueOf(result.getString("creationDate"));
-	            	f1.setVmID(UUID.fromString(result.getString("vmID")));
+	            	f1.setVmIP(result.getString("vmIP"));
 	            	f1.setFileName(result.getString("name"));
 	            	f1.setCreationDate(date);
 	            	f1.setSizeInBytes(result.getInt("size"));
@@ -110,7 +110,7 @@ public class FileDao implements FileDaoable{
 	     	File f1=new File();
         	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         	Date date =Date.valueOf(res.getString("creationDate"));
-	     	f1.setVmID(UUID.fromString(res.getString("vmID")));
+	     	f1.setVmIP(res.getString("vmIP"));
 	     	f1.setFileName(res.getString("name"));
 	     	f1.setCreationDate(date);
 	     	f1.setSizeInBytes(res.getLong("size"));
@@ -135,7 +135,7 @@ public class FileDao implements FileDaoable{
 			 File f1=new File();
          	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
          	Date date = Date.valueOf(res.getString("creationDate"));
-         	f1.setVmID(UUID.fromString(res.getString("vmID")));
+         	f1.setVmIP(res.getString("vmIP"));
          	f1.setFileName(res.getString("name"));
          	f1.setCreationDate(date);
          	f1.setSizeInBytes(res.getInt("size"));
@@ -160,7 +160,7 @@ public class FileDao implements FileDaoable{
 			 File f1=new File();
          	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
          	Date date = Date.valueOf(res.getString("creationDate"));
-         	f1.setVmID(UUID.fromString(res.getString("vmID")));
+         	f1.setVmIP(res.getString("vmIP"));
          	f1.setFileName(res.getString("name"));
          	f1.setCreationDate(date);
          	f1.setSizeInBytes(res.getInt("size"));
@@ -185,7 +185,7 @@ public class FileDao implements FileDaoable{
 			 File f1=new File();
          	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
          	Date date =Date.valueOf(res.getString("creationDate"));
-         	f1.setVmID(UUID.fromString(res.getString("vmID")));
+         	f1.setVmIP(res.getString("vmIP"));
          	f1.setFileName(res.getString("name"));
          	f1.setCreationDate(date);
          	f1.setSizeInBytes(res.getInt("size"));
