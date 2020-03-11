@@ -85,26 +85,24 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 	}
 	
 	@Override
-	public List<VirtualMachine> getVirtualMachineByIP(String ip) {
+	public VirtualMachine getVirtualMachineByIP(String ip) {
 		String sqlCommand = "SELECT * FROM virtualMachine WHERE IP=\'"+ip+"\';" ;
-		List<VirtualMachine> myVirtualMachines= new ArrayList<VirtualMachine>();
+		VirtualMachine vm=new VirtualMachine();
 		
 		try (Connection conn = this.connect();
 	             Statement stmt  = conn.createStatement();
 	             ResultSet result    = stmt.executeQuery(sqlCommand)){
 	            while (result.next()) {
-	            	VirtualMachine vm=new VirtualMachine();
 	            	vm.setID(UUID.fromString(result.getString("ID")));
 	            	vm.setUserId(UUID.fromString(result.getString("userId")));
 	            	vm.setIP(result.getString("IP"));
 	            	vm.setUserName(result.getString("username_"));
 	            	vm.setPassword(result.getString("password_"));
-	            	myVirtualMachines.add(vm);
 	            }
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
 	        }
-		return myVirtualMachines;
+		return vm;
 	}
 	
 	@Override
