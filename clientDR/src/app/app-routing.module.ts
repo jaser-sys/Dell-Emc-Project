@@ -8,9 +8,9 @@ import { ListFileComponent } from './list-file/list-file.component';
 import { ListVmComponent } from './list-vm/list-vm.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
-    { path: 'login', component: UserLoginComponent },
-    { path: 'createUser', component: CreateUserComponent },
+    { path: '', redirectTo: 'user/login', pathMatch: 'full' },
+    { path: 'user/login', component: UserLoginComponent },
+    { path: 'user/createUser', component: CreateUserComponent },
     { path: 'addVM', component: CreateVmComponent },
     { path: 'vms', component: ListVmComponent },
     { path: 'files', component: ListFileComponent },
