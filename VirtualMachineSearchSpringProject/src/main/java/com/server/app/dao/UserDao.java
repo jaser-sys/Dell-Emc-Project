@@ -46,12 +46,12 @@ public class UserDao implements UserDaoable{
     public boolean userLogin(UserLogin login) {
 		boolean isAUser=false;
 		try (Connection conn = connect();
-				PreparedStatement stat = conn.prepareStatement("SELECT * FROM user WHERE username_ LIKE ? and password_ LIKE ? ")){
+				PreparedStatement stat = conn.prepareStatement("SELECT (count(*) >0) as found FROM user WHERE username_ LIKE ? and password_ LIKE ? ")){
 				stat.setString(1, login.getUsername());
 				stat.setString(2, login.getPassword());
 				ResultSet res = stat.executeQuery();
-				if(res !=null) {
-					isAUser=true;
+				if(res.next()) {
+					isAUser=res.getBoolean(1);
 				}
 		       } catch (SQLException e) {
 		       System.out.println(e.getMessage());
