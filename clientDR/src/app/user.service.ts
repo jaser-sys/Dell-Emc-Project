@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
-
+import { User } from "./user";
+import { Observable } from "rxjs/index";
+import { ApiResponse } from "./api.response";
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
 
-    userLogin(user: Object): Observable<Object> {
-        return this.http.post(`${this.baseUrl}/${'login'}`, user);
+    userLogin(user: Object): Observable<ApiResponse> {
+        return this.http.post<ApiResponse>('http://localhost:8080/' + 'token/generate-token', user);
     }
 
     createUser(user: Object): Observable<object> {
