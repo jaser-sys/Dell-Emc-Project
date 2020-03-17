@@ -33,6 +33,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	        return new JwtAuthenticationFilter(authenticationManager(), unauthorizedHandler);
 	    }
 	    
+	    @Bean
+	    public JwtAuthenticationEntryPoint jwtAuthenticationFilterBean() throws Exception {
+	    	
+	        return new JwtAuthenticationEntryPoint();
+	    }
+	    
 	 
 	    @Override
 	    @Bean
