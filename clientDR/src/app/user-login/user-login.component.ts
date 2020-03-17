@@ -39,7 +39,7 @@ export class UserLoginComponent implements OnInit {
                             if (content) {
                                 const b = content.querySelector('b')
                                 if (b) {
-                                    b.textContent = res.username
+                                    b.textContent = this.user.username
                                 }
                             }
                         }, 100)
@@ -49,7 +49,7 @@ export class UserLoginComponent implements OnInit {
                         this.gotoList()
                     }
                 }).then((result) => {
-                    /* Read more about handling dismissals below */
+                   
                     if (result.dismiss === Swal.DismissReason.timer) {
                         console.log('I was closed by the timer')
                     
@@ -61,7 +61,7 @@ export class UserLoginComponent implements OnInit {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: data.messae,
+                    text: data.message,
                   
                 });
             }
