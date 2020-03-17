@@ -16,6 +16,12 @@ public class UserService implements UserServiceable{
 	
 	
 	@Override
+	public User loadUserByUsername(final String username){
+		User user=userDao.loadUserByUsername(username);
+		return user;
+	}
+	
+	@Override
 	public boolean userLogin(UserLogin login) {
 		boolean res=userDao.userLogin(login);
 		return res;

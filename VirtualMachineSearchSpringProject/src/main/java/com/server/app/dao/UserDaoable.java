@@ -13,6 +13,7 @@ import com.server.app.model.UserLogin;
 public interface UserDaoable extends CrudRepository<User, Long> {
 
 	public Connection connect();
+	public User loadUserByUsername(final String username);
     public boolean userLogin(UserLogin login);
 	public User addUser(UserLogin user);	
     public User returnUser(UserLogin user);
