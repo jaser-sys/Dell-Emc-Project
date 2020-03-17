@@ -3,7 +3,7 @@ import { User } from '../user';
 import { UserService } from '../user.service';
 import { HttpClient, HttpResponse, HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-user-login',
@@ -20,13 +20,51 @@ export class UserLoginComponent implements OnInit {
   }
     save() {
         this.userService.userLogin(this.user).subscribe(data => {
-            debugger;
+          
             if (data.status === 200) {
                 window.localStorage.setItem('token', data.result.token);
+                   let timerInterval
+                Swal.fire({
+                    title: 'You just signed in!',
+                    icon: 'success',
+                    html: 'Welcome <b></b>',
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    footer: '<a </a>',
+                    timer: 2500,
+                    onBeforeOpen: () => {
+                        Swal.showLoading()
+                        timerInterval = setInterval(() => {
+                            const content = Swal.getContent()
+                            if (content) {
+                                const b = content.querySelector('b')
+                                if (b) {
+                                    b.textContent = res.username
+                                }
+                            }
+                        }, 100)
+                    },
+                    onClose: () => {
+                        clearInterval(timerInterval)
+                        this.gotoList()
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log('I was closed by the timer')
+                    
+                    }
+                })
+            }
                 this.router.navigate(['vms']);
             } else {
-
-                alert(data.message);
+               console.log("false");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: data.messae,
+                  
+                });
             }
         });
     }
@@ -35,5 +73,9 @@ export class UserLoginComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
         this.save();
+    }
+
+    gotoList() {
+        this.router.navigate(['/vms']);
     }
 }
