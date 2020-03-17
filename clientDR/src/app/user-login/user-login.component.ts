@@ -55,8 +55,7 @@ export class UserLoginComponent implements OnInit {
                     
                     }
                 })
-            }
-                this.router.navigate(['vms']);
+       
             } else {
                console.log("false");
                 Swal.fire({
