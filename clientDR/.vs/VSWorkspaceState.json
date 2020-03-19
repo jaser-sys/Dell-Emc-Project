@@ -4,8 +4,10 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\core",
-    "\\src\\app\\user-login"
+    "\\src\\app\\list-vm",
+    "\\src\\app\\user-login",
+    "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\user-login\\user-login.component.ts",
+  "SelectedNode": "\\src\\styles.css",
   "PreviewInSolutionExplorer": false
 }
