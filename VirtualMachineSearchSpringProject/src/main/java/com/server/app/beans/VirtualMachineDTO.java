@@ -10,16 +10,18 @@ public class VirtualMachineDTO implements Serializable {
 	private String IP;
 	private String userName;
 	private String password;
+	private String path;
 	public VirtualMachineDTO() {
 		super();
 	}
-	public VirtualMachineDTO(UUID iD, UUID userId, String iP, String userName, String password) {
+	public VirtualMachineDTO(UUID iD, UUID userId, String iP, String userName, String password, String path) {
 		super();
 		ID = iD;
 		this.userId = userId;
 		IP = iP;
 		this.userName = userName;
 		this.password = password;
+		this.path=path;
 	}
 	public UUID getID() {
 		return ID;
@@ -47,6 +49,12 @@ public class VirtualMachineDTO implements Serializable {
 	}
 	public String getPassword() {
 		return password;
+	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
 	}
 	public void setPassword(String password) {
 		this.password = password;
