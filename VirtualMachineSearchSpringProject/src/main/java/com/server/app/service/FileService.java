@@ -1,6 +1,7 @@
 package com.server.app.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,11 @@ public class FileService implements FileServiceable{
 	@Autowired
 	private FileDao fileDao;
 	@Override
-	public List<File> getFilesByFileName(String IP,String fileName) throws Exception {
-		return fileDao.getFilesByFileName(IP,fileName);
+	public List<File> getFilesByFileName(List<String> IPs,String fileName) throws Exception {
+		List<File> list=new ArrayList<File>();
+		for(String ip: IPs)
+		 list.addAll(fileDao.getFilesByFileName(ip,fileName));
+		return list;
 	}
 
 	@Override
