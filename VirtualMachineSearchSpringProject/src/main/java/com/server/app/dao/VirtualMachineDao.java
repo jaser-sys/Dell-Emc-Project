@@ -51,6 +51,7 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 	            	vm.setIP(result.getString("IP"));
 	            	vm.setUserName(result.getString("username_"));
 	            	vm.setPassword(result.getString("password_"));
+	            	vm.setPath(result.getString("path_"));
 	            	myVirtualMachines.add(vm);
 	            }
 	        } catch (SQLException e) {
@@ -61,8 +62,8 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 
 	@Override
 	public void addVirtualMachine(VirtualMachine vm) {
-		String sqlCommand = "INSERT INTO virtualMachine (ID, userId, IP, username_, password_) "
-		 		+ "VALUES(\'"+ vm.getID() +"\',\'"+ vm.getUserId()+"\',\'" + vm.getIP() + "\',\'" + vm.getUserName() + "\',\'" + vm.getPassword() + "\');" ;
+		String sqlCommand = "INSERT INTO virtualMachine (ID, userId, IP, username_, password_, path_) "
+		 		+ "VALUES(\'"+ vm.getID() +"\',\'"+ vm.getUserId()+"\',\'" + vm.getIP() + "\',\'" + vm.getUserName() + "\',\'" + vm.getPassword() + "\',\'"+vm.getPath()+"\');" ;
 		 try (Connection conn = this.connect();
 				PreparedStatement stmt  = conn.prepareStatement(sqlCommand) ){				 
 			 	stmt.executeUpdate();
@@ -98,6 +99,7 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 	            	vm.setIP(result.getString("IP"));
 	            	vm.setUserName(result.getString("username_"));
 	            	vm.setPassword(result.getString("password_"));
+	            	vm.setPath(result.getString("path_"));
 	            }
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
