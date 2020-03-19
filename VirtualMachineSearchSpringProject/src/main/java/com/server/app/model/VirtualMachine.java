@@ -8,17 +8,19 @@ public class VirtualMachine {
 	private String IP;
 	private String username;
 	private String password;
+	private String path;
 
 	public VirtualMachine() {
 		
 	}
 	
-	public VirtualMachine(UUID userId,String ip,String username, String password){
+	public VirtualMachine(UUID userId,String ip,String username, String password, String path){
 		this.ID = UUID.randomUUID();
 		this.userId = userId;
 		this.IP = ip;
 		this.username = username;
 		this.password = password;
+		this.path = path;
 	}
 	
 	public UUID getID() {
@@ -60,12 +62,22 @@ public class VirtualMachine {
 	public void setUserId(UUID userId) {
 		this.userId = userId;
 	}
+	
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
 
 	@Override
 	public String toString() {
-		return "VirtualMachine [ID=" + ID + ", userId=" + userId + ", IP=" + IP + ", userName=" + username
-				+ ", password=" + password + "]";
+		return "VirtualMachine [ID=" + ID + ", userId=" + userId + ", IP=" + IP + ", username=" + username
+				+ ", password=" + password + ", path=" + path + "]";
 	}
-	
+
+
 }
 
