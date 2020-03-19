@@ -1,4 +1,4 @@
-package com.server.app.config.authentication;
+/*package com.server.app.config.authentication;
 
 import com.server.app.model.*;
 import io.jsonwebtoken.Claims;
@@ -19,6 +19,7 @@ public class JwtTokenUtil implements Serializable {
 	/**
 	 * 
 	 */
+/*
 	private static final long serialVersionUID = 1L;
 
 	public String getUsernameFromToken(String token) {
@@ -69,4 +70,4 @@ public class JwtTokenUtil implements Serializable {
               username.equals(userDetails.getUsername_())
                     && !isTokenExpired(token));
     }
-}
+}*/

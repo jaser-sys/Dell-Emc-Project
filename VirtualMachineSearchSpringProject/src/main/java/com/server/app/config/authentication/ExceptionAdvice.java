@@ -1,4 +1,4 @@
-package com.server.app.config.authentication;
+/*package com.server.app.config.authentication;
 import com.server.app.model.ApiResponse;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -14,3 +14,4 @@ public class ExceptionAdvice {
         return apiResponse;
     }
 }
+*/

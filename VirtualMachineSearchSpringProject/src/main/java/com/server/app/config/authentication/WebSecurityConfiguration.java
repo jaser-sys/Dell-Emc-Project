@@ -1,4 +1,4 @@
-package com.server.app.config.authentication;
+/*package com.server.app.config.authentication;
 
 import javax.servlet.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,3 +80,4 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	    }
 
 }
+*/

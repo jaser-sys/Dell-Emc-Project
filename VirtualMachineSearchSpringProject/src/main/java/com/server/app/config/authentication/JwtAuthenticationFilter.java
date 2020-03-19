@@ -1,4 +1,4 @@
-package com.server.app.config.authentication;
+/*package com.server.app.config.authentication;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.SignatureException;
@@ -82,4 +82,4 @@ public class JwtAuthenticationFilter  extends BasicAuthenticationFilter{
 
         chain.doFilter(req, res);
     }
-}
+}*/

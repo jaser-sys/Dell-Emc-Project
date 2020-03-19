@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.stereotype.Repository;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import com.server.app.model.User;
 import com.server.app.model.UserLogin;
 
@@ -29,8 +29,8 @@ public class UserDao implements UserDaoable{
 	@Autowired
     DataSource dataSource;
 	
-	 @Autowired
-	   PasswordEncoder passwordEncoder;
+	 //@Autowired
+	   //PasswordEncoder passwordEncoder;
 	 
 	 
 	@Override
@@ -86,8 +86,9 @@ public class UserDao implements UserDaoable{
 	
 	@Override
 	public User addUser(UserLogin user) {
-		String encodedPwd=passwordEncoder.encode(user.getPassword());
-		User user_=new User(user.getUsername(), encodedPwd);
+		//String encodedPwd=passwordEncoder.encode(user.getPassword());
+		//User user_=new User(user.getUsername(), encodedPwd);
+		User user_=new User(user.getUsername(), user.getPassword());
 		try (Connection conn = connect();
 				PreparedStatement stat = conn.prepareStatement("INSERT INTO user(id,username_,password_) VALUES(?,?,?) ")){
 			    stat.setObject(1, user_.getId_());

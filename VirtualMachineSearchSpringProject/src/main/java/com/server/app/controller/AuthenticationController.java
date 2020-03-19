@@ -1,4 +1,4 @@
-package com.server.app.controller;
+/*package com.server.app.controller;
 import com.server.app.config.authentication.JwtTokenUtil;
 import com.server.app.model.ApiResponse;
 import com.server.app.model.AuthToken;
@@ -46,4 +46,4 @@ import org.springframework.web.bind.annotation.*;
 	
     }
 	
-}
+}*/
