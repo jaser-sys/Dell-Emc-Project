@@ -24,9 +24,9 @@ public class FileController{
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,value =  "/ByName")
-	public List<File>  getFilesByName(String IP, String name){
+	public List<File>  getFilesByName(IpList IP, String name){
 		try {
-			return fService.getFilesByFileName(IP, name);
+			return fService.getFilesByFileName(IP.getIp(), name);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
