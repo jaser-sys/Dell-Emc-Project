@@ -1,4 +1,4 @@
-/*package com.server.app.config.authentication;
+package com.server.app.config.authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,7 @@ public class JwtAuthenticationEntryPoint implements  AuthenticationEntryPoint, S
 	/**
 	 * 
 	 */
-/*
+
 	private static final long serialVersionUID = 1L;
 	
 	
@@ -26,4 +26,3 @@ public class JwtAuthenticationEntryPoint implements  AuthenticationEntryPoint, S
 	}
 	
 }
-*/

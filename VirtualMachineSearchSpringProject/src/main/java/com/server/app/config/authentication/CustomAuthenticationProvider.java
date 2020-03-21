@@ -1,4 +1,4 @@
-/*package com.server.app.config.authentication;
+package com.server.app.config.authentication;
 
 
 
@@ -47,4 +47,3 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
        return aClass.equals(UsernamePasswordAuthenticationToken.class);
    }
 }
-*/
