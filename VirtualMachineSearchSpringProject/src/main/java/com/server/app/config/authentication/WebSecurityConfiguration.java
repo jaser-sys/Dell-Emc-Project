@@ -6,10 +6,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -59,7 +61,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	    }
 	
-	    
+       //to enable swagger in development only
+       @Override
+	   @Profile("!development")
+	    public void configure(WebSecurity web) throws Exception {
+	        web.ignoring().antMatchers("/**");
+	    }
+       
 	    @Bean
 	    protected CustomAuthenticationProvider customuthenticationProviderBean() {
 	    	
