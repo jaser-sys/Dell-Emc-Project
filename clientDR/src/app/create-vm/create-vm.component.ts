@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {virtualMachine} from '../model/virtualMachine';
-import { VirtualMachineService } from '../virtual-machine.service';
+import { VirtualMachineService } from '../service/virtual-machine.service';
 import { from } from 'rxjs';
 import { Router } from '@angular/router';
 
