@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { virtualMachine } from '../model/virtualMachine';
+import { User } from "../model/user";
+import { VirtualMachineService } from '../service/virtual-machine.service';
 
 @Component({
   selector: 'app-list-vm',
@@ -7,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListVmComponent implements OnInit {
 
-  constructor() { }
+    vms: virtualMachine[] = [];
+    usename: string;
 
-  ngOnInit(): void {
+    constructor(private router: Router, private vmService: VirtualMachineService) { }
+
+    ngOnInit(): void {
+
+        if (!window.localStorage.getItem('token') || !window.localStorage.getItem('username')) {
+            this.router.navigate(['login']);
+            return;
+        }
   }
 
 }
