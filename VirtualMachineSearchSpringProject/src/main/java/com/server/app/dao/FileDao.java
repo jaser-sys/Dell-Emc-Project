@@ -8,19 +8,31 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.server.app.model.File;
+import com.server.app.model.User;
+import com.server.app.model.VirtualMachine;
+import com.server.app.service.VirtualMachineService;
+import com.server.app.dao.VirtualMachineDao;
+import com.server.app.dao.*;
 
 @Repository
 @CrossOrigin(origins = "http://localhost:4200")
 public class FileDao implements FileDaoable{
 	@Autowired
     DataSource dataSource;
+	
+	
+	 private VirtualMachineDao vmDao;
+	 private UserDao userDao;
 	
 	@Override
 	public Connection connect() {
@@ -187,6 +199,50 @@ public class FileDao implements FileDaoable{
 		return myFiles;
 	}
 	
+	
+	@Override
+	public List<File> getFilesByFileNameMulti(String username, String fileName) throws Exception {
+		List<File> ipFiles= new ArrayList<File>();
+	    List<File> allFiles=new ArrayList<File>();
+	    UUID userId=userDao.getUserId(username);
+	    List<String> ips=vmDao.getVirtualMachinesIPS(userId);
+	    for(int i=0; i<ips.size(); i++) {
+	    	ipFiles=getFilesByFileName(ips.get(i),fileName);
+	    	if(ipFiles != null) {
+	    	allFiles.addAll(ipFiles);
+	    	}
+	    }
+		return allFiles;
+	}
+
+	
+	@Override
+	public List<File> getFilesBySizeInBytesMulti(String username, int size) throws ParseException{
+		List<File> ipFiles= new ArrayList<File>();
+	    List<File> allFiles=new ArrayList<File>();
+	    UUID userId=userDao.getUserId(username);
+	    List<String> ips=vmDao.getVirtualMachinesIPS(userId);
+	    for(int i=0; i<ips.size(); i++) {
+	    	ipFiles=getFilesBySizeInBytes(ips.get(i),size);
+	    	allFiles.addAll(ipFiles);
+	    }
+		return allFiles;
+	}
+
+	
+	@Override
+	public List<File> retFilesByDateMaxMulti(String username, String m_Date) throws Exception{
+		List<File> ipFiles= new ArrayList<File>();
+	    List<File> allFiles=new ArrayList<File>();
+	    UUID userId=userDao.getUserId(username);
+	    List<String> ips=vmDao.getVirtualMachinesIPS(userId);
+	    for(int i=0; i<ips.size(); i++) {
+	    	ipFiles=retFilesByDateMax(ips.get(i),m_Date);
+	    	allFiles.addAll(ipFiles);
+	    }
+		return allFiles;
+		
+	}
 	
 	@Override
 	public <S extends File> S save(S entity) {
