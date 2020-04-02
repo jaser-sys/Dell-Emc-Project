@@ -1,6 +1,7 @@
 package com.server.app.service;
 
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,20 @@ public class FileService implements FileServiceable{
 			return fileDao.getAll(IP);
 
 	}
+	@Override
+	public List<File> getFilesByFileNameMulti(String username, String fileName) throws Exception {
+		return fileDao.getFilesByFileNameMulti(username,fileName);
+	}
 
+	@Override
+	public List<File> getFilesBySizeInBytesMulti(String username, int size) throws ParseException {
+		return fileDao.getFilesBySizeInBytesMulti(username,size);
+	}
+
+	@Override
+	public List<File> retFilesByDateMaxMulti(String username, String m_Date) throws Exception {
+		return fileDao.retFilesByDateMaxMulti(username,m_Date);
+	}
 	@Override
 	public void addFile(String IP,File f) {
 		fileDao.addFile(IP,f);		
@@ -59,5 +73,7 @@ public class FileService implements FileServiceable{
 		fileDao.addFiles(IP,list);
 
 	}
+
+	
 
 }
