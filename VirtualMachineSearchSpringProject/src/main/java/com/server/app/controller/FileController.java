@@ -7,7 +7,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.HttpStatus;
 
+import com.server.app.config.authentication.CustomAuthenticationProvider;
+import com.server.app.model.ApiResponse;
 import com.server.app.model.File;
 import com.server.app.service.FileService;
 
@@ -18,45 +24,59 @@ public class FileController{
 	@Autowired
 	FileService fService=new FileService();
 	
-	@RequestMapping(method = RequestMethod.GET,value =  "/AllEntries")
-	public List<File> getFiles(String IP) throws Exception{
-		return fService.getFiles(IP);
+	@GetMapping(value =  "/listfiles/{ip}")
+	public ApiResponse<List<File>> getFiles(@PathVariable String ip) throws Exception{
+		 List<File> files=fService.getFiles(ip);
+		return new ApiResponse<>(HttpStatus.OK.value(), "file list fetched successfully.",files);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET,value =  "/ByName")
-	public List<File>  getFilesByName(IpList IP, String name){
+	@GetMapping(value =  "/filesByName/{ip}")
+	public ApiResponse<List<File>> getFilesByName(@PathVariable(value = "ip") String ip,@RequestParam (value = "name")String name){
 		try {
-			return fService.getFilesByFileName(IP.getIp(), name);
+			
+			 List<File> files= fService.getFilesByFileName(ip, name);
+			 return new ApiResponse<>(HttpStatus.OK.value(), "file list fetched successfully.",files);
+			 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET,value =  "/BySize")
-	public List<File> getFilesBySize(String IP, int size){
+	@GetMapping(value =  "/filesBySize/{ip}")
+	public ApiResponse<List<File>> getFilesBySize(@PathVariable(value = "ip") String ip,@RequestParam(value = "size")  int size){
+		
 		try {
-			return fService.getFilesBySize(IP, size);
+			
+			List<File> files = fService.getFilesBySize(ip, size);
+			return new ApiResponse<>(HttpStatus.OK.value(), "file list fetched successfully.",files);
+			 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
 		return null;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET,value =  "/ByDate")
-	public List<File> getFilesByDate(String IP, String m_Date){
+	@GetMapping(value =  "/filesByDate/{ip}")
+	public ApiResponse<List<File>> getFilesByDate(@PathVariable(value = "ip") String IP,@RequestParam(value = "date") String m_Date){
 		try {
-			return fService.retFilesByDateMax(IP, m_Date);
+			
+			List<File> files = fService.retFilesByDateMax(IP, m_Date);
+			return new ApiResponse<>(HttpStatus.OK.value(), "file list fetched successfully.",files);
+			 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
 		return null;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET,value =  "/dateBtw")
-	public List<File> getFilesByDateBtw(String IP, String f_Date, String t_Date){
+	@GetMapping(value =  "/filesDateBtw/{ip}")
+	public ApiResponse<List<File>> getFilesByDateBtw(@PathVariable String IP,@RequestParam(value = "f_Date")  String f_Date,@RequestParam(value = "t_Date")  String t_Date){
 		try {
-			return fService.getFilesByDateBtw(IP, f_Date,t_Date);
+			
+			List<File> files = fService.getFilesByDateBtw(IP, f_Date,t_Date);
+			return new ApiResponse<>(HttpStatus.OK.value(), "file list fetched successfully.",files);
+			 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
