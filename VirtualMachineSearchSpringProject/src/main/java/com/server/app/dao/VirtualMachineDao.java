@@ -130,6 +130,25 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 		return myVirtualMachines;
 	}
 	
+	@Override
+	public List<String> getVirtualMachinesIPS(UUID userId){
+		String sqlCommand = "SELECT IP FROM virtualMachine WHERE userID=\'"+userId+"\';" ;
+		List<String> ips= new ArrayList<String>();
+		
+		try (Connection conn = this.connect();
+	             Statement stmt  = conn.createStatement();
+	             ResultSet result    = stmt.executeQuery(sqlCommand)){
+			
+	            while (result.next()) {
+	            	ips.add(result.getString("IP"));
+	            
+	            }
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+		return ips;
+	}
+	
 	public void updatePasswordByID(UUID vmID,String newPassword) {
 		String sqlCommand = "UPDATE virtualMachines SET password_=\""+newPassword+"\" WHERE ID = \'" + vmID.toString() + "\';";
 		
