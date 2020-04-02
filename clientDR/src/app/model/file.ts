@@ -1,7 +1,7 @@
 export class file {
-    vmID: string;
-    name: string;
-    size: number;
+    vmIP: string;
+    fileName: string;
+    sizeInBytes: number;
     creationDate: string;
     location: string;
 }

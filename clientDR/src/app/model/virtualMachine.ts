@@ -1,7 +1,7 @@
 export class virtualMachine {
-    vmIP: string;
-    fileName: string;
-    sizeInBytes: number;
-    creationDate: string;
-    location: string;
+
+    ip: string;
+    userName: string;
+    password: string;
+    path: string;
 }
