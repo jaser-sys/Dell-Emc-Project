@@ -23,7 +23,7 @@ import com.server.app.service.VirtualMachineService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-
+@RequestMapping("/vm")
 public class VirtualMachineController {
 	
 	@Autowired
