@@ -33,7 +33,13 @@ public class FileDao implements FileDaoable{
 	
 	 private VirtualMachineDao vmDao;
 	 private UserDao userDao;
-	
+	 
+	 @Autowired
+	  public void init(@Lazy final VirtualMachineDao vmDao,@Lazy final UserDao userDao) {
+	     this.vmDao = vmDao;
+	     this.userDao=userDao;
+	 }
+	 
 	@Override
 	public Connection connect() {
 		Connection conn = null;
