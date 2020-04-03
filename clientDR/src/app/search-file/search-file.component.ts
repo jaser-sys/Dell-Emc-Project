@@ -3,7 +3,10 @@ import { Router } from '@angular/router';
 import { FileService } from '../service/file.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { from } from 'rxjs';
-
+import { FilterBy } from '../model/filter-by';
+import { Filters } from '../model/filter-list';
+import { Size } from '../model/size';
+import { SizeList} from '../model/size-list';
 declare const hide_all:any;
 declare const click_name:any;
 declare const click_size:any;

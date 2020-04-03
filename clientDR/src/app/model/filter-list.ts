@@ -1,11 +1,11 @@
-import { filterBy } from './filter-by';
+import { FilterBy } from './filter-by';
 
 export class Filters {
 
 
     radioVal: string;
 
-    static values: filterBy[] = [
+    static values: FilterBy[] = [
 
         {
             name: 'name',
