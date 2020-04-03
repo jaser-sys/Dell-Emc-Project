@@ -6,15 +6,17 @@ import { CreateVmComponent } from './create-vm/create-vm.component';
 import { SearchFileComponent } from './search-file/search-file.component';
 import { ListFileComponent } from './list-file/list-file.component';
 import { ListVmComponent } from './list-vm/list-vm.component';
+import { ListFileMultiComponent } from './list-file-multi/list-file-multi.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'user/login', pathMatch: 'full' },
     { path: 'user/login', component: UserLoginComponent },
-    { path: 'user/createUser', component: CreateUserComponent },
+    { path: 'user/register', component: CreateUserComponent },
     { path: 'addVM', component: CreateVmComponent },
-    { path: 'vms', component: ListVmComponent },
-    { path: 'files', component: ListFileComponent },
-    { path: 'filter', component: SearchFileComponent},
+    { path: 'listVM', component: ListVmComponent },
+    { path: 'file/listfile', component: ListFileComponent },
+    { path: 'file/filter', component: SearchFileComponent },
+    { path: 'file/listfilemulti', component: ListFileMultiComponent }
 ];
 
 @NgModule({
