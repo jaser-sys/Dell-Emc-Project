@@ -16,12 +16,40 @@ export class FileService {
     constructor(private http: HttpClient) { }
     private listPerVM: Observable<ApiResponse>;
     private listAllVMSRes: Observable<ApiResponse>;
-
+    sizeIs: string;
 
     getFilesList(ip: string): void {
         this.url = this.baseUrl + '/listfiles';
         this.listPerVM = this.http.get<ApiResponse>(`${this.url}/${ip}`);
     }
+
+
+    getFilesByName(ip: string, name: string) {
+        let params = new HttpParams();
+        params = params.append('name', name);
+
+        this.url = this.baseUrl + '/filesByName';
+        this.listPerVM  = this.http.get<ApiResponse>(`${this.url}/${ip}`, { params });
+    }
+
+    getFilesBySize(ip: string, size: number) {
+        
+        let params = new HttpParams();
+        this.sizeIs = size + "";
+        params.append('size', this.sizeIs);
+        console.log(size.toString());
+        this.url = this.baseUrl + '/filesBySize';
+        this.listPerVM  = this.http.get<ApiResponse>(`${this.url}/${ip}`, { params });
+    }
+
+    getFilesByDate(ip: string, date: string) {
+        let params = new HttpParams();
+        params = params.append('date', date);
+
+        this.url = this.baseUrl + '/filesByDate';
+        this.listPerVM  = this.http.get<ApiResponse>(`${this.url}/${ip}`, { params });
+    }
+
     getListPerVM(): Observable<ApiResponse> {
         const type = 'ip';
 
