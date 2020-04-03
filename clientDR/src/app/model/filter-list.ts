@@ -1,6 +1,6 @@
 import { FilterBy } from './filter-by';
 
-export class Filters {
+export class FilterList {
 
 
     radioVal: string;

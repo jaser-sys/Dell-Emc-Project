@@ -4,14 +4,18 @@ import { FileService } from '../service/file.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { from } from 'rxjs';
 import { FilterBy } from '../model/filter-by';
-import { Filters } from '../model/filter-list';
+import { FilterList } from '../model/filter-list';
 import { Size } from '../model/size';
-import { SizeList} from '../model/size-list';
+import { SizeList } from '../model/size-list';
+
 declare const hide_all:any;
 declare const click_name:any;
 declare const click_size:any;
 declare const click_date:any;
 declare const checkInput:any;
+
+const listFilter: FilterBy[] = FilterList.values;
+const listSize: Size[] = SizeList.values;
 
 @Component({
   selector: 'app-search-file',
@@ -19,6 +23,7 @@ declare const checkInput:any;
   styleUrls: ['./search-file.component.css']
 })
 export class SearchFileComponent implements OnInit {
+
 
     constructor(private router: Router, private fileService: FileService) { }
 
