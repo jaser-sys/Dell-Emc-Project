@@ -75,6 +75,10 @@ export class UserLoginComponent implements OnInit {
     }
 
     gotoList() {
-        this.router.navigate(['/vms']);
+        this.router.navigate(['listVM']);
+    }
+
+    goToRegister() {
+        this.router.navigate(['user/register']);
     }
 }

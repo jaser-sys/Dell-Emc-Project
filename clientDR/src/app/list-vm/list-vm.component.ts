@@ -22,7 +22,20 @@ export class ListVmComponent implements OnInit {
             this.router.navigate(['login']);
             return;
         }
-  }
+        const username = window.localStorage.getItem('username');
+        window.localStorage.setItem('username', username);
+        this.vmService.getListVms(username)
+            .subscribe((data) => {
+
+                this.vms = data.result as virtualMachine[]   
+              
+
+            });
+
+    }
+
+
+
     public listFiles(VM: virtualMachine): void {
         window.localStorage.setItem('IP', VM.ip);
         this.router.navigate(['file/listfile']);
