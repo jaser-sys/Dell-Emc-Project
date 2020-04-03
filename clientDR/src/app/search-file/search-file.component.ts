@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FileService } from '../service/file.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { from } from 'rxjs';
 
 declare const hide_all:any;
 declare const click_name:any;
@@ -13,9 +17,13 @@ declare const checkInput:any;
 })
 export class SearchFileComponent implements OnInit {
 
-  constructor() { }
+    constructor(private router: Router, private fileService: FileService) { }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
+        if (!window.localStorage.getItem('token') || !window.localStorage.getItem('username')) {
+            this.router.navigate(['user/login']);
+            return;
+        }
   }
 
   onClickHideAll(){
