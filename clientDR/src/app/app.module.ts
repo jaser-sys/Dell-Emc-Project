@@ -15,6 +15,7 @@ import { CreateVmComponent } from './create-vm/create-vm.component';
 import { SearchFileComponent } from './search-file/search-file.component';
 import { ListFileComponent } from './list-file/list-file.component';
 import { ListVmComponent } from './list-vm/list-vm.component';
+import { ListFileMultiComponent } from './list-file-multi/list-file-multi.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ListVmComponent } from './list-vm/list-vm.component';
     CreateVmComponent,
     SearchFileComponent,
     ListFileComponent,
-    ListVmComponent
+    ListVmComponent,
+    ListFileMultiComponent
   ],
   imports: [
     BrowserModule,
