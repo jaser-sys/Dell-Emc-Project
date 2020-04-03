@@ -8,14 +8,11 @@ import { FilterList } from '../model/filter-list';
 import { Size } from '../model/size';
 import { SizeList } from '../model/size-list';
 
-declare const hide_all:any;
-declare const click_name:any;
-declare const click_size:any;
-declare const click_date:any;
-declare const checkInput:any;
+
 
 const listFilter: FilterBy[] = FilterList.values;
 const listSize: Size[] = SizeList.values;
+const toFilter: number[] = [Math.pow(2, 10), Math.pow(2, 20), Math.pow(2, 30)];
 
 @Component({
   selector: 'app-search-file',
@@ -24,7 +21,16 @@ const listSize: Size[] = SizeList.values;
 })
 export class SearchFileComponent implements OnInit {
 
-
+    ip: string;
+    selVal: string;
+    fileName: string;
+    isShow = false;
+    sizeInput: number;
+    dateInput: any;
+    toFilterBy: string;
+    byteSize: number;
+    apiDate: any;
+    username: string;
     constructor(private router: Router, private fileService: FileService) { }
 
     ngOnInit(): void {
@@ -34,21 +40,9 @@ export class SearchFileComponent implements OnInit {
         }
   }
 
-  onClickHideAll(){
-    hide_all();
-  }
 
-  onClickName(){
-    click_name();
-  }
-  onClickSize(){
-    click_size();
-  }
-  onClickDate(){
-    click_date();
-  }
-  onClickSubmit(){
-  checkInput();
-  }
+
+
+
 
 }
