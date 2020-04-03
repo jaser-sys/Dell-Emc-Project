@@ -46,10 +46,95 @@ export class SearchFileComponent implements OnInit {
             return;
         }
   }
+    toggleDisplay() {
+        this.isShow = !this.isShow;
+    }
+
+    callfilterByName(username: string, name: string) {
+
+        this.ip = window.localStorage.getItem("scanVM");
+        if (!window.localStorage.getItem("scanVM")) {
+            console.log("no scan vm");
+            return;
+        }
+         else {
+            this.fileService.getFilesByName(this.ip, name);
+            const type = 'ip';
+            console.log("ip name")
+            window.localStorage.setItem('typeIp', type);
+            this.goToList();
+        }
 
 
+    }
+    callfilterBySize(username: string, sizeVal: number, unit: string) {
+        console.table(toFilter)
+        this.ip = window.localStorage.getItem("scanVM");
+        if (unit === 'KB') {
+            if (sizeVal === 0) {
+                this.byteSize = toFilter[0];
+
+            }
+            this.byteSize = sizeVal * toFilter[0];
+        } else if (unit === 'MB') {
+            this.byteSize = sizeVal * toFilter[1];
+        } else if (unit === 'GB') {
+            this.byteSize = sizeVal * toFilter[2];
+        } else {
+            return;
+        }
+
+        if (!window.localStorage.getItem("scanVM")) {
+            return;
+        } else {
+            console.log(this.byteSize);
+            this.fileService.getFilesBySize(this.ip, this.byteSize);
+            const type = 'ip';
+            console.log("ip name")
+            window.localStorage.setItem('typeIp', type);
+            this.goToList();
+        }
 
 
+    }
+    callfilterByDate(username: string, ip_: string, dateVal: any) {
+        this.ip = window.localStorage.getItem("scanVM");
+        console.log(ip_);
+        if (!window.localStorage.getItem("scanVM")) {
+            return;
+        } else {
+            console.log("D5")
+            this.fileService.getFilesByDate(this.ip, dateVal);
+            const type = 'ip';
+            window.localStorage.setItem('typeIp', type);
+            this.goToList();
+        }
+
+    }
+
+    onSubmit() {
+
+        const username = window.localStorage.getItem('username');
+        this.ip = window.localStorage.getItem("scanVM") + "";
+        console.log(this.ip);
+        console.log(username);
+        if (this.toFilterBy === 'name') {
+            this.callfilterByName(username, this.fileName);
+        }
+        else if (this.toFilterBy === 'size') {
+
+            this.callfilterBySize(username, this.sizeInput, this.selVal);
+
+        } else if (this.toFilterBy === 'date') {
+            
+
+            this.callfilterByDate(username, this.ip, this.apiDate);
+        }
+    }
+
+    goToList() {
+        this.router.navigate(['file/listfile']);
+    }
 
 
 }
