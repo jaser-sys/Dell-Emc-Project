@@ -26,7 +26,7 @@ export class ListFileComponent implements OnInit {
             const isIp = window.localStorage.getItem('scanVM').toString();
             if (isIp.length > 6) {
                 console.log("here at list ips");
-                this.fileService.getListToCompList()
+                this.fileService.getListPerVM()
                     .subscribe((data) => {
 
                         this.files = data.result as File[];
