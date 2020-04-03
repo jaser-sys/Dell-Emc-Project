@@ -10,8 +10,7 @@ import { SizeList } from '../model/size-list';
 
 
 
-const listFilter: FilterBy[] = FilterList.values;
-const listSize: Size[] = SizeList.values;
+
 const toFilter: number[] = [Math.pow(2, 10), Math.pow(2, 20), Math.pow(2, 30)];
 
 @Component({
@@ -21,6 +20,9 @@ const toFilter: number[] = [Math.pow(2, 10), Math.pow(2, 20), Math.pow(2, 30)];
 })
 export class SearchFileComponent implements OnInit {
 
+
+    listFilter: FilterBy[] = FilterList.values;
+    listSize: Size[] = SizeList.values;
     ip: string;
     selVal: string;
     fileName: string;
@@ -31,7 +33,12 @@ export class SearchFileComponent implements OnInit {
     byteSize: number;
     apiDate: any;
     username: string;
-    constructor(private router: Router, private fileService: FileService) { }
+
+    constructor(private router: Router, private fileService: FileService) {
+
+        
+
+    }
 
     ngOnInit(): void {
         if (!window.localStorage.getItem('token') || !window.localStorage.getItem('username')) {
