@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
-import { virtualMachine } from '../model/virtualMachine';
+import { VirtualMachine } from '../model/virtualMachine';
 import { ApiResponse } from '../model/api.response';
 
 @Injectable({
@@ -15,14 +15,14 @@ export class VirtualMachineService {
 
 
   addVM(VirtualMachine: Object): Observable<Object> {
-      return this.http.post(`${this.baseUrl}/${'post'}`, virtualMachine);
+      return this.http.post(`${this.baseUrl}/${'post'}`, VirtualMachine);
   }
     getListVms(username: string): Observable<ApiResponse> {
         this.url = this.baseUrl + '/listVM';
         return this.http.get<ApiResponse>(`${this.url}/${username}`);
     }
 
-    updateVMs(username: string, vm: virtualMachine): Observable<ApiResponse> {
+    updateVMs(username: string, vm: VirtualMachine): Observable<ApiResponse> {
         this.url = this.baseUrl + '/updateVM';
         return this.http.put<ApiResponse>(`${this.url}/${username}`, vm);
     }

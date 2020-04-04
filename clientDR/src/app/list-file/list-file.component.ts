@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse, HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { file } from '../model/file';
+import { File } from '../model/file';
 import { FileService } from '../service/file.service';
 @Component({
   selector: 'app-list-file',

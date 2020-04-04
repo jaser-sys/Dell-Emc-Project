@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpRequest, HttpEvent, HttpParams } from '@angular/common/http';
-import { virtualMachine } from '../model/virtualMachine';
-import { file } from '../model/file';
+import { VirtualMachine } from '../model/virtualMachine';
+import { File } from '../model/file';
 import { ApiResponse } from '../model/api.response';
 
 @Injectable({

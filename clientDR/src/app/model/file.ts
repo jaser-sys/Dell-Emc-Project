@@ -1,4 +1,4 @@
-export class file {
+export class File {
     vmIP: string;
     fileName: string;
     sizeInBytes: number;

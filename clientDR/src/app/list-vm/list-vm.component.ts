@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { virtualMachine } from '../model/virtualMachine';
+import { VirtualMachine } from '../model/virtualMachine';
 import { User } from "../model/user";
 import { VirtualMachineService } from '../service/virtual-machine.service';
 
@@ -11,7 +11,7 @@ import { VirtualMachineService } from '../service/virtual-machine.service';
 })
 export class ListVmComponent implements OnInit {
 
-    vms: virtualMachine[] = [];
+    vms: VirtualMachine[] = [];
     usename: string;
 
     constructor(private router: Router, private vmService: VirtualMachineService) { }
@@ -28,7 +28,7 @@ export class ListVmComponent implements OnInit {
         this.vmService.getListVms(username)
             .subscribe((data) => {
 
-                this.vms = data.result as virtualMachine[]   
+                this.vms = data.result as VirtualMachine[]   
 
             });
 
@@ -36,7 +36,7 @@ export class ListVmComponent implements OnInit {
 
 
 
-    public listFiles(VM: virtualMachine): void {
+    public listFiles(VM: VirtualMachine): void {
         window.localStorage.setItem('IP', VM.ip);
         this.router.navigate(['file/listfile']);
 
@@ -51,17 +51,17 @@ export class ListVmComponent implements OnInit {
         this.router.navigate(['file/filter']);
     };
 
-    public scanVM(VM: virtualMachine): void {
+    public scanVM(VM: VirtualMachine): void {
         window.localStorage.removeItem("scanVM");
         window.localStorage.setItem("scanVM", VM.ip.toString());
         this.router.navigate(['file/filter']);
     };
-    public updateVM(VM: virtualMachine): void {
+    public updateVM(VM: VirtualMachine): void {
         window.localStorage.removeItem("updateVM");
         window.localStorage.setItem("updateVM", VM.ip.toString());
         this.router.navigate(['vm/update-vm']);
     };
-    public deleteVM(VM: virtualMachine): void {
+    public deleteVM(VM: VirtualMachine): void {
         this.vmService.deleteVMByIP(VM.ip)
             .subscribe(data => {
                 this.vms = this.vms.filter(v => v !== VM);

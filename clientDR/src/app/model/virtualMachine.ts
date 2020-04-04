@@ -1,4 +1,4 @@
-export class virtualMachine {
+export class VirtualMachine {
 
     ip: string;
     userName: string;

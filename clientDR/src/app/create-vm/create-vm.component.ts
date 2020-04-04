@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {virtualMachine} from '../model/virtualMachine';
+import { VirtualMachine} from '../model/virtualMachine';
 import { VirtualMachineService } from '../service/virtual-machine.service';
 import { from } from 'rxjs';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class CreateVmComponent implements OnInit {
 
-  vm:virtualMachine = new virtualMachine();
+  vm:VirtualMachine = new VirtualMachine();
   submitted = false ;
   constructor(private vmService : VirtualMachineService,private router : Router) {}
 
@@ -24,7 +24,7 @@ export class CreateVmComponent implements OnInit {
   }
 newVM():void{
   this.submitted = false;
-  this.vm = new virtualMachine();
+  this.vm = new VirtualMachine();
 }
 
 save(){
