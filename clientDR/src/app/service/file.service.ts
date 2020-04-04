@@ -15,7 +15,7 @@ export class FileService {
   
     constructor(private http: HttpClient) { }
     private listPerVM: Observable<ApiResponse>;
-    private listAllVMSRes: Observable<ApiResponse>;
+    private listPerUser: Observable<ApiResponse>;
     sizeIs: string;
 
     getFilesList(ip: string): void {
@@ -50,9 +50,39 @@ export class FileService {
         this.listPerVM  = this.http.get<ApiResponse>(`${this.url}/${ip}`, { params });
     }
 
-    getListPerVM(): Observable<ApiResponse> {
-        const type = 'ip';
 
+    getFilesByNameMulti(username: string, name: string) {
+        let params = new HttpParams();
+        params = params.append('name', name);
+        console.log(username);
+        this.url = this.baseUrl + '/listfilesNameUser';
+        this.listPerUser = this.http.get<ApiResponse>(`${this.url}/${username}`, { params });
+     
+    }
+
+    getFilesBySizeMulti(username: string, size: number) {
+        this.sizeIs = size + "";
+        let params = new HttpParams();
+        params = params.append('size', this.sizeIs);
+        this.url = this.baseUrl + '/listfilesBySizeUser';
+        this.listPerUser = this.http.get<ApiResponse>(`${this.url}/${username}`, { params });
+    }
+
+    getFilesByDateMulti(username: string, date: string) {
+        
+        let params = new HttpParams();
+        params = params.append('date', date);
+        this.url = this.baseUrl + '/listfilesByDateUser';
+        this.listPerUser = this.http.get<ApiResponse>(`${this.url}/${username}`, { params });
+    }
+
+    getListPerVM(): Observable<ApiResponse> {
+     
         return this.listPerVM;
+    }
+
+    getListPerUser(): Observable<ApiResponse> {
+
+        return this.listPerUser
     }
 }
