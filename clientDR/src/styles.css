@@ -445,3 +445,79 @@ table.table {
   table.table td .add {
     display: none;
   }
+
+.s-radio-btn {
+  margin: 7px;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #000000a1 !important;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: #4CAF50 !important;
+}
+
+.mat-list-option[aria-selected="true"] {
+  background: #000000a1 !important;
+}
+
+.mat-select-panel {
+  background: #fff !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #4CAF50 !important;
+}
+
+.mat-option:hover:not(.mat-option-disabled) {
+  background-color: #4CAF50 !important;
+  color: #000000a1 !important;
+}
+
+.mat-select .mat-active {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.mat-focused .mat-select .mat-select-value {
+  color: black;
+}
+
+.mat-option.mat-selected:not(.mat-option-multiple):not(.mat-option-disabled) {
+  color: black;
+  background-color: #938f8f;
+}
+
+.mat-option:hover:not(.mat-option-disabled).mat-option:focus:not(.mat-option-disabled) {
+  background: #4CAF50 !important;
+}
+
+ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #4CAF50 !important;
+}
+
+deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #4CAF50 !important;
+}
+
+-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #4CAF50 !important;
+  ;
+}
+
+.mat-form-field-label {
+  /*change color of label*/
+  color: #4CAF50 !important;
+}
+
+.mat-calendar-body-selected {
+  background-color: #4CAF50 !important;
+}
+
+mat-datepicker-toggle {
+  color: #000000a1 !important;
+}
