@@ -1,7 +1,7 @@
-
-@import "~bootstrap/dist/css/bootstrap.min.css";
-@import "~material-design-icons-iconfont/dist/material-design-icons.css";
 @import "~@fortawesome/fontawesome-free-webfonts/css/fontawesome.css";
+@import "~material-design-icons-iconfont/dist/material-design-icons.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 *{
     margin: 0;
