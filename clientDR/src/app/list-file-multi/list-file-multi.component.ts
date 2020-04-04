@@ -3,12 +3,16 @@ import { file } from '../model/file';
 import { FileService } from '../service/file.service';
 import { HttpClient, HttpResponse, HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-list-file-multi',
   templateUrl: './list-file-multi.component.html',
   styleUrls: ['./list-file-multi.component.css']
 })
 export class ListFileMultiComponent implements OnInit {
+
+    files: File[];
+    type: string;
 
     constructor(private router: Router, private fileService: FileService) { }
 
@@ -18,7 +22,19 @@ export class ListFileMultiComponent implements OnInit {
 
             this.router.navigate(['user/login']);
             return;
-        } 
+        } else {
+            this.type = window.localStorage.getItem('typeAll') + "";
+            if (this.type == 'all') {
+                this.fileService.getListPerUser()
+                    .subscribe((data) => {
+
+                        this.files = data.result as File[];
+                        console.table(this.files);
+                    });
+            } else {
+                console.log("not found");
+            }
+        }
   }
 
 }
