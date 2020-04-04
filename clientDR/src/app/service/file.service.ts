@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpRequest, HttpEvent, HttpParams } from '@angular/common/http';
 import { VirtualMachine } from '../model/virtualMachine';
 import { File } from '../model/file';
-import { ApiResponse } from '../model/api.response';
+import { ApiResponse } from '../model/api-response';
 
 @Injectable({
   providedIn: 'root'
