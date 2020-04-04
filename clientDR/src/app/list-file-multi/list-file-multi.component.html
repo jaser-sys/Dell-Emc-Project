@@ -1,1 +1,38 @@
-<p>list-file-multi works!</p>
+
+<div class="wrap-login200">
+  <div class="container" style="float:right;width:100%">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-8"><h2><b>Files</b></h2></div>
+
+        </div>
+      </div>
+      <div>
+        <table class="table table-bordered" style="font-size: 20px;">
+          <thead>
+            <tr>
+              <th>VM IP</th>
+              <th>Name</th>
+              <th>Size</th>
+              <th>Creation Date</th>
+              <th style="width:26%">Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let file of files">
+              <td>{{file.vmIP}}</td>
+              <td>{{file.fileName}}</td>
+              <td>{{file.sizeInBytes}}</td>
+              <td>{{file.creationDate}}</td>
+              <td>{{file.location}}</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>
