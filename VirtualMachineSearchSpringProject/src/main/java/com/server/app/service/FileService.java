@@ -47,7 +47,7 @@ public class FileService implements FileServiceable{
 	}
 
 	@Override
-	public List<File> getFilesBySizeInBytesMulti(String username, int size) throws ParseException {
+	public List<File> getFilesBySizeMulti(String username, int size) throws ParseException {
 		return fileDao.getFilesBySizeInBytesMulti(username,size);
 	}
 

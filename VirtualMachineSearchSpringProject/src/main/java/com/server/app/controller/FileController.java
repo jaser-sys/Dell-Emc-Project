@@ -21,6 +21,7 @@ import com.server.app.service.FileService;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/file")
 public class FileController{
+	
 	@Autowired
 	FileService fService=new FileService();
 	
@@ -82,4 +83,45 @@ public class FileController{
 		}	
 		return null;
 	}
+	
+	@GetMapping(value =  "/listfilesNameMulti/{username}")
+	public ApiResponse<List<File>> getAllFilesByNameUser(@PathVariable(value = "username") String username,@RequestParam(value = "name")String name){
+		try {
+			
+			 List<File> files= fService.getFilesByFileNameMulti(username, name);
+		     return new ApiResponse<>(HttpStatus.OK.value(), "file list fetched successfully.",files);
+			 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@GetMapping(value =  "/listfilesBySizeMulti/{username}")
+	public ApiResponse<List<File>> getFilesBySizeUser(@PathVariable(value = "username") String username,@RequestParam(value = "size")  int size){
+	    try {
+		
+			 List<File> files = fService.getFilesBySizeMulti(username, size);
+			 return new ApiResponse<>(HttpStatus.OK.value(), "file list fetched successfully.",files);
+			 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		return null;
+	}
+	
+	
+	@GetMapping(value =  "/listfilesByDateMulti/{username}")
+	public ApiResponse<List<File>> getFilesByDateUser(@PathVariable(value = "username") String username,@RequestParam(value = "date") String m_Date){
+		try {
+			
+			List<File> files = fService.retFilesByDateMaxMulti(username, m_Date);
+			return new ApiResponse<>(HttpStatus.OK.value(), "file list fetched successfully.",files);
+			 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		return null;
+	}
+	
 }
