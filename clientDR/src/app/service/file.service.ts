@@ -27,7 +27,6 @@ export class FileService {
     getFilesByName(ip: string, name: string) {
         let params = new HttpParams();
         params = params.append('name', name);
-
         this.url = this.baseUrl + '/filesByName';
         this.listPerVM  = this.http.get<ApiResponse>(`${this.url}/${ip}`, { params });
     }
@@ -36,8 +35,7 @@ export class FileService {
         
         let params = new HttpParams();
         this.sizeIs = size + "";
-        params.append('size', this.sizeIs);
-        console.log(size.toString());
+        params = params.append('size', this.sizeIs);    
         this.url = this.baseUrl + '/filesBySize';
         this.listPerVM  = this.http.get<ApiResponse>(`${this.url}/${ip}`, { params });
     }
@@ -45,7 +43,6 @@ export class FileService {
     getFilesByDate(ip: string, date: string) {
         let params = new HttpParams();
         params = params.append('date', date);
-
         this.url = this.baseUrl + '/filesByDate';
         this.listPerVM  = this.http.get<ApiResponse>(`${this.url}/${ip}`, { params });
     }
@@ -53,8 +50,7 @@ export class FileService {
 
     getFilesByNameMulti(username: string, name: string) {
         let params = new HttpParams();
-        params = params.append('name', name);
-        console.log(username);
+        params = params.append('name', name);  
         this.url = this.baseUrl + '/listfilesNameMulti';
         this.listPerUser = this.http.get<ApiResponse>(`${this.url}/${username}`, { params });
      

@@ -24,13 +24,13 @@ export class ListFileComponent implements OnInit {
             return;
         } else {
             const isIp = window.localStorage.getItem('scanVM').toString();
-            if (isIp.length > 6) {
-                console.log("here at list ips");
+            if (isIp.length > 6 ) {
+                
                 this.fileService.getListPerVM()
                     .subscribe((data) => {
 
                         this.files = data.result as File[];
-                        console.table(this.files);
+                        
                     });
 
 

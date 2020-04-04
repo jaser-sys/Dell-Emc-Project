@@ -46,27 +46,33 @@ export class SearchFileComponent implements OnInit {
             this.router.navigate(['user/login']);
             return;
         }
-  }
+    }
+
+
+
     toggleDisplay() {
+
         this.isShow = !this.isShow;
     }
 
     callfilterByName(username: string, name: string) {
 
         this.ip = window.localStorage.getItem("scanVM");
+
         if (!window.localStorage.getItem("scanVM")) {
             console.log("no scan vm");
             return;
         }
+
         if (this.ip === "all") {
             this.fileService.getFilesByNameMulti(username, name);
             const type = 'all';
             window.localStorage.setItem('typeAll', type);
             this.goToListMulti();
+
         } else {
             this.fileService.getFilesByName(this.ip, name);
             const type = 'ip';
-            console.log("ip name")
             window.localStorage.setItem('typeIp', type);
             this.goToList();
         }
@@ -74,7 +80,7 @@ export class SearchFileComponent implements OnInit {
 
     }
     callfilterBySize(username: string, sizeVal: number, unit: string) {
-        console.table(toFilter)
+        
         this.ip = window.localStorage.getItem("scanVM");
         if (unit === 'KB') {
             if (sizeVal === 0) {
@@ -96,8 +102,10 @@ export class SearchFileComponent implements OnInit {
             const type = 'all';
             window.localStorage.setItem('typeAll', type);
             this.goToListMulti();
+
         } else if (!window.localStorage.getItem("scanVM")) {
             return;
+
         } else {
             console.log(this.byteSize);
             this.fileService.getFilesBySize(this.ip, this.byteSize);
@@ -110,6 +118,7 @@ export class SearchFileComponent implements OnInit {
 
     }
     callfilterByDate(username: string, dateVal: any) {
+
         this.ip = window.localStorage.getItem("scanVM");
         
         if (this.ip === 'all') {
@@ -117,8 +126,10 @@ export class SearchFileComponent implements OnInit {
             const type = 'all';
             window.localStorage.setItem('typeAll', type);
             this.goToListMulti();
+
         } else if (!window.localStorage.getItem("scanVM")) {
             return;
+
         } else {
             this.fileService.getFilesByDate(this.ip, dateVal);
             const type = 'ip';
@@ -133,8 +144,8 @@ export class SearchFileComponent implements OnInit {
 
         const username = window.localStorage.getItem('username');
         this.ip = window.localStorage.getItem("scanVM") + "";
-        console.log(this.ip);
-        console.log(username);
+    
+
         if (this.toFilterBy === 'name') {
             this.callfilterByName(username, this.fileName);
         }
@@ -150,9 +161,12 @@ export class SearchFileComponent implements OnInit {
     }
 
     goToList() {
+
         this.router.navigate(['file/listfile']);
     }
+
     goToListMulti() {
+
         this.router.navigate(['file/listfilemulti']);
     }
 

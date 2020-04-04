@@ -24,11 +24,11 @@ export class ListVmComponent implements OnInit {
         }
         const username = window.localStorage.getItem('username');
         window.localStorage.setItem('username', username);
+
         this.vmService.getListVms(username)
             .subscribe((data) => {
 
                 this.vms = data.result as virtualMachine[]   
-              
 
             });
 

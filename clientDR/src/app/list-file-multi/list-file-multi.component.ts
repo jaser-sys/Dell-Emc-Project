@@ -29,7 +29,7 @@ export class ListFileMultiComponent implements OnInit {
                     .subscribe((data) => {
 
                         this.files = data.result as File[];
-                        console.table(this.files);
+                        
                     });
             } else {
                 console.log("not found");
