@@ -17,7 +17,10 @@ export class CreateVmComponent implements OnInit {
   constructor(private vmService : VirtualMachineService,private router : Router) {}
 
   ngOnInit(): void {
-
+      if (!window.localStorage.getItem('token') || !window.localStorage.getItem('username')) {
+          this.router.navigate(['user/login']);
+          return;
+      }
   }
 newVM():void{
   this.submitted = false;
