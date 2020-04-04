@@ -3,17 +3,18 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
-*{
-    margin: 0;
-    padding: 0
+
+* {
+  margin: 0;
+  padding: 0
 }
 
 body {
-    background: linear-gradient(-135deg, #50c4c8, #a7d041);
-    height: 100%;
-    margin: 0;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  background: linear-gradient(-135deg, #50c4c8, #a7d041);
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .container {
@@ -63,9 +64,9 @@ element.style {
   -webkit-box-pack: center !important;
   justify-content: center !important;
   width: 32em !important;
-  max-width: 100% !important;
-  padding: 1.25em !important;
-  border: none !important;
+  max-width: 100%;
+  padding: 1.25em;
+  border: none;
   border-radius: 37px !important;
   background: #fff !important;
   font-family: inherit !important;
@@ -78,15 +79,15 @@ element.style {
   background: initial !important;
   background-color: #000000a1 !important;
   color: #fff !important;
-  font-size: 1.0625em !important;
+  font-size: 1.0625em;
 }
 
 .swal2-styled:not([disabled]) {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 [class^=swal2] {
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 .swal2-styled {
@@ -98,126 +99,127 @@ element.style {
 
 
 .form-container {
-    width: 250px;
-    height: auto;
-    padding: 20px 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 #000;
+  width: 250px;
+  height: auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 #000;
 }
 
 .wrap-login100 {
-    -webkit-tap-highlight-color: #a72727;
-    size: 20;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    font-family: Poppins-Regular, sans-serif;
-    margin: auto;
-    margin-top: 62px;
-    margin-bottom: 56px;
-    box-sizing: border-box;
-    width: 849px;
-    height: 814px;
-    background: #ffffff;
-    border-radius: 37px;
-    overflow: overlay;
-    display: flex;
-    justify-content: space-between;
-    padding: 274px;
+  -webkit-tap-highlight-color: #a72727;
+  size: 20;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  font-family: Poppins-Regular, sans-serif;
+  margin: auto;
+  margin-top: 62px;
+  margin-bottom: 56px;
+  box-sizing: border-box;
+  width: 849px;
+  height: 814px;
+  background: #ffffff;
+  border-radius: 37px;
+  overflow: overlay;
+  display: flex;
+  justify-content: space-between;
+  padding: 274px;
 }
 
 .wrap-login200 {
-    -webkit-tap-highlight-color: #a72727;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 16.5;
-    color: #212529;
-    font-family: Poppins-Regular, sans-serif;
-    margin: auto;
-    margin-top: 62px;
-    margin-bottom: 56px;
-    box-sizing: border-box;
-    width: 985px;
-    height: 814px;
-    background: #ffffff;
-    border-radius: 37px;
-    overflow: overlay;
-    display: flex;
-    justify-content: space-between;
-    padding: 290px;
+  -webkit-tap-highlight-color: #a72727;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 16.5;
+  color: #212529;
+  font-family: Poppins-Regular, sans-serif;
+  margin: auto;
+  margin-top: 62px;
+  margin-bottom: 56px;
+  box-sizing: border-box;
+  width: 985px;
+  height: 814px;
+  background: #ffffff;
+  border-radius: 37px;
+  overflow: overlay;
+  display: flex;
+  justify-content: space-between;
+  padding: 290px;
 }
 
 .input100 {
-    -webkit-tap-highlight-color: transparent;
-    box-sizing: border-box;
-    touch-action: manipulation;
-    margin: 0;
-    overflow: visible;
-    outline: none;
-    border: none;
-    font-family: Poppins-Medium;
-    font-size: 15px;
-    line-height: 1.5;
-    color: #666666;
-    display: block;
-    width: 100%;
-    background: #e6e6e6 !important;
-    height: 50px;
-    border-radius: 25px;
-    padding: 0 30px 0 68px;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  margin: 0;
+  overflow: visible;
+  outline: none;
+  border: none;
+  font-family: Poppins-Medium;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666666;
+  display: block;
+  width: 100%;
+  background: #e6e6e6 !important;
+  height: 50px;
+  border-radius: 25px;
+  padding: 0 30px 0 68px;
 }
 
 .wrap-input100 {
-    -webkit-tap-highlight-color: transparent;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    font-family: Poppins-Regular, sans-serif;
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    position: relative;
-    width: 100%;
-    z-index: 1;
-    margin-bottom: 10px;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  font-family: Poppins-Regular, sans-serif;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  margin-bottom: 10px;
 }
 
 .fa {
   -webkit-tap-highlight-color: transparent;
   pointer-events: none;
-  color: #666 ;
-  margin: 0 ;
-  padding: 0 ;
+  color: #666;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   display: inline-block;
-  font: normal normal normal 14px/1 Font Awesome 5 Free ;
+  font: normal normal normal 14px/1 Font Awesome 5 Free;
   font-size: inherit;
-  text-rendering: auto ;
+  text-rendering: auto;
   -webkit-font-smoothing: antialiased;
 }
 
 
 @font-face {
-    font-family: Poppins-Regular;
-    src: url('assets/fonts/poppins/Poppins-Regular.ttf');
+  font-family: Poppins-Regular;
+  src: url('~/assets/fonts/poppins/Poppins-Regular.ttf');
 }
 
 @font-face {
-    font-family: Poppins-Bold;
-    src: url('assets/fonts/poppins/Poppins-Bold.ttf');
+  font-family: Poppins-Bold;
+  src: url('~/assets/fonts/poppins/Poppins-Bold.ttf');
 }
 
 @font-face {
-    font-family: Poppins-Medium;
-    src: url('assets/fonts/poppins/Poppins-Medium.ttf');
+  font-family: Poppins-Medium;
+  src: url('~/assets/fonts/poppins/Poppins-Medium.ttf');
 }
 
 @font-face {
-    font-family: Montserrat-Bold;
-    src: url('assets/fonts/montserrat/Montserrat-Bold.ttf');
+  font-family: Montserrat-Bold;
+  src: url('~/assets/fonts/montserrat/Montserrat-Bold.ttf');
 }
+
 .focus-input100 {
   -webkit-tap-highlight-color: transparent;
   font-size: 1rem;
@@ -322,7 +324,7 @@ element.style {
 }
 
   .login100-form-btn:hover {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
     color: white;
   }
 
