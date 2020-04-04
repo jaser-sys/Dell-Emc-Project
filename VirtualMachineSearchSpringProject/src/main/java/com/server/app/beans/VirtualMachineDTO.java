@@ -1,12 +1,11 @@
 package com.server.app.beans;
 
 import java.io.Serializable;
-import java.util.UUID;
+
 
 public class VirtualMachineDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private UUID ID;
-	private UUID userId;
+	
 	private String IP;
 	private String userName;
 	private String password;
@@ -14,27 +13,15 @@ public class VirtualMachineDTO implements Serializable {
 	public VirtualMachineDTO() {
 		super();
 	}
-	public VirtualMachineDTO(UUID iD, UUID userId, String iP, String userName, String password, String path) {
-		super();
-		ID = iD;
-		this.userId = userId;
+	public VirtualMachineDTO( String iP, String userName, String password, String path) {
+		
 		IP = iP;
 		this.userName = userName;
 		this.password = password;
 		this.path=path;
 	}
-	public UUID getID() {
-		return ID;
-	}
-	public void setID(UUID iD) {
-		ID = iD;
-	}
-	public UUID getUserId() {
-		return userId;
-	}
-	public void setUserId(UUID userId) {
-		this.userId = userId;
-	}
+	
+	
 	public String getIP() {
 		return IP;
 	}
