@@ -55,7 +55,7 @@ export class FileService {
         let params = new HttpParams();
         params = params.append('name', name);
         console.log(username);
-        this.url = this.baseUrl + '/listfilesNameUser';
+        this.url = this.baseUrl + '/listfilesNameMulti';
         this.listPerUser = this.http.get<ApiResponse>(`${this.url}/${username}`, { params });
      
     }
@@ -64,7 +64,7 @@ export class FileService {
         this.sizeIs = size + "";
         let params = new HttpParams();
         params = params.append('size', this.sizeIs);
-        this.url = this.baseUrl + '/listfilesBySizeUser';
+        this.url = this.baseUrl + '/listfilesBySizeMulti';
         this.listPerUser = this.http.get<ApiResponse>(`${this.url}/${username}`, { params });
     }
 
@@ -72,7 +72,7 @@ export class FileService {
         
         let params = new HttpParams();
         params = params.append('date', date);
-        this.url = this.baseUrl + '/listfilesByDateUser';
+        this.url = this.baseUrl + '/listfilesByDateMulti';
         this.listPerUser = this.http.get<ApiResponse>(`${this.url}/${username}`, { params });
     }
 
