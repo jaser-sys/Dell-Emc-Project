@@ -9,8 +9,6 @@ import { Size } from '../model/size';
 import { SizeList } from '../model/size-list';
 
 
-
-
 const toFilter: number[] = [Math.pow(2, 10), Math.pow(2, 20), Math.pow(2, 30)];
 
 @Component({
@@ -36,7 +34,10 @@ export class SearchFileComponent implements OnInit {
 
     constructor(private router: Router, private fileService: FileService) {
 
-        
+        this.fileName = null;
+        this.toFilterBy = null;
+        this.sizeInput = null;
+
 
     }
 
@@ -57,7 +58,12 @@ export class SearchFileComponent implements OnInit {
             console.log("no scan vm");
             return;
         }
-         else {
+        if (this.ip === "all") {
+            this.fileService.getFilesByNameMulti(username, name);
+            const type = 'all';
+            window.localStorage.setItem('typeAll', type);
+            this.goToListMulti();
+        } else {
             this.fileService.getFilesByName(this.ip, name);
             const type = 'ip';
             console.log("ip name")
@@ -73,9 +79,9 @@ export class SearchFileComponent implements OnInit {
         if (unit === 'KB') {
             if (sizeVal === 0) {
                 this.byteSize = toFilter[0];
-
             }
             this.byteSize = sizeVal * toFilter[0];
+
         } else if (unit === 'MB') {
             this.byteSize = sizeVal * toFilter[1];
         } else if (unit === 'GB') {
@@ -84,7 +90,13 @@ export class SearchFileComponent implements OnInit {
             return;
         }
 
-        if (!window.localStorage.getItem("scanVM")) {
+        if (this.ip === "all") {
+            console.log(this.byteSize);
+            this.fileService.getFilesBySizeMulti(username, this.byteSize);
+            const type = 'all';
+            window.localStorage.setItem('typeAll', type);
+            this.goToListMulti();
+        } else if (!window.localStorage.getItem("scanVM")) {
             return;
         } else {
             console.log(this.byteSize);
@@ -97,13 +109,17 @@ export class SearchFileComponent implements OnInit {
 
 
     }
-    callfilterByDate(username: string, ip_: string, dateVal: any) {
+    callfilterByDate(username: string, dateVal: any) {
         this.ip = window.localStorage.getItem("scanVM");
-        console.log(ip_);
-        if (!window.localStorage.getItem("scanVM")) {
+        
+        if (this.ip === 'all') {
+            this.fileService.getFilesByDateMulti(username, dateVal);
+            const type = 'all';
+            window.localStorage.setItem('typeAll', type);
+            this.goToListMulti();
+        } else if (!window.localStorage.getItem("scanVM")) {
             return;
         } else {
-            console.log("D5")
             this.fileService.getFilesByDate(this.ip, dateVal);
             const type = 'ip';
             window.localStorage.setItem('typeIp', type);
@@ -111,6 +127,7 @@ export class SearchFileComponent implements OnInit {
         }
 
     }
+
 
     onSubmit() {
 
@@ -128,13 +145,15 @@ export class SearchFileComponent implements OnInit {
         } else if (this.toFilterBy === 'date') {
             
 
-            this.callfilterByDate(username, this.ip, this.apiDate);
+            this.callfilterByDate(username, this.apiDate);
         }
     }
 
     goToList() {
         this.router.navigate(['file/listfile']);
     }
-
+    goToListMulti() {
+        this.router.navigate(['file/listfilemulti']);
+    }
 
 }
