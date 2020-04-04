@@ -20,7 +20,7 @@ export class ListFileComponent implements OnInit {
         if (!window.localStorage.getItem('token') || !window.localStorage.getItem('username') ||
             !window.localStorage.getItem('scanVM')) {
 
-            this.router.navigate(['login']);
+            this.router.navigate(['user/login']);
             return;
         } else {
             const isIp = window.localStorage.getItem('scanVM').toString();

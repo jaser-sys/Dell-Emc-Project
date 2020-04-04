@@ -19,7 +19,7 @@ export class ListVmComponent implements OnInit {
     ngOnInit(): void {
 
         if (!window.localStorage.getItem('token') || !window.localStorage.getItem('username')) {
-            this.router.navigate(['login']);
+            this.router.navigate(['user/login']);
             return;
         }
         const username = window.localStorage.getItem('username');
