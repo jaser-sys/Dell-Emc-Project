@@ -122,6 +122,7 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 	            	vm.setIP(result.getString("IP"));
 	            	vm.setUserName(result.getString("username_"));
 	            	vm.setPassword(result.getString("password_"));
+	            	vm.setPath(result.getString("path_"));
 	            	myVirtualMachines.add(vm);
 	            }
 	        } catch (SQLException e) {
