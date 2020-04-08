@@ -78,6 +78,19 @@ public class VirtualMachine {
 				+ ", password=" + password + ", path=" + path + "]";
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof VirtualMachine) 
+			if(((VirtualMachine) obj).getID().equals(this.getID()))
+				if(((VirtualMachine) obj).getUserId().equals(this.getUserId()))
+					if(((VirtualMachine) obj).getIP().equals(this.getIP()))
+						if(((VirtualMachine) obj).getUserName().equals(this.getUserName()))
+							if(((VirtualMachine) obj).getPassword().equals(this.getPassword()))
+								if(((VirtualMachine) obj).getPath().equals(this.getPath()))
+									return true;
+		return false;
+	}
+
 
 }
 
