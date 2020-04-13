@@ -37,11 +37,9 @@ public class VirtualMachineService implements  VirtualMachineServiceable{
 	}
 
 	@Override
-	public void addVirtualMachine(UUID userId, String ip, String username, String password, String path) {
-		VirtualMachine vm=new VirtualMachine(userId, ip, username, password, path);
+	public void addVirtualMachine(VirtualMachine vm) {
 		vmDao.addVirtualMachine(vm);
-		this.scanVirtualMachineByIp(vm);
-		
+		//this.scanVirtualMachineByIp(vm);	
 	}
 
 	@Override
