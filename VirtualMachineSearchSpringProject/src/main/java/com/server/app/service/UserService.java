@@ -28,15 +28,15 @@ public class UserService implements UserServiceable{
 	}
 
 	@Override
-	public User addUser(UserLogin user) {
-		User user_=userDao.addUser(user);
-		return user_;
+	public boolean addUser(UserLogin user) {
+		boolean userAdded=userDao.addUser(user);
+		return userAdded;
 	}
 
 	@Override
-	public User returnUser(UserLogin user) {
+	public User userExist(UserLogin user) {
 	
-		User user_=userDao.returnUser(user);
+		User user_=userDao.userExist(user);
 		return user_;
 	}
 

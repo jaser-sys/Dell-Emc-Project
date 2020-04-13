@@ -50,13 +50,13 @@ public class UserController {
 	}
 	
 	@PostMapping(value = "/register")
-	public User Register(@RequestBody UserLogin user) {
-		User added=userSer.addUser(user);
+	public boolean Register(@RequestBody UserLogin user) {
+		boolean added=userSer.addUser(user);
 		return added;
 	}
 	@PostMapping(value = "/isuser")
 	public User getUser(@RequestBody UserLogin isUser) {
-		User isUser_=userSer.returnUser(isUser);
+		User isUser_=userSer.userExist(isUser);
 		return isUser_;
 	}
 	

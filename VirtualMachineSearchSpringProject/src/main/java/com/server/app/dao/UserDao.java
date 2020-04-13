@@ -46,6 +46,26 @@ public class UserDao implements UserDaoable{
 		return conn;
 	}	
     
+	
+	@Override
+	public boolean usernameAvail(String username) {
+		boolean exist=false;
+		try (Connection conn = connect();
+				PreparedStatement stat = conn.prepareStatement("SELECT (count(*) >0) as found FROM user WHERE username_ LIKE ?")){
+				stat.setString(1, username);
+				
+				ResultSet res = stat.executeQuery();
+				if(res.next()) {
+					exist=res.getBoolean(1);
+				}
+		       } catch (SQLException e) {
+		       System.out.println(e.getMessage());
+		     }
+			
+    	return exist;
+	}
+	
+	
 	@Override
 	public User loadUserByUsername(final String username) {
 		User user_=new User();
@@ -85,24 +105,34 @@ public class UserDao implements UserDaoable{
     }
 	
 	@Override
-	public User addUser(UserLogin user) {
-		String encodedPwd=passwordEncoder.encode(user.getPassword());
-		User user_=new User(user.getUsername(), encodedPwd);
-		
-		try (Connection conn = connect();
+	public boolean addUser(UserLogin user) {
+		boolean wasAdded=true;
+		boolean availName=usernameAvail(user.getUsername());
+		if(!availName){
+			wasAdded=false;
+			
+	   }else {
+		 String encodedPwd=passwordEncoder.encode(user.getPassword());
+		 User user_=new User(user.getUsername(), encodedPwd);
+		 try (Connection conn = connect();
 				PreparedStatement stat = conn.prepareStatement("INSERT INTO user(id,username_,password_) VALUES(?,?,?) ")){
 			    stat.setObject(1, user_.getId_());
 			    stat.setString(2,user.getUsername());
 				stat.setString(3,user.getPassword());
-				stat.executeUpdate(); 
+			    int added=stat.executeUpdate(); 
+			    if(added <=0) {
+			    	wasAdded=false;
+			    }
 		       } catch (SQLException e) {
 		       System.out.println(e.getMessage());
 		     }
-	return user_;
+	  
+		     }
+		return wasAdded;
 	}
 	
 	@Override
-    public User returnUser(UserLogin user) {
+    public User userExist(UserLogin user) {
 		User user_=new User();
 		try (Connection conn = connect();
 				PreparedStatement stat = conn.prepareStatement("SELECT * FROM user WHERE username_ LIKE ? and password_ LIKE ? ")){
@@ -209,5 +239,7 @@ public class UserDao implements UserDaoable{
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }
