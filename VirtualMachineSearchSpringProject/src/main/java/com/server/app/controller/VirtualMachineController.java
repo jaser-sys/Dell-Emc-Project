@@ -35,7 +35,8 @@ public class VirtualMachineController {
 	@RequestMapping(method = RequestMethod.POST, value =  "/add")
 	public void addVirtualMachine(@RequestParam String userId_, String ip, String username, String password, String path){
 		UUID userId=UUID.fromString(userId_);
-		vmService.addVirtualMachine(userId, ip, username, password, path);
+		VirtualMachine vm=new VirtualMachine(userId, ip, username, password, path);
+		vmService.addVirtualMachine(vm);
 	}
 	
 	
