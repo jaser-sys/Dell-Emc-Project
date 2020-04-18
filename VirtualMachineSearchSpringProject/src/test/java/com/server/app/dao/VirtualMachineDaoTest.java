@@ -91,11 +91,21 @@ class VirtualMachineDaoTest {
 	@Test 
 	void getVirtualMachinesIPSTest() {
 		vmDao.addVirtualMachine(vm);
-		List <String> list= vmDao.getVirtualMachinesIPS(ririId);
+		List <String> list= vmDao.getVirtualMachineByIP(ririId);
 		assertTrue("\nFailed: The added vm must be in the list\n",list.contains(vm.getIP()));
 		
 	}
-	
+	 @Test
+	 void existsByIdTest() {
+		 UUID vmID = UUID.randomUUID();
+		 VirtualMachine test=new VirtualMachine(vmID,ririId,"6.63.2.8","mimi","123654","d:");
+		 
+		 vmDao.addVirtualMachine(test);
+		 assertTrue(vmDao.existsById(vmID));
+		 
+		 vmDao.deleteVirtualMachineByIP("6.63.2.8");
+		 assertFalse(vmDao.existsById(vmID));
+	 }
 	
 	
 	@AfterEach
