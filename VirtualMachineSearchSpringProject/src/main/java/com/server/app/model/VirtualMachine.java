@@ -22,6 +22,14 @@ public class VirtualMachine {
 		this.password = password;
 		this.path = path;
 	}
+	public VirtualMachine(UUID vmId, UUID userId,String ip,String username, String password, String path){
+		this.ID = vmId;
+		this.userId = userId;
+		this.IP = ip;
+		this.username = username;
+		this.password = password;
+		this.path = path;
+	}
 	
 	public UUID getID() {
 		return this.ID;
