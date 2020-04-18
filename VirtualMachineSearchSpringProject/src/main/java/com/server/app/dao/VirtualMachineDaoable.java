@@ -16,7 +16,7 @@ public interface VirtualMachineDaoable extends CrudRepository<VirtualMachine, Lo
     public Connection connect();
     public VirtualMachine getVirtualMachineByIP(String ip);
 	public List<VirtualMachine> getVirtualMachineByUsername(String username);
-	public List<String> getVirtualMachinesIPS(UUID userId);
+	public List<String> getVirtualMachineByIP(UUID userId);
 	public void addVirtualMachine(VirtualMachine vm);
 	public void deleteVirtualMachineByIP(String ip);
 	public void deleteVirtualMachineByUsername(String username);

@@ -96,15 +96,12 @@ class VirtualMachineDaoTest {
 		
 	}
 	 @Test
-	 void existsByIdTest() {
-		 UUID vmID = UUID.randomUUID();
-		 VirtualMachine test=new VirtualMachine(vmID,ririId,"6.63.2.8","mimi","123654","d:");
+	 void existsByIdTest() {	 
+		 vmDao.addVirtualMachine(vm);
+		 assertTrue(vmDao.existsByIp("1.2.1.1"));
 		 
-		 vmDao.addVirtualMachine(test);
-		 assertTrue(vmDao.existsById(vmID));
-		 
-		 vmDao.deleteVirtualMachineByIP("6.63.2.8");
-		 assertFalse(vmDao.existsById(vmID));
+		 vmDao.deleteVirtualMachineByIP("1.2.1.1");
+		 assertFalse(vmDao.existsByIp("1.2.1.1"));
 	 }
 	
 	

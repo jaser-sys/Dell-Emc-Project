@@ -36,8 +36,8 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 		}
 		return conn;
 	}
-	public boolean existsById(UUID vmId) {
-		String sqlCommand = "SELECT * FROM virtualMachine WHERE ID=\'"+vmId+"\';" ;
+	public boolean existsByIp(String ip) {
+		String sqlCommand = "SELECT * FROM virtualMachine WHERE IP=\'"+ip+"\';" ;
 		
 		try (Connection conn = this.connect();
 	             Statement stmt  = conn.createStatement();
