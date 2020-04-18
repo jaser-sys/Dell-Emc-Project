@@ -36,6 +36,21 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 		}
 		return conn;
 	}
+	public boolean existsById(UUID vmId) {
+		String sqlCommand = "SELECT * FROM virtualMachine WHERE ID=\'"+vmId+"\';" ;
+		
+		try (Connection conn = this.connect();
+	             Statement stmt  = conn.createStatement();
+	             ResultSet result    = stmt.executeQuery(sqlCommand)){
+	            if (result.next()) {
+	            	return true;
+	            }
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+
+		return false;
+	}
 
 	public List<VirtualMachine> getVitualMachines(UUID userId) {
 		String sqlCommand = "SELECT * FROM virtualMachine WHERE userID=\'"+userId+"\';" ;
@@ -62,6 +77,8 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 
 	@Override
 	public void addVirtualMachine(VirtualMachine vm) {
+		System.out.println(vm.toString());
+
 		String sqlCommand = "INSERT INTO virtualMachine (ID, userId, IP, username_, password_, path_) "
 		 		+ "VALUES(\'"+ vm.getID() +"\',\'"+ vm.getUserId()+"\',\'" + vm.getIP() + "\',\'" + vm.getUserName() + "\',\'" + vm.getPassword() + "\',\'"+vm.getPath()+"\');" ;
 		 try (Connection conn = this.connect();
@@ -132,7 +149,7 @@ public class VirtualMachineDao implements VirtualMachineDaoable {
 	}
 	
 	@Override
-	public List<String> getVirtualMachinesIPS(UUID userId){
+	public List<String> getVirtualMachineByIP(UUID userId){
 		String sqlCommand = "SELECT IP FROM virtualMachine WHERE userID=\'"+userId+"\';" ;
 		List<String> ips= new ArrayList<String>();
 		
